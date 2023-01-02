@@ -1,0 +1,8 @@
+<div [ngClass]="classes">
+  <img
+    [src]="src"
+    class="object-cover min-w-8"
+    [ngClass]="[classes, border ? 'border border-gray-100' : '']"
+    #baseAvatarImg
+  />
+</div>

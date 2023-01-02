@@ -1,0 +1,189 @@
+<ng-container [ngSwitch]="buttonType">
+  <ng-container
+    *ngSwitchCase="'tim-flat-button'"
+    [ngTemplateOutlet]="flatButton"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="'tim-faint-button'"
+    [ngTemplateOutlet]="faintButton"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="'tim-simple-button'"
+    [ngTemplateOutlet]="simpleButton"
+  ></ng-container>
+  <ng-container
+    *ngSwitchCase="'tim-stroked-button'"
+    [ngTemplateOutlet]="strokedButton"
+  ></ng-container>
+</ng-container>
+
+<!-- BUTTON TEMPLATES -->
+<ng-template #flatButton>
+  <div
+    class="rounded-lg shadow-sm border"
+    [ngClass]="{
+      'ring-4 ring-offset-0': focused,
+      'bg-black/5 text-black/20 border-transparent': disabled,
+      'text-white': !disabled,
+      'bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 ring-blue-100':
+        color === 'primary' && !disabled,
+      'bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600 ring-red-100':
+        color === 'destructive' && !disabled
+    }"
+  >
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #faintButton>
+  <div
+    class="rounded-lg border"
+    [ngClass]="{
+      'ring-4 ring-offset-0': focused,
+      'bg-black/5 text-black/20 border-transparent': disabled,
+      'bg-blue-50 border-blue-50 hover:bg-blue-100 hover:border-blue-100 ring-blue-100 text-blue-600':
+        color === 'primary' && !disabled,
+      'bg-red-50 border-red-50 hover:bg-red-100 hover:border-red-100 ring-red-100 text-red-600':
+        color === 'destructive' && !disabled
+    }"
+  >
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #simpleButton>
+  <div
+    class="rounded-lg"
+    [ngClass]="{
+      'hover:bg-transparent': focused,
+      'text-black/20': disabled && color !== 'white',
+      'opacity-20': disabled && color === 'white',
+      'hover:bg-gray-100 text-gray-600': color === 'neutral' && !disabled,
+      'hover:bg-blue-50 text-blue-500': color === 'primary' && !disabled,
+      'hover:bg-red-50 border border-transparent hover:border-red-50 text-red-600':
+        color === 'destructive' && !disabled,
+      'text-white': color === 'white',
+      'hover:bg-white/20': color === 'white' && !disabled
+    }"
+  >
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #strokedButton>
+  <div
+    class="shadow-sm rounded-lg bg-white border"
+    [ngClass]="{
+      'ring-4 ring-offset-0': focused,
+      'bg-black/5 text-black/20 border-transparent': disabled,
+      'border-gray-300 hover:bg-gray-50 ring-gray-100 text-gray-600':
+        color === 'neutral' && !disabled,
+      'border-red-300 hover:bg-red-25 ring-red-100 text-red-600':
+        color === 'destructive' && !disabled
+    }"
+  >
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </div>
+</ng-template>
+
+<!-- END OF BUTTON TEMPLATES -->
+
+<ng-template #content>
+  <div
+    class="flex items-center gap-3 relative"
+    *ngIf="!iconBtn; else iconBtnContent"
+    [ngClass]="
+      !iconBtn
+        ? {
+            xs: 'py-2 px-4 h-9',
+            sm: 'py-3 px-5 h-11',
+            md: 'py-3 px-6 h-12',
+            lg: 'py-4 px-8 h-15'
+          }[size]
+        : {
+            xs: 'justify-center h-9 w-9',
+            sm: 'justify-center h-10 w-10',
+            md: 'justify-center h-11 w-11',
+            lg: 'justify-center h-12 w-12'
+          }[size]
+    "
+  >
+    <div
+      *ngIf="hasPrefix"
+      class="flex-none"
+      [ngClass]="{
+        'w-6 h-6': size === 'lg',
+        'w-5 h-5': size === 'xs' || size === 'sm' || size === 'md'
+      }"
+    >
+      <ng-content select="[iqairPrefix]"></ng-content>
+    </div>
+
+    <div class="h-5 w-5" *ngIf="iconBtn">
+      <img
+        [src]="buttonType | iconSrc : iconBtn : color : disabled"
+        class="h-5 w-5"
+      />
+    </div>
+    <span
+      *ngIf="!iconBtn"
+      class="flex flex-grow justify-center items-center"
+      [ngClass]="[
+        'w-full font-medium',
+        {
+          xs: 'text-sm leading-5',
+          sm: 'text-sm leading-5',
+          md: 'text-base leading-6',
+          lg: 'text-lg leading-7'
+        }[size]
+      ]"
+    >
+      <!-- Keep content in DOM to avoid width shift in button when switching from loading / not loading -->
+      <div [class.invisible]="loading"><ng-content></ng-content></div>
+      <ng-container *ngIf="loading">
+        <ng-container *ngTemplateOutlet="spinner"></ng-container>
+      </ng-container>
+    </span>
+
+    <div
+      *ngIf="hasSuffix"
+      class="flex-none"
+      [ngClass]="{
+        'w-6 h-6': size === 'lg',
+        'w-5 h-5': size === 'xs' || size === 'sm' || size === 'md'
+      }"
+    >
+      <ng-content select="[iqairSuffix]"></ng-content>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #iconBtnContent>
+  <div
+    class="flex items-center justify-center relative"
+    [ngClass]="
+      {
+        xs: 'h-9 w-9',
+        sm: 'h-10 w-10',
+        md: 'h-11 w-11',
+        lg: 'h-12 w-12'
+      }[size]
+    "
+  >
+    <img
+      [src]="buttonType | iconSrc : iconBtn : color : disabled"
+      class="h-5 w-5"
+    />
+  </div>
+</ng-template>
+
+<!-- Absolute center position with relative parent -->
+<ng-template #spinner>
+  <div class="absolute right-0 left-0 flex flex-row justify-center">
+    <tim-spinner
+      *ngIf="loading"
+      [color]="spinnerColor"
+      [size]="size === 'lg' ? 'md' : size"
+    ></tim-spinner>
+  </div>
+</ng-template>

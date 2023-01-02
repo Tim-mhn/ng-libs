@@ -1,0 +1,9 @@
+<div class="flex flex-col gap-1">
+  <div class="flex justify-between items-center">
+    <ng-content select="tim-card-header-title"></ng-content>
+    <ng-content select="tim-card-header-right-action"></ng-content>
+  </div>
+  <ng-content
+    select="tim-card-header-description, [tim-card-header-description]"
+  ></ng-content>
+</div>

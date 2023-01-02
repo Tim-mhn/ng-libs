@@ -1,0 +1,10 @@
+<span
+  tim-base-link
+  class="inline-block"
+  [size]="size"
+  [ngClass]="{color, disabled} | linkColor"
+  [class.underline]="!disabled"
+  [class.underline-offset-2]="!disabled"
+>
+  <ng-content></ng-content>
+</span>

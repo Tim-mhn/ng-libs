@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ui",
+  "lib": {
+    "entryFile": "public-api.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "@tim-mhn/ng-common",
+    "iqair-tailwind",
+    "tailwindcss"
+  ]
+}

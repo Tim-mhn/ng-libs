@@ -1,0 +1,17 @@
+<span
+  tim-base-link
+  [inline]="inline"
+  [ngClass]="{color, disabled} | linkColor"
+  [size]="size"
+  (mouseover)="toggleHover(true)"
+  (mouseleave)="toggleHover(false)"
+>
+  <ng-content></ng-content>
+  <img
+    class="relative inline ml-0.5"
+    [ngClass]="size === 'lg' ? 'w-5 h-5' : 'w-4 h-4'"
+    [src]="{color, disabled , isHovered} | linkArrow "
+    alt="arrow-right"
+    linkSuffix
+  />
+</span>

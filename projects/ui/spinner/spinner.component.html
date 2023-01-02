@@ -1,0 +1,46 @@
+<div
+  class="flex flex-col items-center justify-center gap-4 font-normal"
+  *ngIf="withText; else spinner"
+>
+  <ng-container *ngTemplateOutlet="spinner"></ng-container>
+  <div
+    [ngClass]="{
+      'text-gray-500': color === 'neutral',
+      'text-white': color === 'white',
+      'text-xs': size === 'xs',
+      'text-sm': size === 'sm',
+      'text-md': size === 'md',
+      'text-lg': size === 'lg'
+    }"
+  >
+    Loading ...
+  </div>
+</div>
+
+<ng-template #spinner>
+  <div
+    class="inline-block relative"
+    [ngClass]="{
+      'w-2 h-2': size === 'xs',
+      'w-4 h-4': size === 'sm',
+      'w-6 h-6': size === 'md',
+      'w-12 h-12': size === 'lg'
+    }"
+  >
+    <div
+      [ngClass]="{
+        'w-2 h-2 border': size === 'xs',
+        'w-4 h-4': size === 'sm',
+        'w-6 h-6': size === 'md',
+        'border-2': size === 'sm' || size === 'md',
+        'w-12 h-12 border-4': size === 'lg',
+        'border-t-gray-400 border-r-gray-400 border-b-gray-400':
+          color === 'neutral',
+        'border-t-white border-r-white border-b-white': color === 'white',
+        'border-t-red-400 border-r-red-400 border-b-red-400':
+          color === 'destructive'
+      }"
+      class="border-solid box-border block absolute rounded-full border-l-transparent animate-spin"
+    ></div>
+  </div>
+</ng-template>

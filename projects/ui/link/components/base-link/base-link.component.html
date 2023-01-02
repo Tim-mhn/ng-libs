@@ -1,0 +1,14 @@
+<span
+  class="overflow-hidden whitespace-nowrap text-ellipsis max-w-full text-decoration-inherit font-medium cursor-pointer"
+  [ngClass]="{
+    'text-xs': size === 'xs',
+    'text-sm': size === 'sm',
+    'text-base': size === 'md',
+    'text-lg': size === 'lg',
+    'inline-block': !inline,
+    inline: inline
+  }"
+>
+  <ng-content></ng-content>
+  <ng-content select="linkSuffix"></ng-content>
+</span>

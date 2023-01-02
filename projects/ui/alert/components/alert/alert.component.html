@@ -1,0 +1,49 @@
+<div
+  [class]="'flex flex-col w-full rounded-md ' + (color | alertBgClass)"
+  [ngClass]="smallPadding ? 'p-3' : 'p-4'"
+>
+  <div class="flex flex-row items-center justify-start">
+    <img
+      class="h-4 w-4"
+      height="16"
+      width="16"
+      [src]="color | alertIcon"
+      class="mr-3.5"
+    />
+
+    <div class="text-sm font-medium text-gray-900">
+      <ng-content select="tim-alert-title"></ng-content>
+    </div>
+
+    <div class="flex flex-row grow justify-end">
+      <img
+        *ngIf="dismissible"
+        [src]="CLOSE_ICON_SRC"
+        height="20"
+        width="20"
+        class="h-5 w-5 cursor-pointer"
+        (click)="dismiss()"
+      />
+    </div>
+  </div>
+
+  <div
+    *ngIf="description"
+    class="flex justify-start pl-7 text-sm font-normal text-gray-780"
+    [ngClass]="smallPadding ? 'pt-1' : 'pt-3'"
+  >
+    <ng-content select="tim-alert-description"></ng-content>
+  </div>
+
+  <div
+    *ngIf="actions.length > 0"
+    class="flex justify-start flex-wrap pl-7 text-sm font-normal text-blue-500"
+    [ngClass]="smallPadding ? 'pt-1' : 'pt-3'"
+  >
+    <div class="flex flex-row" *ngFor="let action of actions; let i = index">
+      <ng-container *ngTemplateOutlet="action.template"></ng-container>
+      <!-- Show a bullet point between each actions -->
+      <span *ngIf="i < actions.length - 1" class="mx-2"> • </span>
+    </div>
+  </div>
+</div>

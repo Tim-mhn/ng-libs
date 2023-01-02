@@ -1,0 +1,9 @@
+<div
+  class="h-screen w-screen fixed overflow-auto py-5 px-8"
+  [ngClass]="{
+    'bg-white': bgColor === 'white',
+    'bg-gray-50': bgColor === 'neutral'
+  }"
+>
+  <ng-container #container></ng-container>
+</div>

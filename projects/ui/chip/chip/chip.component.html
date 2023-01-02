@@ -1,0 +1,22 @@
+<div
+  [class]="{color, size, clickable, withAction} | chipClass"
+  class="flex w-fit rounded-2xl text-xs font-medium py-0.5 items-center whitespace-nowrap max-w-full"
+>
+  <div (click)="onClick($event)" class="flex">
+    <div *ngIf="hasPrefix" class="flex-none h-4 w-4 mr-1 flex items-center">
+      <ng-content select="[iqairPrefix]"></ng-content>
+    </div>
+
+    <div class="overflow-hidden text-ellipsis"><ng-content> </ng-content></div>
+  </div>
+
+  <div class="ml-2 min-h-fit min-w-fit" *ngIf="withAction">
+    <img
+      (click)="onActionClick($event)"
+      class="cursor-pointer"
+      width="9"
+      height="9"
+      [src]="ICON_CROSS"
+    />
+  </div>
+</div>

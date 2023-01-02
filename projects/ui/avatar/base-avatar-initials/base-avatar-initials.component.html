@@ -1,0 +1,11 @@
+<div
+  class="uppercase text-primary border border-gray-100 flex items-center justify-center"
+  [ngClass]="[
+    classes,
+    color === 'primary'
+      ? 'bg-blue-50 text-blue-500'
+      : 'bg-blue-700 text-blue-300'
+  ]"
+>
+  {{ text | slice: 0:2 }}
+</div>

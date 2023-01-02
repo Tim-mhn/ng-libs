@@ -1,0 +1,18 @@
+{
+  "name": "@tim-mhn/ng-ui",
+  "version": "1.1.0",
+  "peerDependencies": {
+    "@angular/cdk": "12 - 13",
+    "@angular/common": "12 - 13",
+    "@angular/core": "12 - 13",
+    "@angular/platform-browser": "12 - 13",
+    "@angular/platform-browser-dynamic": "12 - 13",
+    "rxjs": "~7.5.0",
+    "zone.js": "^0.10.0 || ^0.11.0"
+  },
+  "dependencies": {
+    "@tim-mhn/common": "^1.0.0",
+    "iqair-tailwind": "^1.0.3",
+    "tslib": "^2.3.0"
+  }
+}

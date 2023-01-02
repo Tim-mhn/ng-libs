@@ -1,0 +1,11 @@
+<div
+  class="p-2 rounded text-xs font-medium max-w-65"
+  [ngClass]="
+    bgColor === 'white'
+      ? 'bg-white text-gray-700 shadow-lg'
+      : 'bg-gray-800 text-white'
+  "
+  [class.hidden]="!visible"
+>
+  <ng-container #container></ng-container>
+</div>

@@ -1,0 +1,22 @@
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayPositions]="overlayPositions"
+  [cdkConnectedOverlayPush]="true"
+>
+  <div
+    class="flex flex-col items-stretch p-0 bg-white border border-gray-100 rounded-lg shadow-lg shadow-black/8 overflow-auto pb-1"
+    [ngClass]="[
+      menuClass || sameWidthAsTrigger ? menuClass : 'w-60 ',
+      !overrideDefaultMaxHeight ? 'max-h-80' : ''
+    ]"
+    [ngStyle]="{
+      'width.px': sameWidthAsTrigger && trigger.el.nativeElement.clientWidth
+    }"
+    (click)="onClick($event)"
+  >
+    <ng-content select="tim-dropdown-header"></ng-content>
+    <ng-content></ng-content>
+  </div>
+</ng-template>

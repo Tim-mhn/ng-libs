@@ -1,0 +1,43 @@
+<div
+  class="flex items-center justify-center box-content"
+  [ngClass]="{
+    'bg-blue-100': color === 'primary',
+    'bg-green-100': color === 'success',
+    'bg-red-100': color === 'destructive',
+    'bg-orange-100': color === 'warn',
+    'bg-gray-100': color === 'neutral',
+    'w-6 h-6': size === 'xs',
+    'w-8 h-8': size === 'sm',
+    'w-10 h-10':
+      size === 'md' || (variant === 'circle-outline' && size === 'lg'),
+    'w-12 h-12': variant !== 'circle-outline' && size === 'lg',
+    'w-14 h-14': size === 'xl',
+    'border-blue-50': variant === 'circle-outline' && color === 'primary',
+    'border-green-50': variant === 'circle-outline' && color === 'success',
+    'border-red-50': variant === 'circle-outline' && color === 'destructive',
+    'border-orange-50': variant === 'circle-outline' && color === 'warn',
+    'border-gray-50': variant === 'circle-outline' && color === 'neutral',
+    'border-2 w-5 h-5': variant === 'circle-outline' && size === 'xs',
+    'border-4 w-7 h-7': variant === 'circle-outline' && size === 'sm',
+    'border-[6px] w-[34px] h-[34px]':
+      variant === 'circle-outline' && size === 'md',
+    'border-8': variant === 'circle-outline' && size === 'lg',
+    'border-[10px] w-[46px] h-[46px]':
+      variant === 'circle-outline' && size === 'xl',
+    'rounded-full': variant === 'circle' || variant === 'circle-outline',
+    rounded: variant === 'square' && size === 'xs',
+    'rounded-xl': variant === 'square' && size === 'xl',
+    'rounded-lg': variant === 'square' && size !== 'xs' && size !== 'xl'
+  }"
+>
+  <img
+    [src]="src"
+    [ngClass]="{
+      'w-3 h-3': size === 'xs',
+      'w-4 h-4': size === 'sm',
+      'w-5 h-5': size === 'md',
+      'w-6 h-6': size === 'lg',
+      'w-7 h-7': size === 'xl'
+    }"
+  />
+</div>

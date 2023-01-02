@@ -1,0 +1,47 @@
+<div
+  class="flex items-center"
+  [ngClass]="{
+    'w-full': flexWidth,
+    'w-40': !flexWidth && size === 'xs',
+    'w-48': !flexWidth && size === 'sm',
+    'w-52': !flexWidth && size === 'md',
+    'w-56': !flexWidth && size === 'lg',
+    'gap-2.5': size === 'xs',
+    'gap-3': size === 'sm' || size === 'md',
+    'gap-4': size === 'lg'
+  }"
+>
+  <div
+    class="flex-none"
+    [ngClass]="{
+      'w-8 h-8': size === 'xs',
+      'w-10 h-10': size === 'sm',
+      'w-12 h-12': size === 'md',
+      'w-14 h-14': size === 'lg'
+    }"
+  >
+    <tim-avatar-profile-image [src]="src" [shape]="shape">
+    </tim-avatar-profile-image>
+  </div>
+
+  <div class="flex flex-col flex-auto overflow-hidden">
+    <div
+      class="capitalize text-gray-700 text-left font-medium truncate"
+      [ngClass]="{
+        'text-sm': size === 'xs' || size === 'sm',
+        'text-lg': size === 'lg'
+      }"
+    >
+      <ng-content></ng-content>
+    </div>
+
+    <div
+      class="text-gray-500 truncate text-left hover:text-clip"
+      [ngClass]="{
+        'text-xs': size === 'xs' || size === 'sm'
+      }"
+    >
+      <ng-content select="tim-avatar-subtext"></ng-content>
+    </div>
+  </div>
+</div>

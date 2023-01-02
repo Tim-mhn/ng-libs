@@ -1,0 +1,15 @@
+<div
+  class="px-4 py-2 flex text-sm text-gray-700 gap-3 items-center hover:bg-gray-50 cursor-pointer"
+  [ngClass]="{
+    'cursor-default opacity-10 text-black': disabled
+  }"
+  (click)="_onClick($event)"
+>
+  <div *ngIf="hasPrefix" class="h-5 w-5">
+    <ng-content select="[iqairPrefix]"></ng-content>
+  </div>
+  <ng-content></ng-content>
+  <div *ngIf="hasSuffix" class="h-5 w-5 flex flex-row grow justify-end">
+    <ng-content select="[iqairSuffix]"></ng-content>
+  </div>
+</div>

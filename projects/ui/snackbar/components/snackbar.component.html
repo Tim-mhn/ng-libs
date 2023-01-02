@@ -1,0 +1,43 @@
+<div class="fixed bottom-4 left-0 right-0 flex justify-center">
+    <div
+        class="flex bg-gray-900 items-center text-gray-25 px-3 rounded text-sm font-normal"
+    >
+        <ng-container [ngSwitch]="options?.mode">
+            <img
+                *ngSwitchCase="'success'"
+                [src]="CHECK_WHITE_SRC"
+                class="h-5 w-5 mr-2"
+            />
+
+            <img
+                *ngSwitchCase="'error'"
+                [src]="ERROR_ICON_SRC"
+                class="h-5 w-5 mr-2"
+            />
+
+            <tim-spinner
+                *ngSwitchCase="'loading'"
+                color="white"
+                size="sm"
+                class="mr-2"
+            ></tim-spinner>
+        </ng-container>
+
+        <div class="py-1.5">
+            {{ message }}
+        </div>
+
+        <ng-container *ngIf="options?.dismissible">
+            <div class="h-full w-px bg-white opacity-10 mx-2"></div>
+            <div class="py-1.5">
+                <img
+                    (click)="dismiss()"
+                    [src]="X_ICON_SRC"
+                    height="20"
+                    width="20"
+                    class="cursor-pointer h-5 w-5"
+                />
+            </div>
+        </ng-container>
+    </div>
+</div>
