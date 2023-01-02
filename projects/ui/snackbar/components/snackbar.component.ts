@@ -3,7 +3,7 @@
 import { Component, ElementRef, OnInit } from "@angular/core";
 import { Subject } from "rxjs";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ICONS } from "@tim-mhn/ng-common/icons";
+import { ICONS } from "@tim-mhn/common/icons";
 import { ComponentDismisser } from "@tim-mhn/ng-ui/core";
 import { TimUISnackBarOptions } from "../models/options";
 

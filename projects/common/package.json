@@ -1,5 +1,5 @@
 {
-  "name": "@tim-mhn/ng-common",
+  "name": "@tim-mhn/common",
   "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^13.3.0",

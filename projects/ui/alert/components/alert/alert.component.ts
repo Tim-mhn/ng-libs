@@ -11,7 +11,7 @@ import {
   QueryList,
 } from '@angular/core';
 import { ComponentDismisser } from '@tim-mhn/ng-ui/core';
-import { ICONS } from '@tim-mhn/ng-common/icons';
+import { ICONS } from '@tim-mhn/common/icons';
 import { AlertColor } from '../../models/color';
 import { TimUIAlertAction } from '../../directives/alert-action.directive';
 import { TimUIAlertDescription } from '../../directives/alert-description.directive';

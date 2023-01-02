@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 // eslint-disable-next-line import/no-unresolved
-import { ICONS } from '@tim-mhn/ng-common/icons';
+import { ICONS } from '@tim-mhn/common/icons';
 import { AlertColor } from '../models/color';
 
 @Pipe({

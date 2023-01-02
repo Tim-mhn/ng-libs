@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import { ICONS } from '@tim-mhn/ng-common/icons';
+import { ICONS } from '@tim-mhn/common/icons';
 import { ButtonIcon } from '../models/button-icon';
 
 type IconToSrc = {

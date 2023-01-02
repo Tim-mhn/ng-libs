@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { OptionallyReadonly } from '@tim-mhn/ng-common/extra-types';
+import { OptionallyReadonly } from '@tim-mhn/common/extra-types';
 import { areDeepEqual } from './are-deep-equal';
 import { objectKeys } from './keys-values-entries';
 

@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 // eslint-disable-next-line import/no-unresolved
-import { randomString } from '@tim-mhn/ng-common/strings';
+import { randomString } from '@tim-mhn/common/strings';
 
 @Component({
   selector: 'tim-tab',

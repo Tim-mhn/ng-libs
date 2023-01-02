@@ -13,7 +13,7 @@
     "sourceMap": true,
     "paths": {
       "@tim-mhn/ng-ui/*": ["projects/ui/*", "dist/ui/*"],
-      "@tim-mhn/ng-common/*": ["projects/common/*", "dist/common/*"]
+      "@tim-mhn/common/*": ["projects/common/*", "dist/common/*"]
     },
     "strictNullChecks": false,
     "declaration": false,
