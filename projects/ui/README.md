@@ -1,24 +1,69 @@
-# NgUi
+# TimUI
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+Angular UI library built with Material CDK and Tailwindcss
 
-## Code scaffolding
+## Get started
 
-Run `ng generate component component-name --project ng-ui` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-ui`.
-> Note: Don't forget to add `--project ng-ui` or else it will be added to the default project in your `angular.json` file. 
+##### Download the package from NPM
+
+`npm install @tim-mhn/ng-ui`
+
+##### Import the stylesheet
+
+In your global `.scss` or `.css` file, add
+`@import "@tim-mhn/ng-ui/styles.css"`
+
+##### Import the modules you want to use
+
+Example with `TimUIButtonModule` and `TimUIChipModule`
+
+```
+// example.module.ts
+import { TimUIButtonModule } from 'iqair-ui/button';
+  import { TimUIChipModule } from 'iqair-ui/chip'
+
+@NgModule({
+  imports: [TimUIButtonModule, TimUIChipModule],
+  declarations: [ExampleComponent]
+})
+export class ExampleModule {}
+
+// example.component.html
+<button iqair-flat-button color="primary" size="md">Click</button>
+<iqair-chip color="destructive" size="sm">chip</iqair-chip>
+```
+
+_List of modules_
+
+- `TimUIAlertModule`
+- `TimUIAvatarModule`
+- `TimUIButtonModule`
+- `TimUICardModule`
+- `TimUIChipModule`
+- `TimUICoreModule`
+- `TimUIDialogModule`
+- `TimUIDividerModule`
+- `TimUIDropdownMenuModule`
+- `TimUIFeaturedIconModule`
+- `TimUILinkModule`
+- `TimUISnackbarModule`
+- `TimUISpinnerModule`
+- `TimUITabsModule`
+- `TimUITooltipModule`
 
 ## Build
 
-Run `ng build ng-ui` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build:ui` to build the project.
 
-## Publishing
+## Build & Publish
 
-After building your library with `ng build ng-ui`, go to the dist folder `cd dist/ng-ui` and run `npm publish`.
+- **Bump the version**: `npm version major|minor|patch`
+- **Build the library**: `npm run build:ui`
+  The build artifacts will be stored in the `dist/` directory.
+  This will also run the _tailwind_ command to generate the `.css` file reusing the `iqair-tailwind` config.
+
+- **Publish to NPM**: go to the dist folder `cd dist/ui` run `npm publish`
 
 ## Running unit tests
 
-Run `ng test ng-ui` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `ng test ui` to execute the unit tests via [Karma](https://karma-runner.github.io).

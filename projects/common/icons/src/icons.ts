@@ -18,7 +18,8 @@ export const ICONS = {
   COPY_CLIPBOARD: 'assets/icons/copy-clipboard-outline-gray-500.svg',
   DOWNLOAD_BLUE: 'assets/icons/download-outline-blue.svg',
   DOWNLOAD_OUTLINE_WHITE: 'assets/icons/download-outline-white.svg',
-  EXCLAMATION_CIRCLE_RED: 'assets/icons/exclamation-circle-solid-red-500.svg',
+  EXCLAMATION_CIRCLE_RED:
+    'https://imagedelivery.net/Zq_y_wPpJ_fjpNFHNAHfpQ/c21d4d2d-cc46-4b98-875e-4fb664584d00/public',
   EXTERNAL_LINK_BLUE: 'assets/icons/external-link-outline-outline-blue-500.svg',
   FIRE_CLUSTER_RED_HIGH: 'assets/icons/map/ic-fire-map-cluster-high.svg',
   FIRE_CLUSTER_RED_MEDIUM: 'assets/icons/map/ic-fire-map-cluster-medium.svg',
@@ -74,6 +75,8 @@ export const ICONS = {
   WYSIWYG_ITALIC: 'assets/icons/italic-wysiwyg-icon.svg',
   WYSIWYG_UNORDERED_LIST: 'assets/icons/unordered-list-wysiwyg-icon.svg',
   X_CIRCLE_RED: 'assets/icons/x-circle-solid-red-500.svg',
-  X_GRAY: 'assets/icons/x-outline-gray-500.svg',
-  X_WHITE: 'assets/icons/x-outline-white.svg',
+  X_GRAY:
+    'https://imagedelivery.net/Zq_y_wPpJ_fjpNFHNAHfpQ/34111e86-4d51-41ef-16ec-0650d757e200/public',
+  X_WHITE:
+    'https://imagedelivery.net/Zq_y_wPpJ_fjpNFHNAHfpQ/11ccfe0c-eea4-4c68-db20-026758200600/public',
 } as const;
