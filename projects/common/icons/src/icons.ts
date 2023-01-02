@@ -22,7 +22,7 @@ const ICONS_HOST_KEYS = {
   COPY_CLIPBOARD: 'c37a3bda-c508-4f6f-3b7d-cef70eb61300',
   DOWNLOAD_BLUE: '1acb9242-ed9d-4b22-5639-5bd4e8b2d300',
   DOWNLOAD_OUTLINE_WHITE: '022914f8-3c34-4f57-f6f9-9d1adb7cc300',
-  EXCLAMATION_CIRCLE_RED: 'c21d4d2d-cc46-4b98-875e-4fb664584d00d',
+  EXCLAMATION_CIRCLE_RED: 'c21d4d2d-cc46-4b98-875e-4fb664584d00',
   EXTERNAL_LINK_BLUE: '93f41ac2-ac17-4a24-6430-bf91d0842900',
   FIRE_CLUSTER_RED_HIGH: 'assets/icons/map/ic-fire-map-cluster-high.svg',
   FIRE_CLUSTER_RED_MEDIUM: 'assets/icons/map/ic-fire-map-cluster-medium.svg',
@@ -84,7 +84,7 @@ type Icons = typeof ICONS_HOST_KEYS;
 const ICONS: Icons = {} as any as Icons;
 
 function buildImageUrl(key: string) {
-  return `${HOST_DOMAIN}/${key}/public`;
+  return `${HOST_DOMAIN}${key}/public`;
 }
 
 objectEntries(ICONS_HOST_KEYS).forEach(([imageName, imageKey]) => {

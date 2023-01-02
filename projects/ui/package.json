@@ -1,6 +1,6 @@
 {
   "name": "@tim-mhn/ng-ui",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "peerDependencies": {
     "@angular/cdk": "12 - 13",
     "@angular/common": "12 - 13",
@@ -11,7 +11,7 @@
     "zone.js": "^0.10.0 || ^0.11.0"
   },
   "dependencies": {
-    "@tim-mhn/common": "^1.0.2",
+    "@tim-mhn/common": "^1.0.5",
     "iqair-tailwind": "^1.0.3",
     "tslib": "^2.3.0"
   }
