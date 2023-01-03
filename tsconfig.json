@@ -13,7 +13,14 @@
     "sourceMap": true,
     "paths": {
       "@tim-mhn/ng-ui/*": ["projects/ui/*", "dist/ui/*"],
-      "@tim-mhn/common/*": ["projects/common/*", "dist/common/*"]
+      "@tim-mhn/common/*": [
+        "projects/common/*",
+        "dist/common/*"
+      ],
+      "forms": [
+        "dist/forms/forms",
+        "dist/forms"
+      ]
     },
     "strictNullChecks": false,
     "declaration": false,
