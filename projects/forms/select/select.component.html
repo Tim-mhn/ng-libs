@@ -1,0 +1,105 @@
+<div class="flex flex-col">
+  <div>
+    <div cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="toggle()">
+      <!-- Default trigger UI -->
+      <div
+        #widthWrapper
+        *ngIf="!(icon === 'plus'); else plusTrigger"
+        class="py-2 cursor-pointer rounded-lg font-normal flex flex-row items-center border"
+        [ngClass]="{
+          'bg-white border-gray-300': variant === 'outline',
+          'border-transparent': variant === 'simple',
+          'text-gray-500':
+            triggerValue === placeholder && variant === 'outline',
+          'text-gray-900':
+            triggerValue !== placeholder && variant === 'outline',
+          'bg-black/4 text-black/8': isDisabled && variant === 'outline',
+          'hover:bg-gray-100': !isDisabled && variant === 'simple',
+          'bg-gray-100': variant === 'simple' && isOpen,
+          'border-blue-300': !(hasError$ | async) && !isDisabled && isOpen,
+          'ring-4 ring-offset-0': isOpen,
+          'ring-blue-100': !(hasError$ | async),
+          'ring-red-100 border-red-500 text-red-500': (hasError$ | async),
+          'h-11 justify-between px-4': !fixedTriggerLabel,
+          'w-80': defaultWidth && !fixedTriggerLabel,
+          'w-fit px-2': fixedTriggerLabel
+        }"
+      >
+        <div
+          class="inline-block whitespace-nowrap overflow-hidden text-ellipsis max-w-full max-h-full"
+          [ngClass]="{
+            'text-blue-600': isActive && fixedTriggerLabel
+          }"
+        >
+          {{ triggerValue }}
+        </div>
+        <div
+          *ngIf="icon == 'arrow'"
+          [ngClass]="{
+            'flex flex-row flex-grow justify-end': !fixedTriggerLabel,
+            'ml-2': fixedTriggerLabel
+          }"
+        >
+          <ng-container *ngTemplateOutlet="arrowIcon"></ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-red-500 text-xs px-4 h-5" *ngIf="showErrorMessage">
+      <ng-container *ngIf="hasError$ | async">{{
+        ngControl.control?.errors
+          | validationErrorToMessage: name:errorMessageMap
+      }}</ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="opacity-0"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayPositions]="overlayPositions"
+  [cdkConnectedOverlayPush]="true"
+  (backdropClick)="close()"
+>
+  <div
+    class="flex flex-col bg-white p-0 border border-gray-100 rounded-lg"
+    [ngStyle]="{
+      'width.px': sameWidthAsTrigger && widthWrapper?.nativeElement.clientWidth
+    }"
+  >
+    <ng-content></ng-content>
+  </div>
+</ng-template>
+
+<ng-template #arrowIcon>
+  <img
+    class="w-5 h-5 mt-px"
+    [src]="
+      isOpen
+        ? isActive
+          ? ARROW_UP_BLUE_SRC
+          : ARROW_UP_SRC
+        : isActive
+        ? ARROW_DOWN_BLUE_SRC
+        : ARROW_DOWN_SRC
+    "
+  />
+</ng-template>
+
+<ng-template #plusTrigger>
+  <div
+    class="cursor-pointer rounded-lg text-base font-normal flex flex-row items-center border w-fit p-2 border-transparent min-w-[120px]"
+  >
+    <div class="mr-1">
+      <img class="w-5 h-5" [src]="PLUS_SRC" />
+    </div>
+    <div
+      class="inline-block whitespace-nowrap overflow-hidden text-ellipsis max-w-full max-h-full text-blue-600"
+    >
+      {{ triggerValue }}
+    </div>
+  </div>
+</ng-template>

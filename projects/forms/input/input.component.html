@@ -1,0 +1,66 @@
+<div
+  class="relative h-fit flex max-w-full"
+  (click)="focusInput()"
+  [ngClass]="{
+    'w-80': !flexWidth,
+    'flex-grow': flexWidth
+  }"
+>
+  <div
+    class="flex flex-row justify-around w-full shadow-sm text-sm leading-5 font-normal rounded-md px-4 py-2.5 ring-offset-0 h-11 text-gray-900 max-w-full"
+    [ngClass]="{
+      'border border-solid bg-white': style === 'normal',
+      'bg-gray-50 hover:bg-gray-100': style === 'no-border',
+      'ring-4': hasFocus,
+      'border-red-300': hasError$ | async,
+      'ring-red-100': hasFocus && (hasError$ | async),
+      'border-gray-300': !(hasError$ | async),
+      'ring-blue-100': hasFocus && !(hasError$ | async),
+      'bg-black/4': isDisabled,
+      'rounded-r-none': squaredRightBorder
+    }"
+  >
+    <div class="flex flex-row justify-start flex-grow items-center max-w-full">
+      <!-- Left "icon" -->
+      <ng-content select="[iqairPrefix]"></ng-content>
+      <input
+        #input
+        class="focus:outline-none placeholder:text-base placeholder:font-normal placeholder:text-gray-400 ml-2.5 flex-grow bg-transparent max-w-full"
+        [value]="value"
+        [ngClass]="{
+          'ml-2.5': hasPrefix,
+          'placeholder:text-black/8 text-black/8': isDisabled
+        }"
+        [type]="type"
+        [name]="name"
+        [placeholder]="placeholder"
+        [disabled]="isDisabled"
+        (input)="onInputChange($event)"
+        (blur)="onFocusChange(false)"
+        (focus)="onFocusChange(true)"
+        [min]="minValue"
+      />
+    </div>
+
+    <!-- Only show suffix if there are no errors -->
+    <!-- Show error icon when control has error -->
+    <ng-container
+      *ngTemplateOutlet="
+        (hasError$ | async) && showErrorIcon ? errorIcon : suffixIcon
+      "
+    ></ng-container>
+  </div>
+</div>
+
+<ng-template #suffixIcon>
+  <div
+    *ngIf="!(hasError$ | async) || !showErrorIcon; else errorIcon"
+    class="flex flex-row items-center"
+  >
+    <ng-content select="[iqairSuffix]"></ng-content>
+  </div>
+</ng-template>
+
+<ng-template #errorIcon>
+  <img [src]="WARNING_ICON_SRC" height="16" width="16" />
+</ng-template>

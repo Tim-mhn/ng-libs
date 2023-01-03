@@ -1,0 +1,49 @@
+<span
+  class="box-border inline-block relative flex-shrink-0"
+  [ngClass]="{
+    'h-4 w-4': size === 'xs',
+    'h-5 w-5': size === 'sm',
+    'cursor-pointer': !disabled
+  }"
+>
+  <span
+    class="box-border block absolute left-0 top-0 border rounded"
+    [ngClass]="{
+      'h-4 w-4': size === 'xs',
+      'h-5 w-5': size === 'sm',
+      'border-gray-300': !selected && !hasError,
+      'border-blue-300': hasFocus && !selected && !hasError,
+      'border-blue-500': (selected || hasFocus) && !disabled && !hasError,
+      'border-gray-200 bg-gray-50': disabled,
+      'border-red-500': hasError && !disabled,
+      'bg-blue-50': !disabled && (hovered || selected) && !hasError,
+      'bg-red-50': !disabled && hovered && hasError,
+      'ring-4 ring-offset-0': hasFocus && !disabled,
+      'ring-blue-100': !hasError,
+      'ring-red-100': hasError
+    }"
+  ></span>
+  <span *ngIf="selected" class="absolute left-1 top-1">
+    <ng-container *ngTemplateOutlet="iconTempl"></ng-container>
+  </span>
+  <input
+    type="checkbox"
+    class="bottom-0 left-1/2 appearance-none"
+    [checked]="selected"
+    [disabled]="disabled"
+    (blur)="onBlur($event)"
+    (focus)="onFocus($event)"
+  />
+</span>
+
+<ng-template #iconTempl>
+  <img
+    [src]="iconSrc"
+    width="8"
+    height="8"
+    [ngClass]="{
+      'w-2 h-2': size === 'xs',
+      'w-3 h-3': size === 'sm'
+    }"
+  />
+</ng-template>

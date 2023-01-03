@@ -1,0 +1,14 @@
+<button
+  class="relative w-10 h-10 flex justify-center items-center rounded-full text-sm font-normal uppercase"
+  type="button"
+  [ngClass]="[
+    selected ? 'text-white bg-blue-500' : 'text-gray-700 bg-gray-200'
+  ]"
+  [disabled]="disabled"
+>
+  {{ day | slice: 0:1 }}
+  <div
+    *ngIf="disabled"
+    class="absolute top-0 left-0 right-0 bottom-0 rounded-full bg-black/10"
+  ></div>
+</button>

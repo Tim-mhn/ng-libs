@@ -1,0 +1,63 @@
+<label
+  [ngClass]="{
+    'cursor-pointer': !isDisabled,
+    'items-center': alignText === 'center',
+    'items-start': alignText === 'top'
+  }"
+  class="flex flex-row w-fit items-center"
+>
+  <span (mouseenter)="setHover(true)" (mouseleave)="setHover(false)">
+    <iqair-base-checkbox
+      class="pointer-events-none flex items-center mt-px"
+      [disabled]="isDisabled"
+      [selected]="value"
+      [hasFocus]="hasFocus"
+      [hasError]="hasError$ | async"
+      [hovered]="hovered"
+      [size]="size"
+      [icon]="icon"
+      (click)="handleClick($event)"
+      (blur)="onFocusChange(false)"
+      (focus)="onFocusChange(true)"
+    ></iqair-base-checkbox>
+  </span>
+  <div
+    class="ml-2 font-medium flex flex-col"
+    #contentContainer
+    [ngClass]="{
+      'text-gray-700': !isDisabled,
+      'text-black/20': isDisabled,
+      'text-sm': size === 'xs',
+      'text-base': size === 'sm'
+    }"
+  >
+    <ng-content></ng-content>
+  </div>
+</label>
+<div
+  class="font-normal pl-2 mt-0.5"
+  [ngClass]="{
+    'text-sm ml-4': size === 'xs',
+    'text-base ml-5': size === 'sm'
+  }"
+>
+  <div
+    *ngIf="!(hasError$ | async); else errorMessage"
+    [ngClass]="{
+      'text-gray-500': !isDisabled,
+      'text-black/20': isDisabled
+    }"
+  >
+    <ng-content select="[checkboxSubtext]"></ng-content>
+  </div>
+</div>
+
+<ng-template #errorMessage>
+  <!-- Don't show error message if no text has been inserted into checkbox to avoid UI issues -->
+  <div class="text-red-500" *ngIf="hasContent">
+    {{
+      stateManager?.control?.errors
+        | validationErrorToMessage: name:errorMessageMap
+    }}
+  </div>
+</ng-template>

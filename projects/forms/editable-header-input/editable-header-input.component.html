@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-0 relative">
+  <!-- keep "flex" class to avoid line breaks when pressing ENTER -->
+  <div
+    #input
+    class="text-4xl font-bold focus:outline-none placeholder:text-4xl placeholder:font-bold bg-transparent py-0.5 px-2 rounded-lg hover:bg-gray-200 focus:ring-2 focus:ring-offset-0 focus:ring-gray-300 focus:bg-gray-200 cursor-text"
+    contentEditableFitWidth
+    [contentEditablePlaceholder]="placeholder"
+    [contentEditableMaxLength]="CONTENT_MAX_LENGTH"
+    (input)="onInputChange($event)"
+    (blur)="onBlur()"
+  ></div>
+  <div
+    [class.invisible]="!(hasError$ | async)"
+    class="text-red-600 text-xs font-normal px-2 h-4.5 absolute -bottom-3 whitespace-nowrap pt-0.5"
+  >
+    {{
+      stateManager?.control?.errors
+        | validationErrorToMessage: 'Name':errorMessageMap
+    }}
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="flex items-center text-gray-900 mb-6 px-4">
+  <button
+    class="-m-1.5 flex flex-none items-center justify-center text-gray-400 hover:text-gray-500"
+    (click)="onPreviousClick()"
+  >
+    <span class="sr-only">Previous month</span>
+    <img [src]="ARROW_LEFT">
+  </button>
+  <div class="flex-auto text-base font-medium">{{ MONTH_LABELS[month] }} {{ year }}</div>
+  <button
+    class="-m-1.5 flex flex-none items-center justify-center text-gray-400 hover:text-gray-500"
+    (click)="onNextClick()"
+  >
+    <span class="sr-only">Next month</span>
+    <img [src]="ARROW_RIGHT">
+  </button>
+</div>

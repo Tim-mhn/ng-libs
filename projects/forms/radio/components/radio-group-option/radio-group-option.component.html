@@ -1,0 +1,14 @@
+<div [ngClass]="disabled ? 'bg-black opacity-40 rounded-lg ' : ''">
+  <div
+    class="flex px-4 py-2.5 items-center border rounded-lg cursor-pointer"
+    (click)="onClick()"
+    [ngClass]="{
+      'border-blue-300 bg-blue-50': selected,
+      'bg-white border-gray-300 hover:bg-gray-50': !selected,
+      'cursor-pointer': !disabled,
+      'cursor-none pointer-events-none': disabled
+    }"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<!-- Keep the keydown listener in parent div. Otherwise the keydown event will be emitted even when contenteditable's content reached max length  -->
+<div class="flex flex-row items-center">
+  <div
+    #timePeriodInput
+    class="focus:outline-none"
+    [ngClass]="disabled ? 'text-black/20' : 'text-gray-900'"
+    [contentEditableIf]="!disabled"
+    [contentEditableMaxLength]="NUMBER_OF_DIGITS"
+    (input)="onInputChange($event)"
+    (focus)="toggleFocus(true)"
+    (blur)="onFocusLost()"
+    (keydown)="onKeydown($event)"
+  ></div>
+  <span
+    (click)="onPlaceholdersFocus()"
+    [ngClass]="disabled ? 'text-black/20' : 'text-gray-400'"
+    *ngIf="dashPlaceholdersToShow > 0"
+    >{{ dashPlaceholdersToShow == 2 ? '--' : '-' }}
+  </span>
+</div>

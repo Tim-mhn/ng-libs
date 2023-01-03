@@ -1,0 +1,27 @@
+<div
+  [ngClass]="{
+    'bg-blue-50': (hovered || checked) && !disabled,
+    'bg-white': !(hovered || checked || disabled),
+    'bg-black/4 border-black/4': disabled
+  }"
+  class="h-4 w-4 rounded-full"
+  (mouseenter)="setHovered(true)"
+  (mouseout)="setHovered(false)"
+>
+  <input
+    type="radio"
+    [checked]="checked"
+    (click)="toggleChecked($event)"
+    [ngClass]="{
+      'border-gray-300': !(checked || hovered || focused) && !disabled,
+      'bg-blue-500 ': checked && !disabled,
+      'border-blue-500': (checked || hovered) && !disabled,
+      'border-blue-300': focused && !checked && !hovered,
+      'pointer-events-none': disabled,
+      'bg-black/10': disabled && checked
+    }"
+    (focus)="setFocused(true)"
+    (blur)="setFocused(false)"
+    class="appearance-none inline-block bg-clip-content h-4 w-4 border rounded-full p-1 absolute ring-blue-100 ring-offset-0 focus:ring-4 cursor-pointer"
+  />
+</div>

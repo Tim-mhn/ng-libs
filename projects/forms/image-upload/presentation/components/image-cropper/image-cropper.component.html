@@ -1,0 +1,42 @@
+<div class="flex flex-col items-center gap-8">
+  <div class="h-40 w-40">
+    <canvas class="block w-full" #canvas>
+      Your browser does not support the HTML canvas tag.</canvas
+    >
+  </div>
+
+  <div class="flex w-full gap-3 justify-center">
+    <img
+      [src]="MINUS_ICON"
+      height="20"
+      width="20"
+      class="w-5 h-5 cursor-pointer"
+      (click)="zoomOut()"
+    />
+    <div class="flex h-5 items-center">
+      <iqair-slider
+        class="w-64"
+        *ngIf="zoomMax"
+        [formControl]="zoomCtrl"
+        [min]="zoomMin"
+        [max]="zoomMax"
+        [step]="SLIDER_TINY_STEP"
+      ></iqair-slider>
+    </div>
+
+    <img
+      [src]="PLUS_ICON"
+      height="20"
+      width="20"
+      class="w-5 h-5 cursor-pointer"
+      (click)="zoomIn()"
+    />
+  </div>
+</div>
+
+<div
+  *ngIf="preparingImage"
+  class="absolute left-0 right-0 top-0 bottom-0 flex justify-center items-center bg-white"
+>
+  <tim-spinner></tim-spinner>
+</div>

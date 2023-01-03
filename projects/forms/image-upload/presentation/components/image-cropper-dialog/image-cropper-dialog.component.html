@@ -1,0 +1,29 @@
+<div class="relative flex flex-col justify-start items-center w-100 h-80">
+  <div class="absolute inset-x-5 top-6 bottom-15">
+    <iqair-image-cropper
+      [base64Content]="inputImage.image"
+    ></iqair-image-cropper>
+  </div>
+
+  <iqair-dialog-footer>
+    <div class="flex flex-grow justify-end gap-2">
+      <button
+        iqair-stroked-button
+        color="neutral"
+        size="xs"
+        iqairCloseDialogButton
+      >
+        Cancel
+      </button>
+      <button
+        iqair-flat-button
+        color="primary"
+        size="xs"
+        (click)="onSave()"
+        [loading]="requestState.isPending"
+      >
+        Save
+      </button>
+    </div>
+  </iqair-dialog-footer>
+</div>

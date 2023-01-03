@@ -1,0 +1,22 @@
+<button
+  type="button"
+  (click)="toggle($event)"
+  [ngClass]="{
+    'focus:ring-blue-100  focus:ring-4 focus:ring-offset-0 cursor-pointer':
+      !isDisabled,
+    'bg-gray-100': !value || isDisabled,
+    'bg-blue-400': value && !isDisabled,
+    'hover:bg-gray-200 focus:bg-gray-50': !value && !isDisabled,
+    'cursor-default': isDisabled
+  }"
+  class="relative inline-flex flex-shrink-0 h-5 w-9 border-2 border-transparent rounded-full transition-colors ease-in-out duration-200 focus:outline-none"
+  role="switch"
+  aria-checked="false"
+>
+  <span class="sr-only">Use setting</span>
+  <span
+    aria-hidden="true"
+    [ngClass]="value ? 'translate-x-4 ' : 'translate-x-0 '"
+    class="pointer-events-none inline-block h-4 w-4 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+  ></span>
+</button>

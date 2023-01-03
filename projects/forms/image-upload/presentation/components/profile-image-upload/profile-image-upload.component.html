@@ -1,0 +1,112 @@
+<div class="flex flex-col gap-2">
+  <div class="flex items-center gap-6">
+    <div class="relative">
+      <!-- awaiting PR for negative outline-offset values
+      https://github.com/tailwindlabs/tailwindcss/discussions/9128?sort=new
+      -->
+      <ng-container
+        *ngIf="size === 'md'; then smallProfileAvatar; else bigProfileAvatar"
+      >
+      </ng-container>
+      <ng-container
+        *ngTemplateOutlet="imageUploading ? loading : null"
+      ></ng-container>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        iqair-stroked-button
+        color="neutral"
+        size="xs"
+        type="button"
+        [disabled]="isDisabled"
+        (click)="openFileFolder()"
+      >
+        Change
+      </button>
+      <button
+        *ngIf="value?.imageFile?.image"
+        iqair-stroked-button
+        color="destructive"
+        type="button"
+        size="xs"
+        (click)="removeUploadedImage()"
+      >
+        Remove
+      </button>
+    </div>
+  </div>
+  <ng-container *ngIf="hasError">
+    <ng-container *ngTemplateOutlet="error"></ng-container>
+  </ng-container>
+</div>
+
+<input
+  #fileInput
+  class="hidden"
+  [accept]="SUPPORTED_MIME_TYPES_STRING"
+  type="file"
+  name="images"
+  (change)="onFileChange($event)"
+  (cancel)="onCancel()"
+/>
+
+<ng-template #smallProfileAvatar>
+  <iqair-avatar-profile-image
+    *ngIf="showProfileImage"
+    [class]="AVATAR_CLASSES"
+    [src]="value?.imageFile?.image ?? profilePlaceholderSrc"
+    size="2xl"
+    [ngClass]="hasError ? AVATAR_PROFILE_ERROR_CLASSES : ''"
+  ></iqair-avatar-profile-image>
+  <iqair-avatar-initials
+    *ngIf="showPlaceholderText"
+    [class]="AVATAR_CLASSES"
+    [ngClass]="hasError ? AVATAR_INITIAL_ERROR_CLASSES : ''"
+    size="2xl"
+    color="primary"
+    [text]="imageUploading ? '' : placeholderText"
+  ></iqair-avatar-initials>
+</ng-template>
+<ng-template #bigProfileAvatar>
+  <iqair-big-avatar-profile-image
+    *ngIf="showProfileImage"
+    [class]="AVATAR_CLASSES"
+    [src]="value?.imageFile?.image ?? profilePlaceholderSrc"
+    size="md"
+    [ngClass]="hasError ? AVATAR_PROFILE_ERROR_CLASSES : ''"
+  ></iqair-big-avatar-profile-image>
+  <iqair-big-avatar-initials
+    *ngIf="showPlaceholderText"
+    [class]="AVATAR_CLASSES"
+    [ngClass]="hasError ? AVATAR_INITIAL_ERROR_CLASSES : ''"
+    size="md"
+    color="primary"
+    [text]="imageUploading ? '' : placeholderText"
+  ></iqair-big-avatar-initials>
+</ng-template>
+
+<ng-template #loading>
+  <div
+    class="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10"
+  >
+    <iqair-spinner size="sm"></iqair-spinner>
+  </div>
+</ng-template>
+
+<ng-template #error>
+  <div class="flex gap-2 items-end">
+    <div class="text-red-600 text-sm">
+      {{
+        ngControl.control.errors
+          | validationErrorToMessage: '':IMAGE_VALIDATION_ERROR_MESSAGES
+      }}
+    </div>
+    <iqair-link
+      *ngIf="ngControl.control.errors[UPLOAD_FAILED_ERROR]"
+      size="xs"
+      [inline]="true"
+      (click)="retryUploadImage()"
+      >Try again</iqair-link
+    >
+  </div>
+</ng-template>

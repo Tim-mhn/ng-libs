@@ -1,0 +1,40 @@
+<div class="flex flex-col">
+  <!-- Label -->
+  <div
+    *ngIf="hasLabel"
+    class="font-medium text-gray-700 mb-1.5"
+    [ngClass]="{
+      'text-sm': textSize === 'sm',
+      'text-xs': textSize === 'xs',
+      'text-2xs': textSize === '2xs'
+    }"
+  >
+    <ng-content select="iqair-input-label"></ng-content>
+  </div>
+
+  <!-- Input -->
+  <ng-content></ng-content>
+  <div
+    class="font-normal mt-1.5 h-5"
+    *ngIf="showErrorMessage"
+    [ngClass]="{
+      'text-sm': textSize === 'sm',
+      'text-xs': textSize === 'xs',
+      'text-2xs': textSize === '2xs'
+    }"
+  >
+    <!-- Error message -->
+    <span *ngIf="showError$ | async" class="text-red-600">
+      {{
+        input?.stateManager?.control?.errors
+          | validationErrorToMessage: name:errorMessageMap
+      }}
+    </span>
+
+    <!-- Hint -->
+    <!-- don't show hint if we show error message -->
+    <span *ngIf="hint && !(showError$ | async)" class="text-gray-500">
+      <ng-content select="iqair-input-hint"></ng-content>
+    </span>
+  </div>
+</div>

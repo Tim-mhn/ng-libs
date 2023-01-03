@@ -1,0 +1,38 @@
+<span
+  class="flex flex-grow items-center overflow-hidden text-ellipsis text-base font-normal py-2 px-4 whitespace-nowrap"
+  [ngClass]="{
+    'bg-gray-50': selected,
+    'hover:bg-gray-50': !selected && !disabled,
+    'text-gray-900 hover:text-gray-700 cursor-pointer ': !disabled,
+    'text-black/20': disabled,
+    'h-10': useDefaultHeight
+  }"
+>
+  <ng-container *ngIf="withCheckbox && checkboxPosition === 'start'">
+    <ng-container *ngTemplateOutlet="checkbox"> </ng-container>
+  </ng-container>
+
+  <div *ngIf="!!prefix" class="mr-2">
+    <ng-content select="[iqairPrefix]"> </ng-content>
+  </div>
+  <span class="text-ellipsis overflow-hidden"> <ng-content></ng-content></span>
+
+  <div class="flex grow justify-end pl-2">
+    <img
+      *ngIf="selected && !withCheckbox"
+      [src]="CHECK_IMG_PATH"
+      class="w-3.5 h-3.5"
+    />
+    <ng-container *ngIf="withCheckbox && checkboxPosition === 'end'">
+      <ng-container *ngTemplateOutlet="checkbox"> </ng-container>
+    </ng-container>
+  </div>
+</span>
+
+<ng-template #checkbox>
+  <iqair-base-checkbox
+    class="flex items-center mr-2"
+    [selected]="selected"
+    [disabled]="disabled"
+  ></iqair-base-checkbox>
+</ng-template>

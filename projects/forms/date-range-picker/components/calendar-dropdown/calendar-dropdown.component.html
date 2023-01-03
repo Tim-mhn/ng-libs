@@ -1,0 +1,82 @@
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="opacity-0"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayOffsetY]="8"
+  (backdropClick)="close()"
+>
+  <div
+    class="flex flex-col shadow-xl rounded-xl border border-gray-200 bg-white"
+  >
+    <div class="flex w-fit p-4 py-0">
+      <div class="mt-6">
+        <iqair-calendar
+          [monthYear]="monthYearForCalendarOne"
+          [dateRange]="dateRange"
+          [maxDate]="maxDate"
+          (dateSelected)="handleDateSelected($event)"
+        ></iqair-calendar>
+      </div>
+
+      <tim-divider class="mx-4" [vertical]="true"></tim-divider>
+
+      <div class="mt-6">
+        <iqair-calendar
+          [monthYear]="monthYearForCalendarTwo"
+          [dateRange]="dateRange"
+          [maxDate]="maxDate"
+          (dateSelected)="handleDateSelected($event)"
+        ></iqair-calendar>
+      </div>
+    </div>
+
+    <tim-divider></tim-divider>
+
+    <div class="flex justify-between p-4">
+      <div>
+        <button
+          iqair-stroked-button
+          color="neutral"
+          size="xs"
+          (click)="onStartDateClick()"
+        >
+          {{ (dateRange?.start | dateTimeFormat) || "Start" }}
+        </button>
+        <span class="mx-2 text font-medium">-</span>
+        <button
+          iqair-stroked-button
+          color="neutral"
+          size="xs"
+          (click)="onEndDateClick()"
+        >
+          {{ (dateRange?.end | dateTimeFormat) || "End" }}
+        </button>
+      </div>
+
+      <div class="flex">
+        <button
+          iqair-stroked-button
+          color="neutral"
+          size="xs"
+          class="mr-2"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+        <button
+          iqair-flat-button
+          color="primary"
+          size="xs"
+          [disabled]="disableApply"
+          (click)="onApply()"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

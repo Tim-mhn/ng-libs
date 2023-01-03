@@ -1,0 +1,27 @@
+@import 'cropperjs/dist/cropper.css';
+.cropper-crop-box {
+  pointer-events: none !important;
+}
+
+.cropper-face,
+.cropper-view-box {
+  border-radius: 100%;
+}
+
+.cropper-wrap-box {
+  border: 1px solid transparent; // hide image overflowing from cropper and looking like borders
+}
+
+.cropper-view-box {
+  outline: none;
+  border: 1px solid #eaecf0;
+}
+.cropper-modal {
+  background-color: white;
+  opacity: 1;
+}
+
+.cropper-dashed,
+.cropper-center {
+  display: none;
+}

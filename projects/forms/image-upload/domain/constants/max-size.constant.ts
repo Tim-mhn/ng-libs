@@ -1,0 +1,2 @@
+export const MAX_IMAGE_SIZE_MB = 1;
+export const MAX_IMAGE_SIZE = MAX_IMAGE_SIZE_MB * 1048576; // 1 Mb = 1048576

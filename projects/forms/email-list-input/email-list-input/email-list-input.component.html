@@ -1,0 +1,42 @@
+<div
+  class="flex justify-between items-start border rounded-lg px-4 py-2.5 text-xs font-medium text-gray-800 gap-2 shadow-sm"
+  [ngClass]="{
+    'bg-white': !isDisabled,
+    'bg-black/4': isDisabled,
+    'border-gray-300': !(hasError$ | async) && !hasFocus,
+    'border-blue-300': !(hasError$ | async) && hasFocus,
+    'border-red-400': hasError$ | async,
+    'ring-4 ring-offset-0': hasFocus,
+    'ring-blue-100': !(hasError$ | async),
+    'ring-red-100': hasError$ | async
+  }"
+>
+  <div class="flex flex-wrap flex-grow gap-2">
+    <tim-chip
+      class="border rounded-2xl"
+      [ngClass]="{
+        'pointer-events-none': isDisabled,
+        'border-red-400':
+          (email | isInvalidEmail) ||
+          (email | isDuplicatedEmailInList : i : value)
+      }"
+      *ngFor="let email of value; let i = index"
+      color="neutral"
+      [withAction]="true"
+      (actionClick)="removeEmail(i)"
+      >{{ email }}</tim-chip
+    >
+    <input
+      #input
+      type="email"
+      [disabled]="isDisabled"
+      [placeholder]="value?.length >= 1 ? '' : 'Enter emails'"
+      class="border-none outline-none flex flex-grow h-6"
+      (keydown)="onKeyDown($event)"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    />
+  </div>
+
+  <ng-content select="[iqairSuffix]"></ng-content>
+</div>

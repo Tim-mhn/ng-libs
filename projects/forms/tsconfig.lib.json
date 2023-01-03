@@ -1,0 +1,17 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "../../out-tsc/lib",
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": true,
+    "types": [],
+    "paths": {
+      "@tim-mhn/common/*": ["../projects/common/*", "dist/common/*"],
+      "@tim-mhn/ng-ui/*": ["../projects/ui/*", "dist/ui/*"]
+    }
+  },
+  "exclude": ["test.ts", "**/*.spec.ts"]
+}

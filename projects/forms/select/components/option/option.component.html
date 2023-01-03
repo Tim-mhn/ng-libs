@@ -1,0 +1,13 @@
+<select-list-item
+  (click)="handleClick()"
+  [selected]="_selected"
+  [withCheckbox]="multiple"
+  [disabled]="disabled"
+  [useDefaultHeight]="true"
+>
+  <ng-container ngProjectAs="[iqairPrefix]">
+    <ng-content select="[iqairPrefix]"> </ng-content>
+  </ng-container>
+
+  <ng-content></ng-content>
+</select-list-item>

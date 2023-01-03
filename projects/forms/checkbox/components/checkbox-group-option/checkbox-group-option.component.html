@@ -1,0 +1,17 @@
+<div
+  class="flex flex-row gap-3 items-center"
+  [class.cursor-pointer]="!disabled"
+  (click)="onClick()"
+>
+  <iqair-base-checkbox
+    class="flex mt-px"
+    [selected]="selected"
+    [disabled]="disabled"
+  ></iqair-base-checkbox>
+  <div
+    class="text-sm font-normal"
+    [ngClass]="disabled ? 'text-black/20' : 'text-gray-700'"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

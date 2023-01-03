@@ -1,0 +1,9 @@
+<div class="flex gap-3">
+  <day-circle
+    *ngFor="let day of DAYS"
+    [day]="day"
+    [selected]="day | includedIn: value"
+    [disabled]="isDisabled"
+    (click)="onDayClicked(day)"
+  ></day-circle>
+</div>

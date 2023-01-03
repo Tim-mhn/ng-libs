@@ -1,0 +1,30 @@
+<button
+  type="button"
+  (click)="onClick($event)"
+  class="group"
+  [ngClass]="{
+    'bg-gray-50': isInRange,
+    'rounded-l-full': roundedLeft || _isStartOfWeek,
+    'rounded-r-full': roundedRight || _isEndOfWeek,
+    'disabled': options.isDisabled
+  }"
+  [disabled]="options.isDisabled"
+  >
+  <span
+    class="mx-auto flex h-10 w-10 items-center justify-center rounded-full text-sm font-normal
+    group-disabled:text-gray-400
+    group-disabled:hover:bg-transparent"
+    [ngClass]="{
+      'text-gray-900': options.isCurrentMonth && !isSelected,
+      'text-gray-500': !options.isCurrentMonth && !isSelected,
+      'hover:bg-blue-100 hover:text-blue-600': !isSelected,
+      'bg-blue-500 hover:bg-blue-600 text-white': isSelected,
+      'bg-gray-100 text-gray-900': isSelected && !options.isCurrentMonth
+    }"
+  >
+    <time [attr.datetime]="fullDateText" #dateCell>
+      {{ date }}
+    </time>
+
+  </span>
+</button>

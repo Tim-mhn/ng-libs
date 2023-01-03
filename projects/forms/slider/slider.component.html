@@ -1,0 +1,23 @@
+<div class="relative w-full">
+  <input
+    class="appearance-none absolute bottom-0 w-full outline-none h-0.5 bg-transparent z-50 range-input-thumb:appearance-none range-input-thumb:bg-white disabled:range-input-thumb:bg-gray-300 disabled:range-input-thumb:cursor-auto range-input-thumb:relative range-input-thumb:w-4.5 range-input-thumb:h-4.5 range-input-thumb:border-none range-input-thumb:rounded-full range-input-thumb:shadow range-input-thumb:cursor-pointer"
+    type="range"
+    [value]="value"
+    [min]="min"
+    [max]="max"
+    [step]="step"
+    [disabled]="disabled"
+    (input)="updateProgressBar($event)"
+    (change)="onInputChange()"
+    (blur)="onInputTouched()"
+    #slider
+  />
+  <div class="h-0.5 absolute flex w-full bottom-0">
+    <div
+      #progress
+      class="h-0.5 rounded-md"
+      [ngClass]="disabled ? 'bg-gray-300' : 'bg-blue-500'"
+    ></div>
+    <div class="flex-grow h-0.5 rounded-md bg-gray-200"></div>
+  </div>
+</div>

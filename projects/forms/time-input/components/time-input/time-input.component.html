@@ -1,0 +1,34 @@
+<div
+  class="h-11 w-19 border rounded-lg shadow-sm py-2.5 px-4 flex items-center justify-center text-base font-normal shadow-sm"
+  [ngClass]="{
+    'text-gray-400': !isDisabled && !(value | validTime),
+    'text-gray-900': !isDisabled && value | validTime,
+    'text-black/20 bg-black/4': isDisabled,
+    'bg-white': !isDisabled,
+    'border-red-300': hasError$ | async,
+    'border-gray-300': !(hasError$ | async)
+  }"
+>
+  <iqair-time-period-input
+    #hoursInput
+    [maxValue]="23"
+    [disabled]="isDisabled"
+    [timeValue]="value?.hours"
+    (timeValueChange)="onHoursChange($event)"
+    (focusChange)="onHoursFocusChange($event)"
+    (timePeriodCompleted)="onTimePeriodCompleted()"
+    (jumpToPrevious)="onHoursJumpToPrevious()"
+    (jumpToNext)="focusOnMinutes()"
+  ></iqair-time-period-input
+  >:<iqair-time-period-input
+    #minsInput
+    [maxValue]="59"
+    [disabled]="isDisabled || disabledMinutes"
+    [timeValue]="value?.minutes"
+    (timeValueChange)="onMinutesChange($event)"
+    (focusChange)="onMinsFocusChange($event)"
+    (timePeriodCompleted)="onMinutesCompleted()"
+    (jumpToPrevious)="focusOnHours('end')"
+    (jumpToNext)="onMinsJumpToNext()"
+  ></iqair-time-period-input>
+</div>

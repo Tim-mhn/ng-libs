@@ -1,0 +1,8 @@
+<div class="max-w-82 text-center">
+  <iqair-calendar-navigation [monthYear]="monthYear"  (monthChanged)="onMonthChanged($event)"></iqair-calendar-navigation>
+  <iqair-calendar-table
+    [monthYear]="monthYear"
+    [dateRange]="dateRange"
+    [maxDate]="maxDate"
+    (dateSelected)="onDaySelected($event)"></iqair-calendar-table>
+</div>
