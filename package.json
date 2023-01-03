@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:ui": "ng build ui && npm run build:ui:styles",
-    "build:ui:styles": "npx tailwind -c projects/ui/tailwind.config.js -i projects/ui/styles.scss -o dist/ui/styles.css"
+    "build:ui:styles": "npx tailwind -c projects/ui/tailwind.config.js -i projects/ui/styles.scss -o dist/ui/styles.css",
+    "build:common": "npm run test:common:ci && ng build common",
+    "test:common": "ng test common",
+    "test:common:ci": "ng test common --karma-config=karma.conf.ci.js"
   },
   "private": true,
   "dependencies": {

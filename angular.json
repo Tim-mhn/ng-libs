@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ui/src/test.ts",
+            "main": "projects/ui/test.ts",
             "tsConfig": "projects/ui/tsconfig.spec.json",
             "karmaConfig": "projects/ui/karma.conf.js"
           }
@@ -58,7 +58,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/common/src/test.ts",
+            "main": "projects/common/test.ts",
             "tsConfig": "projects/common/tsconfig.spec.json",
             "karmaConfig": "projects/common/karma.conf.js"
           }
@@ -89,7 +89,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/forms/src/test.ts",
+            "main": "projects/forms/test.ts",
             "tsConfig": "projects/forms/tsconfig.spec.json",
             "karmaConfig": "projects/forms/karma.conf.js"
           }
