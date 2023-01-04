@@ -1,6 +1,11 @@
 {
   "name": "@tim-mhn/ng-forms",
-  "version": "0.1.0",
+  "repository": {
+    "type": "browser",
+    "directory": "projects/forms",
+    "url": "https://github.com/Tim-mhn/ng-libs/tree/master/projects/forms"
+  },
+  "version": "0.1.1",
   "peerDependencies": {
     "@angular/cdk": "12 - 13",
     "@angular/common": "12 - 13",

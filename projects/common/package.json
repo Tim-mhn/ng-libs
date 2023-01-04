@@ -1,6 +1,11 @@
 {
   "name": "@tim-mhn/common",
-  "version": "1.3.2",
+  "repository": {
+    "type": "browser",
+    "directory": "projects/forms",
+    "url": "https://github.com/Tim-mhn/ng-libs/tree/master/projects/forms"
+  },
+  "version": "1.3.3",
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"

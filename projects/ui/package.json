@@ -1,6 +1,11 @@
 {
   "name": "@tim-mhn/ng-ui",
-  "version": "1.2.6",
+  "repository": {
+    "type": "browser",
+    "directory": "projects/forms",
+    "url": "https://github.com/Tim-mhn/ng-libs/tree/master/projects/forms"
+  },
+  "version": "1.2.7",
   "peerDependencies": {
     "@angular/cdk": "12 - 13",
     "@angular/common": "12 - 13",
