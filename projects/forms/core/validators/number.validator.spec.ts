@@ -15,13 +15,12 @@ describe('numberValidator', () => {
   });
 
   it('should mark an alphabetic string as invalid', () => {
-    const ctrl = buildCtrlWithValue('iqair');
+    const ctrl = buildCtrlWithValue('tim');
     expect(numberValidator(ctrl)).not.toBeNull();
   });
 
   it('should mark an alpha-numeric string as invalid', () => {
-    const ctrl = buildCtrlWithValue('98iqair');
-
+    const ctrl = buildCtrlWithValue('tim98');
     expect(numberValidator(ctrl)).not.toBeNull();
   });
 

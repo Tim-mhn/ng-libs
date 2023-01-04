@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TimUIFormsDirectivesModule } from '@tim-mhn/ng-forms/core';
-import { TimUIBaseCheckboxModule } from '@tim-mhn/ng-forms/checkbox';
+import { TimFormsDirectivesModule } from '@tim-mhn/ng-forms/core';
+import { TimBaseCheckboxModule } from '@tim-mhn/ng-forms/checkbox';
 import { SelectListItemModule } from '../list-item/list-item.module';
-import { TimUIOption } from './option.component';
+import { TimOption } from './option.component';
 
 @NgModule({
-  declarations: [TimUIOption],
+  declarations: [TimOption],
   imports: [
     CommonModule,
-    TimUIFormsDirectivesModule,
-    TimUIBaseCheckboxModule,
+    TimFormsDirectivesModule,
+    TimBaseCheckboxModule,
     SelectListItemModule,
   ],
-  exports: [TimUIOption, SelectListItemModule],
+  exports: [TimOption, SelectListItemModule],
 })
-export class TimUIOptionModule {}
+export class TimOptionModule {}

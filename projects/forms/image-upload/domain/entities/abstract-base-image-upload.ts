@@ -11,7 +11,7 @@ import { handleFocusLost } from '../../../../utils/handle-focus-lost.util';
 import {
   ImageCropperDialogInput,
   ImageCropperDialogOutput,
-  TimUIImageCropperDialogComponent,
+  TimImageCropperDialogComponent,
 } from '../../presentation/components/image-cropper-dialog/image-cropper-dialog.component';
 import { ImageFile } from './image.entity';
 import { ImageUploadError } from '../errors/image-upload.errors';
@@ -21,7 +21,7 @@ import { ImageFileBuilder } from '../../application/services/image-file.builder'
 import { ValidImageFile } from '../../application/validators/valid-image.validator';
 
 @Directive()
-export abstract class TimUIBaseImageUpload
+export abstract class TimBaseImageUpload
   extends BaseControlValueAccessor<ImageUploadInfo>
   implements OnInit
 {
@@ -131,7 +131,7 @@ export abstract class TimUIBaseImageUpload
         this._dialogService.open<
           ImageCropperDialogOutput,
           ImageCropperDialogInput
-        >(TimUIImageCropperDialogComponent, imageFile).closed$
+        >(TimImageCropperDialogComponent, imageFile).closed$
       );
       return croppedImage;
     }

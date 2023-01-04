@@ -23,17 +23,17 @@ import { StateManageable, handleFocusLost } from '@tim-mhn/ng-forms/core';
 import { InputStyle } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-input',
+  selector: 'tim-input',
   templateUrl: './input.component.html',
   host: {
     class: 'cursor-text',
   },
   providers: [
     // eslint-disable-next-line no-use-before-define
-    stateManageableProvider(TimUIInput),
+    stateManageableProvider(TimInput),
   ],
 })
-export class TimUIInput<T = any>
+export class TimInput<T = any>
   extends BaseControlValueAccessor<T>
   implements OnInit, AfterContentInit, OnDestroy, StateManageable
 {
@@ -52,7 +52,7 @@ export class TimUIInput<T = any>
 
   /**
    * When the input errors, show an error icon.
-   * This would replace any iqairSuffix element
+   * This would replace any Suffix element
    */
   @Input() showErrorIcon = true;
 

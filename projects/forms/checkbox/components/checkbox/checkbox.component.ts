@@ -21,31 +21,31 @@ import { CheckboxIcon, CheckboxSize } from '../../models';
  * - Simple checkbox with no text
  *
  * ```
- * <iqair-checkbox formControlName="..."></iqair-checkbox>
+ * <-checkbox formControlName="..."></-checkbox>
  * ```
  *
  * - Checkbox with text on the right
  *
  *
  * ```
- * <iqair-checkbox formControlName="...">Insert some text here</iqair-checkbox>
+ * <-checkbox formControlName="...">Insert some text here</-checkbox>
  * ```
  *
  *
  * - Checkbox with text and subText
  *
  * ```
- * <iqair-checkbox formControlName="...">
+ * <-checkbox formControlName="...">
  *  Insert some text here
  *  <span checkboxSubtext> Insert some description here </span>
- * </iqair-checkbox>
+ * </-checkbox>
  * ```
  * */
 @Component({
-  selector: 'iqair-checkbox',
+  selector: 'tim-checkbox',
   templateUrl: './checkbox.component.html',
 })
-export class TimUICheckbox
+export class TimCheckbox
   extends BaseControlValueAccessor<boolean>
   implements StateManageable
 {

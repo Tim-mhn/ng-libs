@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'iqair-base-radio-button',
+  selector: 'tim-base-radio-button',
   templateUrl: './base-radio-button.component.html',
 })
-export class TimUIBaseRadioButtonComponent implements OnInit {
+export class TimBaseRadioButtonComponent implements OnInit {
   @Input() checked: boolean;
   @Input() disabled: boolean;
 

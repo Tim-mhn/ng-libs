@@ -8,18 +8,18 @@ import {
 } from '@angular/core';
 import { IQAirDate } from '@tim-mhn/common/date';
 import { WEEK_DAY } from '../../domain/constants/calendar.constant';
-import { TimUICalendarCellOption } from '../../domain/models/date-picker';
+import { TimCalendarCellOption } from '../../domain/models/date-picker';
 
 @Component({
-  selector: 'iqair-calendar-table-cell',
+  selector: 'tim-calendar-table-cell',
   templateUrl: './calendar-table-cell.component.html',
 })
-export class TimUICalendarTableCellComponent implements OnInit {
+export class TimCalendarTableCellComponent implements OnInit {
   @ViewChild('dateCell', { static: true }) dateCell: ElementRef;
   @Output() calendarCellClicked = new EventEmitter<IQAirDate>();
 
   public fullDate: IQAirDate;
-  public options: TimUICalendarCellOption;
+  public options: TimCalendarCellOption;
 
   public fullDateText: string;
   public date: number;

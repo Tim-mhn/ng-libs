@@ -16,17 +16,17 @@ import {
   TypedFormControl,
 } from '@tim-mhn/common/typed-forms';
 import { ImageUploadInfo } from '../../../domain/models/image-upload-info';
-import { TimUIDefaultImageUploadComponent } from '../default-image-upload/default-image-upload.component';
+import { TimDefaultImageUploadComponent } from '../default-image-upload/default-image-upload.component';
 
 /**
  * todo : create common/date and common/typed-forms
  * to be used in @tim-mhn/ng-forms package
  */
 @Component({
-  selector: 'iqair-no-duplicate-images-container',
+  selector: 'tim-no-duplicate-images-container',
   templateUrl: './no-duplicate-images-container.component.html',
 })
-export class TimUINoDuplicateImagesContainerComponent
+export class TimNoDuplicateImagesContainerComponent
   implements OnInit, AfterContentInit, OnDestroy
 {
   @Input() imageFilesFormArray: TypedFormArray<
@@ -34,8 +34,8 @@ export class TimUINoDuplicateImagesContainerComponent
     TypedFormControl<ImageUploadInfo>
   > = this.tfb.array([]);
 
-  @ContentChildren(TimUIDefaultImageUploadComponent, { descendants: true })
-  private _imageUploadComponents: QueryList<TimUIDefaultImageUploadComponent>;
+  @ContentChildren(TimDefaultImageUploadComponent, { descendants: true })
+  private _imageUploadComponents: QueryList<TimDefaultImageUploadComponent>;
 
   private readonly onDestroy$ = new Subject<void>();
 

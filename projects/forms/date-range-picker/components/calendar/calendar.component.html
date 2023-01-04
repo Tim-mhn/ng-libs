@@ -1,8 +1,12 @@
 <div class="max-w-82 text-center">
-  <iqair-calendar-navigation [monthYear]="monthYear"  (monthChanged)="onMonthChanged($event)"></iqair-calendar-navigation>
-  <iqair-calendar-table
+  <tim-calendar-navigation
+    [monthYear]="monthYear"
+    (monthChanged)="onMonthChanged($event)"
+  ></tim-calendar-navigation>
+  <tim-calendar-table
     [monthYear]="monthYear"
     [dateRange]="dateRange"
     [maxDate]="maxDate"
-    (dateSelected)="onDaySelected($event)"></iqair-calendar-table>
+    (dateSelected)="onDaySelected($event)"
+  ></tim-calendar-table>
 </div>

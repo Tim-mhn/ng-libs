@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BaseRadioButtonModule } from '../base-radio-button/base-radio-button.module';
-import { TimUIRadioButton } from './radio-button.component';
+import { TimRadioButton } from './radio-button.component';
 
 @NgModule({
-  declarations: [TimUIRadioButton],
+  declarations: [TimRadioButton],
   imports: [CommonModule, BaseRadioButtonModule],
-  exports: [TimUIRadioButton],
+  exports: [TimRadioButton],
 })
-export class TimUIRadioButtonModule {}
+export class TimRadioButtonModule {}

@@ -10,10 +10,10 @@ import { BaseControlValueAccessor } from '@tim-mhn/ng-forms/core';
 import { EmitOnUserChange } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-toggle',
+  selector: 'tim-toggle',
   templateUrl: './toggle.component.html',
 })
-export class TimUIToggle
+export class TimToggle
   extends BaseControlValueAccessor<boolean>
   implements OnInit, EmitOnUserChange<boolean>
 {

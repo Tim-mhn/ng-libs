@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TimUICheckboxGroupOptionComponent } from '../checkbox-group-option/checkbox-group-option.component';
-import { TimUICheckboxGroupOptionModule } from '../checkbox-group-option/checkbox-group-option.module';
-import { TimUICheckboxGroupComponent } from './checkbox-group.component';
+import { TimCheckboxGroupOptionComponent } from '../checkbox-group-option/checkbox-group-option.component';
+import { TimCheckboxGroupOptionModule } from '../checkbox-group-option/checkbox-group-option.module';
+import { TimCheckboxGroupComponent } from './checkbox-group.component';
 
 @NgModule({
-  declarations: [TimUICheckboxGroupComponent],
-  imports: [CommonModule, TimUICheckboxGroupOptionModule],
-  exports: [TimUICheckboxGroupComponent, TimUICheckboxGroupOptionComponent],
+  declarations: [TimCheckboxGroupComponent],
+  imports: [CommonModule, TimCheckboxGroupOptionModule],
+  exports: [TimCheckboxGroupComponent, TimCheckboxGroupOptionComponent],
 })
-export class TimUICheckboxGroupModule {}
+export class TimCheckboxGroupModule {}

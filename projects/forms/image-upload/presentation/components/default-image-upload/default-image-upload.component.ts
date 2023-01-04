@@ -15,16 +15,16 @@ import {
   SUPPORTED_MIME_TYPES_STRING,
   IMAGE_VALIDATION_ERROR_MESSAGES,
 } from '../../../domain/constants';
-import { TimUIBaseImageUpload } from '../../../domain/entities/abstract-base-image-upload';
+import { TimBaseImageUpload } from '../../../domain/entities/abstract-base-image-upload';
 import { ImageUploadError } from '../../../domain/errors/image-upload.errors';
 import { ImageUploader } from '../../../domain/models/image-uploader';
 import { ImageFileBuilder } from '../../../application/services/image-file.builder';
 
 @Component({
-  selector: 'iqair-default-image-upload',
+  selector: 'tim-default-image-upload',
   templateUrl: './default-image-upload.component.html',
 })
-export class TimUIDefaultImageUploadComponent extends TimUIBaseImageUpload {
+export class TimDefaultImageUploadComponent extends TimBaseImageUpload {
   @ViewChild('fileInput', { static: true }) _fileInputEl: ElementRef;
 
   readonly CLOUD_BLUE_SRC = 'assets/icons/cloud-upload-outline-blue-500.svg';

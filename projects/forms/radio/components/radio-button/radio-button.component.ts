@@ -2,17 +2,17 @@ import { Component } from '@angular/core';
 import { RadioGroupChild } from '../../directives';
 
 @Component({
-  selector: 'iqair-radio-button',
+  selector: 'tim-radio-button',
   templateUrl: './radio-button.component.html',
   providers: [
     {
       provide: RadioGroupChild,
       // eslint-disable-next-line no-use-before-define
-      useExisting: TimUIRadioButton,
+      useExisting: TimRadioButton,
     },
   ],
 })
-export class TimUIRadioButton<T = any> extends RadioGroupChild<T> {
+export class TimRadioButton<T = any> extends RadioGroupChild<T> {
   constructor() {
     super();
   }

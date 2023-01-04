@@ -22,7 +22,7 @@
   >
     <div class="flex flex-row justify-start flex-grow items-center max-w-full">
       <!-- Left "icon" -->
-      <ng-content select="[iqairPrefix]"></ng-content>
+      <ng-content select="[timPrefix]"></ng-content>
       <input
         #input
         class="focus:outline-none placeholder:text-base placeholder:font-normal placeholder:text-gray-400 ml-2.5 flex-grow bg-transparent max-w-full"
@@ -57,7 +57,7 @@
     *ngIf="!(hasError$ | async) || !showErrorIcon; else errorIcon"
     class="flex flex-row items-center"
   >
-    <ng-content select="[iqairSuffix]"></ng-content>
+    <ng-content select="[timSuffix]"></ng-content>
   </div>
 </ng-template>
 

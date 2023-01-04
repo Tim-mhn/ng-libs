@@ -7,21 +7,21 @@ import {
 } from '@angular/core';
 import { delay, merge, of, Subject, takeUntil } from 'rxjs';
 import { TimeOfDay } from '@tim-mhn/common/date';
-import { TimUITimeRangeInputComponent } from '../time-range-input/time-range-input.component';
-import { TimUITimeRangeAllDayDirective } from '../../directives/time-range-all-day.directive';
+import { TimTimeRangeInputComponent } from '../time-range-input/time-range-input.component';
+import { TimTimeRangeAllDayDirective } from '../../directives/time-range-all-day.directive';
 
 @Component({
-  selector: 'iqair-connected-time-range-all-day-inputs',
+  selector: 'tim-connected-time-range-all-day-inputs',
   templateUrl: './connected-time-range-all-day-inputs.component.html',
 })
-export class TimUIConnectedTimeRangeAllDayInputsComponent
+export class TimConnectedTimeRangeAllDayInputsComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @ContentChild(TimUITimeRangeInputComponent)
-  private timeRangeInput: TimUITimeRangeInputComponent;
+  @ContentChild(TimTimeRangeInputComponent)
+  private timeRangeInput: TimTimeRangeInputComponent;
 
-  @ContentChild(TimUITimeRangeAllDayDirective)
-  private allDayInput: TimUITimeRangeAllDayDirective;
+  @ContentChild(TimTimeRangeAllDayDirective)
+  private allDayInput: TimTimeRangeAllDayDirective;
 
   constructor() {}
 
@@ -35,7 +35,7 @@ export class TimUIConnectedTimeRangeAllDayInputsComponent
   private _updateStartEndTimeOnAllDayChange() {
     if (!this.allDayInput) {
       console.error(
-        'Could not find All Day Input. Make sure to use the iqairTimeRangeAllDay directive selector in the allDay checkbox'
+        'Could not find All Day Input. Make sure to use the TimeRangeAllDay directive selector in the allDay checkbox'
       );
       return;
     }

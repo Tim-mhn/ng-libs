@@ -4,10 +4,10 @@ import { IQAirDate } from '@tim-mhn/common/date';
 import { MONTH_LABELS } from '../../domain/constants/calendar.constant';
 
 @Component({
-  selector: 'iqair-calendar-navigation',
+  selector: 'tim-calendar-navigation',
   templateUrl: './calendar-navigation.component.html',
 })
-export class TimUICalendarNavigationComponent implements OnInit {
+export class TimCalendarNavigationComponent implements OnInit {
   @Input() set monthYear(date: IQAirDate) {
     this.selectedDate = date;
     this.year = this.selectedDate.year;

@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TimUIInputModule } from '@tim-mhn/ng-forms/input';
-import { TimUIPasswordInput } from './password-input.component';
+import { TimInputModule } from '@tim-mhn/ng-forms/input';
+import { TimPasswordInput } from './password-input.component';
 
 @NgModule({
-  imports: [CommonModule, TimUIInputModule],
-  declarations: [TimUIPasswordInput],
-  exports: [TimUIPasswordInput],
+  imports: [CommonModule, TimInputModule],
+  declarations: [TimPasswordInput],
+  exports: [TimPasswordInput],
 })
-export class TimUIPasswordInputModule {}
+export class TimPasswordInputModule {}

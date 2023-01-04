@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TimUIToggle } from './toggle.component';
+import { TimToggle } from './toggle.component';
 
 @NgModule({
-  declarations: [TimUIToggle],
+  declarations: [TimToggle],
   imports: [CommonModule],
-  exports: [TimUIToggle],
+  exports: [TimToggle],
 })
-export class TimUIToggleModule {}
+export class TimToggleModule {}

@@ -19,10 +19,10 @@ import {
 } from '../../../application/utils/canvas.utils';
 
 @Component({
-  selector: 'iqair-image-cropper',
+  selector: 'tim-image-cropper',
   templateUrl: './image-cropper.component.html',
 })
-export class TimUIImageCropperComponent
+export class TimImageCropperComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
   constructor(

@@ -21,12 +21,12 @@ import { DefaultStateManager } from '@tim-mhn/ng-forms/core';
 import { TEXT_EDITOR_ACTIONS } from '../../constants/editor-actions.constant';
 import { TextEditorAction } from '../../models/editor-action';
 @Component({
-  selector: 'iqair-text-editor',
+  selector: 'tim-text-editor',
   templateUrl: './text-editor.component.html',
   // eslint-disable-next-line no-use-before-define
-  providers: [stateManageableProvider(TimUITextEditorComponent)],
+  providers: [stateManageableProvider(TimTextEditorComponent)],
 })
-export class TimUITextEditorComponent
+export class TimTextEditorComponent
   extends BaseControlValueAccessor<string>
   implements OnInit, StateManageable
 {

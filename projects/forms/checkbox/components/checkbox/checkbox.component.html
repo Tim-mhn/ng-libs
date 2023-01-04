@@ -7,7 +7,7 @@
   class="flex flex-row w-fit items-center"
 >
   <span (mouseenter)="setHover(true)" (mouseleave)="setHover(false)">
-    <iqair-base-checkbox
+    <tim-base-checkbox
       class="pointer-events-none flex items-center mt-px"
       [disabled]="isDisabled"
       [selected]="value"
@@ -19,7 +19,7 @@
       (click)="handleClick($event)"
       (blur)="onFocusChange(false)"
       (focus)="onFocusChange(true)"
-    ></iqair-base-checkbox>
+    ></tim-base-checkbox>
   </span>
   <div
     class="ml-2 font-medium flex flex-col"
@@ -57,7 +57,7 @@
   <div class="text-red-500" *ngIf="hasContent">
     {{
       stateManager?.control?.errors
-        | validationErrorToMessage: name:errorMessageMap
+        | validationErrorToMessage : name : errorMessageMap
     }}
   </div>
 </ng-template>

@@ -28,19 +28,19 @@ import {
 import { ErrorStateMatcher } from '@tim-mhn/ng-forms/core';
 import { CanUseCustomCompareFn } from '@tim-mhn/ng-forms/core';
 import { StateManageable } from '@tim-mhn/ng-forms/core';
-import { TimUIOption } from './components';
+import { TimOption } from './components';
 import { ClickableContentChildrenParent } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
 import { SelectStateManager } from './select.state-manager';
 
 @Component({
-  selector: 'iqair-select',
+  selector: 'tim-select',
   templateUrl: './select.component.html',
   // eslint-disable-next-line no-use-before-define
-  providers: [stateManageableProvider(TimUISelect)],
+  providers: [stateManageableProvider(TimSelect)],
 })
-export class TimUISelect<T = any>
-  extends ClickableContentChildrenParent<TimUIOption<T>>
+export class TimSelect<T = any>
+  extends ClickableContentChildrenParent<TimOption<T>>
   implements
     OnInit,
     AfterContentInit,
@@ -80,8 +80,8 @@ export class TimUISelect<T = any>
   @Input() defaultWidth = true;
   @Input() sameWidthAsTrigger = false;
   @Input() showErrorMessage = true;
-  @ContentChildren(forwardRef(() => TimUIOption), { descendants: true })
-  protected children: QueryList<TimUIOption<T>>;
+  @ContentChildren(forwardRef(() => TimOption), { descendants: true })
+  protected children: QueryList<TimOption<T>>;
 
   @ViewChild('widthWrapper')
   widthWrapper: ElementRef<HTMLElement>;
@@ -94,7 +94,7 @@ export class TimUISelect<T = any>
 
   multiOptionControlUtil = new MultiOptionControlUtil<T>();
 
-  public isOptionSelected(option: TimUIOption<T>): boolean {
+  public isOptionSelected(option: TimOption<T>): boolean {
     if (this.multiple) {
       return this.multiOptionControlUtil.isOptionSelectedFromArray(
         option,
@@ -161,7 +161,7 @@ export class TimUISelect<T = any>
     return !this.isDisabled && !this.isOpen;
   }
 
-  onOptionSelection(option: TimUIOption<T>, init: boolean) {
+  onOptionSelection(option: TimOption<T>, init: boolean) {
     // If this this is the initial onOptionSelection call, option is undefined and we can directly use this._value
     if (!init) this._updateValueOnOptionSelection(option);
 
@@ -175,7 +175,7 @@ export class TimUISelect<T = any>
     return this.multiple ? (<T[]>this._value)?.length === 0 : !this._value;
   }
 
-  private _updateValueOnOptionSelection(option: TimUIOption) {
+  private _updateValueOnOptionSelection(option: TimOption) {
     const value = option.value;
 
     if (this.multiple) {

@@ -14,14 +14,14 @@
       (click)="zoomOut()"
     />
     <div class="flex h-5 items-center">
-      <iqair-slider
+      <tim-slider
         class="w-64"
         *ngIf="zoomMax"
         [formControl]="zoomCtrl"
         [min]="zoomMin"
         [max]="zoomMax"
         [step]="SLIDER_TINY_STEP"
-      ></iqair-slider>
+      ></tim-slider>
     </div>
 
     <img

@@ -1,21 +1,21 @@
 import { CompareFn } from '../models/compare-function';
-import { TimUIControlOption } from '../models/control-option';
+import { TimControlOption } from '../models/control-option';
 
 export class MultiOptionControlUtil<T> {
-  getNewValueOnOptionClick(option: TimUIControlOption<T>, currentValue: T[]) {
+  getNewValueOnOptionClick(option: TimControlOption<T>, currentValue: T[]) {
     const { value: optionValue, selected } = option;
     if (selected) return this._appendValue(optionValue, currentValue);
     return this._removeValue(optionValue, currentValue);
   }
 
-  isOptionSelectedFromArray(option: TimUIControlOption<T>, currentValues: T[]) {
+  isOptionSelectedFromArray(option: TimControlOption<T>, currentValues: T[]) {
     const el = currentValues.find((v) => this._areEqual(v, option.value));
     // To prevent value 0 to be considered as falsy
     return el !== undefined;
   }
 
   isOptionSelectedFromSingleValue(
-    option: TimUIControlOption<T>,
+    option: TimControlOption<T>,
     currentValue: T
   ) {
     return this._areEqual(option.value, currentValue);

@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TimUIBaseCheckboxModule } from './components/base-checkbox/base-checkbox.module';
-import { TimUICheckboxGroupModule } from './components/checkbox-group/checkbox-group.module';
-import { TimUICheckboxComponentModule } from './components/checkbox/checkbox.module';
+import { TimBaseCheckboxModule } from './components/base-checkbox/base-checkbox.module';
+import { TimCheckboxGroupModule } from './components/checkbox-group/checkbox-group.module';
+import { TimCheckboxComponentModule } from './components/checkbox/checkbox.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    TimUIBaseCheckboxModule,
-    TimUICheckboxGroupModule,
-    TimUICheckboxComponentModule,
+    TimBaseCheckboxModule,
+    TimCheckboxGroupModule,
+    TimCheckboxComponentModule,
   ],
   exports: [
-    TimUIBaseCheckboxModule,
-    TimUICheckboxGroupModule,
-    TimUICheckboxComponentModule,
+    TimBaseCheckboxModule,
+    TimCheckboxGroupModule,
+    TimCheckboxComponentModule,
   ],
 })
-export class TimUICheckboxModule {}
+export class TimCheckboxModule {}

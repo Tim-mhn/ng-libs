@@ -11,26 +11,23 @@ import { Subject, takeUntil } from 'rxjs';
 import { ErrorStateMatcher } from '@tim-mhn/ng-forms/core';
 import { StateManageable } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
-import {
-  TimUIEndTimeDirective,
-  TimUIStartTimeDirective,
-} from '../../directives';
+import { TimEndTimeDirective, TimStartTimeDirective } from '../../directives';
 import { TimeRangeInputStateManager } from '../../state-managers/time-range-input.state-manager';
 
 @Component({
-  selector: 'iqair-time-range-input',
+  selector: 'tim-time-range-input',
   templateUrl: './time-range-input.component.html',
   // eslint-disable-next-line no-use-before-define
-  providers: [stateManageableProvider(TimUITimeRangeInputComponent)],
+  providers: [stateManageableProvider(TimTimeRangeInputComponent)],
 })
-export class TimUITimeRangeInputComponent
+export class TimTimeRangeInputComponent
   implements AfterContentInit, OnInit, OnDestroy, StateManageable
 {
-  @ContentChild(TimUIStartTimeDirective)
-  public startTime: TimUIStartTimeDirective;
+  @ContentChild(TimStartTimeDirective)
+  public startTime: TimStartTimeDirective;
 
-  @ContentChild(TimUIEndTimeDirective)
-  public endTime: TimUIEndTimeDirective;
+  @ContentChild(TimEndTimeDirective)
+  public endTime: TimEndTimeDirective;
 
   constructor(
     @Optional() public _controlContainer: ControlContainer,

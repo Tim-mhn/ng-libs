@@ -13,7 +13,7 @@
   </ng-container>
 
   <div *ngIf="!!prefix" class="mr-2">
-    <ng-content select="[iqairPrefix]"> </ng-content>
+    <ng-content select="[timPrefix]"> </ng-content>
   </div>
   <span class="text-ellipsis overflow-hidden"> <ng-content></ng-content></span>
 
@@ -30,9 +30,9 @@
 </span>
 
 <ng-template #checkbox>
-  <iqair-base-checkbox
+  <tim-base-checkbox
     class="flex items-center mr-2"
     [selected]="selected"
     [disabled]="disabled"
-  ></iqair-base-checkbox>
+  ></tim-base-checkbox>
 </ng-template>

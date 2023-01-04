@@ -11,10 +11,10 @@ import { ICONS } from '@tim-mhn/common/icons';
 import { CheckboxIcon, CheckboxSize } from '../../models';
 
 @Component({
-  selector: 'iqair-base-checkbox',
+  selector: 'tim-base-checkbox',
   templateUrl: './base-checkbox.component.html',
 })
-export class TimUIBaseCheckbox implements OnChanges {
+export class TimBaseCheckbox implements OnChanges {
   constructor() {}
 
   public readonly CHECK_IMG_PATH = ICONS.CHECK_BLUE as string;

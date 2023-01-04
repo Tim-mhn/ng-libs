@@ -5,7 +5,7 @@ export interface DateRange {
   end?: IQAirDate;
 }
 
-export interface TimUICalendarCellOption {
+export interface TimCalendarCellOption {
   isCurrentMonth: boolean;
   isDisabled?: boolean;
 }

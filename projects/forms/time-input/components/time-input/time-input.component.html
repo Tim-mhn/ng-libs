@@ -9,7 +9,7 @@
     'border-gray-300': !(hasError$ | async)
   }"
 >
-  <iqair-time-period-input
+  <tim-time-period-input
     #hoursInput
     [maxValue]="23"
     [disabled]="isDisabled"
@@ -19,8 +19,8 @@
     (timePeriodCompleted)="onTimePeriodCompleted()"
     (jumpToPrevious)="onHoursJumpToPrevious()"
     (jumpToNext)="focusOnMinutes()"
-  ></iqair-time-period-input
-  >:<iqair-time-period-input
+  ></tim-time-period-input
+  >:<tim-time-period-input
     #minsInput
     [maxValue]="59"
     [disabled]="isDisabled || disabledMinutes"
@@ -30,5 +30,5 @@
     (timePeriodCompleted)="onMinutesCompleted()"
     (jumpToPrevious)="focusOnHours('end')"
     (jumpToNext)="onMinsJumpToNext()"
-  ></iqair-time-period-input>
+  ></tim-time-period-input>
 </div>

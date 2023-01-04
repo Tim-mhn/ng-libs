@@ -24,10 +24,10 @@ interface UpdateTextContentOptions {
   checkTimePeriodCompleted?: boolean;
 }
 @Component({
-  selector: 'iqair-time-period-input',
+  selector: 'tim-time-period-input',
   templateUrl: './time-period-input.component.html',
 })
-export class TimUITimePeriodInputComponent implements OnInit {
+export class TimTimePeriodInputComponent implements OnInit {
   @Input() maxValue: number;
 
   @Input() set timeValue(timeValue: number) {

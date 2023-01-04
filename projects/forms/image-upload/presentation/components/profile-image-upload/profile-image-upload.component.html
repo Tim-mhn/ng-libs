@@ -14,7 +14,7 @@
     </div>
     <div class="flex items-center gap-2">
       <button
-        iqair-stroked-button
+        tim-stroked-button
         color="neutral"
         size="xs"
         type="button"
@@ -25,7 +25,7 @@
       </button>
       <button
         *ngIf="value?.imageFile?.image"
-        iqair-stroked-button
+        tim-stroked-button
         color="destructive"
         type="button"
         size="xs"
@@ -51,45 +51,45 @@
 />
 
 <ng-template #smallProfileAvatar>
-  <iqair-avatar-profile-image
+  <tim-avatar-profile-image
     *ngIf="showProfileImage"
     [class]="AVATAR_CLASSES"
     [src]="value?.imageFile?.image ?? profilePlaceholderSrc"
     size="2xl"
     [ngClass]="hasError ? AVATAR_PROFILE_ERROR_CLASSES : ''"
-  ></iqair-avatar-profile-image>
-  <iqair-avatar-initials
+  ></tim-avatar-profile-image>
+  <tim-avatar-initials
     *ngIf="showPlaceholderText"
     [class]="AVATAR_CLASSES"
     [ngClass]="hasError ? AVATAR_INITIAL_ERROR_CLASSES : ''"
     size="2xl"
     color="primary"
     [text]="imageUploading ? '' : placeholderText"
-  ></iqair-avatar-initials>
+  ></tim-avatar-initials>
 </ng-template>
 <ng-template #bigProfileAvatar>
-  <iqair-big-avatar-profile-image
+  <tim-big-avatar-profile-image
     *ngIf="showProfileImage"
     [class]="AVATAR_CLASSES"
     [src]="value?.imageFile?.image ?? profilePlaceholderSrc"
     size="md"
     [ngClass]="hasError ? AVATAR_PROFILE_ERROR_CLASSES : ''"
-  ></iqair-big-avatar-profile-image>
-  <iqair-big-avatar-initials
+  ></tim-big-avatar-profile-image>
+  <tim-big-avatar-initials
     *ngIf="showPlaceholderText"
     [class]="AVATAR_CLASSES"
     [ngClass]="hasError ? AVATAR_INITIAL_ERROR_CLASSES : ''"
     size="md"
     color="primary"
     [text]="imageUploading ? '' : placeholderText"
-  ></iqair-big-avatar-initials>
+  ></tim-big-avatar-initials>
 </ng-template>
 
 <ng-template #loading>
   <div
     class="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center z-10"
   >
-    <iqair-spinner size="sm"></iqair-spinner>
+    <tim-spinner size="sm"></tim-spinner>
   </div>
 </ng-template>
 
@@ -98,15 +98,15 @@
     <div class="text-red-600 text-sm">
       {{
         ngControl.control.errors
-          | validationErrorToMessage: '':IMAGE_VALIDATION_ERROR_MESSAGES
+          | validationErrorToMessage : "" : IMAGE_VALIDATION_ERROR_MESSAGES
       }}
     </div>
-    <iqair-link
+    <tim-link
       *ngIf="ngControl.control.errors[UPLOAD_FAILED_ERROR]"
       size="xs"
       [inline]="true"
       (click)="retryUploadImage()"
-      >Try again</iqair-link
+      >Try again</tim-link
     >
   </div>
 </ng-template>

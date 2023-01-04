@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: 'iqair-input-hint',
+  selector: 'tim-input-hint',
 })
-export class TimUIInputHint {}
+export class TimInputHint {}

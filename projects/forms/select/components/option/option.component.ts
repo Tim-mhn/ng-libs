@@ -11,18 +11,18 @@ import {
 import { Subject } from 'rxjs';
 import { ICONS } from '@tim-mhn/common/icons';
 import { TimUIPrefix } from '@tim-mhn/ng-forms/core';
-import { TimUIControlOption } from '@tim-mhn/ng-forms/core';
-import { TimUISelect } from '../../select.component';
+import { TimControlOption } from '@tim-mhn/ng-forms/core';
+import { TimSelect } from '../../select.component';
 
 @Component({
-  selector: 'iqair-option',
+  selector: 'tim-option',
   templateUrl: './option.component.html',
 })
-export class TimUIOption<T = any> implements OnInit, TimUIControlOption<T> {
+export class TimOption<T = any> implements OnInit, TimControlOption<T> {
   constructor(
     private _element: ElementRef<HTMLElement>,
     private cdr: ChangeDetectorRef,
-    @Inject(forwardRef(() => TimUISelect)) private _parent: TimUISelect
+    @Inject(forwardRef(() => TimSelect)) private _parent: TimSelect
   ) {}
   public _selected = false;
 

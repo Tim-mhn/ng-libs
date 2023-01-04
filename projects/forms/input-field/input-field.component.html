@@ -9,7 +9,7 @@
       'text-2xs': textSize === '2xs'
     }"
   >
-    <ng-content select="iqair-input-label"></ng-content>
+    <ng-content select="tim-input-label"></ng-content>
   </div>
 
   <!-- Input -->
@@ -27,14 +27,14 @@
     <span *ngIf="showError$ | async" class="text-red-600">
       {{
         input?.stateManager?.control?.errors
-          | validationErrorToMessage: name:errorMessageMap
+          | validationErrorToMessage : name : errorMessageMap
       }}
     </span>
 
     <!-- Hint -->
     <!-- don't show hint if we show error message -->
     <span *ngIf="hint && !(showError$ | async)" class="text-gray-500">
-      <ng-content select="iqair-input-hint"></ng-content>
+      <ng-content select="tim-input-hint"></ng-content>
     </span>
   </div>
 </div>

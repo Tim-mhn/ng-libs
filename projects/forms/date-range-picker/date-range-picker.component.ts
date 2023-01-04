@@ -20,14 +20,14 @@ import {
 import { DateRange } from './domain/models/date-picker';
 
 @Component({
-  selector: 'iqair-date-range-picker',
+  selector: 'tim-date-range-picker',
   templateUrl: './date-range-picker.component.html',
   providers: [
     // eslint-disable-next-line no-use-before-define
-    stateManageableProvider(TimUIDateRangePickerComponent),
+    stateManageableProvider(TimDateRangePickerComponent),
   ],
 })
-export class TimUIDateRangePickerComponent
+export class TimDateRangePickerComponent
   implements OnInit, ControlValueAccessor, StateManageable, OnDestroy
 {
   @Input() placeholder: string = 'Select date';

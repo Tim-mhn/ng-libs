@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TimUIControlOption } from '@tim-mhn/ng-forms/core';
+import { TimControlOption } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-checkbox-group-option',
+  selector: 'tim-checkbox-group-option',
   templateUrl: './checkbox-group-option.component.html',
 })
-export class TimUICheckboxGroupOptionComponent<T>
-  implements OnInit, TimUIControlOption<T>
+export class TimCheckboxGroupOptionComponent<T>
+  implements OnInit, TimControlOption<T>
 {
   selected: boolean;
   @Input() value: T;

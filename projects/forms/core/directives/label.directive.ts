@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: 'iqair-input-label',
+  selector: 'tim-input-label',
 })
-export class TimUIInputLabel {}
+export class TimInputLabel {}

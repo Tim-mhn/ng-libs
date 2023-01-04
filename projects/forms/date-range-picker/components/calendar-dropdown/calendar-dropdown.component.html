@@ -14,23 +14,23 @@
   >
     <div class="flex w-fit p-4 py-0">
       <div class="mt-6">
-        <iqair-calendar
+        <tim-calendar
           [monthYear]="monthYearForCalendarOne"
           [dateRange]="dateRange"
           [maxDate]="maxDate"
           (dateSelected)="handleDateSelected($event)"
-        ></iqair-calendar>
+        ></tim-calendar>
       </div>
 
       <tim-divider class="mx-4" [vertical]="true"></tim-divider>
 
       <div class="mt-6">
-        <iqair-calendar
+        <tim-calendar
           [monthYear]="monthYearForCalendarTwo"
           [dateRange]="dateRange"
           [maxDate]="maxDate"
           (dateSelected)="handleDateSelected($event)"
-        ></iqair-calendar>
+        ></tim-calendar>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
     <div class="flex justify-between p-4">
       <div>
         <button
-          iqair-stroked-button
+          tim-stroked-button
           color="neutral"
           size="xs"
           (click)="onStartDateClick()"
@@ -48,7 +48,7 @@
         </button>
         <span class="mx-2 text font-medium">-</span>
         <button
-          iqair-stroked-button
+          tim-stroked-button
           color="neutral"
           size="xs"
           (click)="onEndDateClick()"
@@ -59,7 +59,7 @@
 
       <div class="flex">
         <button
-          iqair-stroked-button
+          tim-stroked-button
           color="neutral"
           size="xs"
           class="mr-2"
@@ -68,7 +68,7 @@
           Cancel
         </button>
         <button
-          iqair-flat-button
+          tim-flat-button
           color="primary"
           size="xs"
           [disabled]="disableApply"

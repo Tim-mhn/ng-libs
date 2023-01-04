@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TimUIRadioGroupComponent } from './radio-group.component';
+import { TimRadioGroupComponent } from './radio-group.component';
 
 @NgModule({
-  declarations: [TimUIRadioGroupComponent],
+  declarations: [TimRadioGroupComponent],
   imports: [CommonModule],
-  exports: [TimUIRadioGroupComponent],
+  exports: [TimRadioGroupComponent],
 })
-export class TimUIRadioGroupModule {}
+export class TimRadioGroupModule {}

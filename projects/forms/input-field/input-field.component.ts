@@ -9,18 +9,18 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ExtendedThemeSize } from '@tim-mhn/ng-ui/core';
 import { DEFAULT_VALIDATION_ERROR_TO_MESSAGE } from '@tim-mhn/ng-forms/core';
-import { TimUIInputHint } from '@tim-mhn/ng-forms/core';
-import { TimUIInputLabel } from '@tim-mhn/ng-forms/core';
+import { TimInputHint } from '@tim-mhn/ng-forms/core';
+import { TimInputLabel } from '@tim-mhn/ng-forms/core';
 import { StateManageable } from '@tim-mhn/ng-forms/core';
 import { ValidationErrorToMessage } from '@tim-mhn/ng-forms/core';
 import { STATE_MANAGEABLE_TOKEN } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-input-field',
+  selector: 'tim-input-field',
   templateUrl: './input-field.component.html',
   styleUrls: [],
 })
-export class TimUIInputField implements OnInit, AfterContentInit {
+export class TimInputField implements OnInit, AfterContentInit {
   hasLabel = false;
   showError$: Observable<boolean>;
   showHint$: Observable<boolean>;
@@ -37,11 +37,11 @@ export class TimUIInputField implements OnInit, AfterContentInit {
 
   constructor() {}
 
-  @ContentChild(TimUIInputLabel)
-  label: TimUIInputLabel;
+  @ContentChild(TimInputLabel)
+  label: TimInputLabel;
 
-  @ContentChild(TimUIInputHint)
-  hint: TimUIInputHint;
+  @ContentChild(TimInputHint)
+  hint: TimInputHint;
 
   @ContentChild(STATE_MANAGEABLE_TOKEN) input: StateManageable;
 

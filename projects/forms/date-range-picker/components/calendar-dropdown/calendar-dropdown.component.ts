@@ -9,13 +9,13 @@ import {
 import { objectKeys } from '@tim-mhn/common/objects';
 import { DateDiff, IQAirDate } from '@tim-mhn/common/date';
 import { DateRange } from '../../domain/models/date-picker';
-import { TimUIDatePickerTriggerDirective } from '../../directives/iqair-date-picker-trigger.directive';
+import { TimDatePickerTriggerDirective } from '../../directives/date-picker-trigger.directive';
 
 @Component({
-  selector: 'app-calendar-dropdown',
+  selector: 'tim-calendar-dropdown',
   templateUrl: './calendar-dropdown.component.html',
 })
-export class CalendarDropdownComponent implements OnInit, OnChanges {
+export class TimCalendarDropdownComponent implements OnInit, OnChanges {
   @Input() set initialDateRange(initialDateRange: DateRange) {
     this.dateRange = initialDateRange;
 
@@ -46,7 +46,7 @@ export class CalendarDropdownComponent implements OnInit, OnChanges {
   @Output() calendarOpened = new EventEmitter();
   @Output() calendarClosed = new EventEmitter();
 
-  trigger: TimUIDatePickerTriggerDirective;
+  trigger: TimDatePickerTriggerDirective;
 
   isOpen = false;
 
@@ -88,7 +88,7 @@ export class CalendarDropdownComponent implements OnInit, OnChanges {
     this.calendarClosed.emit();
   }
 
-  public setTrigger(trigger: TimUIDatePickerTriggerDirective) {
+  public setTrigger(trigger: TimDatePickerTriggerDirective) {
     this.trigger = trigger;
   }
 

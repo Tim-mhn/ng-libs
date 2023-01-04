@@ -16,19 +16,17 @@ import { IQAirDate } from '@tim-mhn/common/date';
 import { WEEK_DAY } from '../../domain/constants/calendar.constant';
 import {
   DateRange,
-  TimUICalendarCellOption,
+  TimCalendarCellOption,
 } from '../../domain/models/date-picker';
 
-import { TimUICalendarTableCellComponent } from '../calendar-table-cell/calendar-table-cell.component';
+import { TimCalendarTableCellComponent } from '../calendar-table-cell/calendar-table-cell.component';
 
 @Component({
-  selector: 'iqair-calendar-table',
+  selector: 'tim-calendar-table',
   templateUrl: './calendar-table.component.html',
 })
-export class TimUICalendarTableComponent
-  implements OnInit, OnChanges, OnDestroy
-{
-  private _calendarCells: ComponentRef<TimUICalendarTableCellComponent>[];
+export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
+  private _calendarCells: ComponentRef<TimCalendarTableCellComponent>[];
 
   @Input() monthYear: IQAirDate;
   @Input() dateRange: DateRange;
@@ -107,12 +105,12 @@ export class TimUICalendarTableComponent
     this._updateCellStatus(this.dateRange);
   }
 
-  private _createTimUICalendarTableCell(
+  private _createTimCalendarTableCell(
     date: IQAirDate,
-    options: TimUICalendarCellOption
+    options: TimCalendarCellOption
   ) {
     const cell = this.calendarTableRef.createComponent(
-      TimUICalendarTableCellComponent
+      TimCalendarTableCellComponent
     );
     cell.instance.fullDate = date;
     cell.instance.options = options;
@@ -131,7 +129,7 @@ export class TimUICalendarTableComponent
 
     let day = 1;
     while (day <= numDaysInMonth) {
-      let cellOptions: TimUICalendarCellOption = {
+      let cellOptions: TimCalendarCellOption = {
         isCurrentMonth: true,
       };
 
@@ -143,7 +141,7 @@ export class TimUICalendarTableComponent
         dayInCurrentMonth
       );
 
-      this._createTimUICalendarTableCell(dayInCurrentMonth, cellOptions);
+      this._createTimCalendarTableCell(dayInCurrentMonth, cellOptions);
       day += 1;
     }
   }
@@ -156,7 +154,7 @@ export class TimUICalendarTableComponent
         ? 0
         : lastDayOfPrevMonth.getDayOfWeek();
 
-    let cellOptions: TimUICalendarCellOption = {
+    let cellOptions: TimCalendarCellOption = {
       isCurrentMonth: false,
     };
 
@@ -171,7 +169,7 @@ export class TimUICalendarTableComponent
           prevDate
         );
 
-        this._createTimUICalendarTableCell(prevDate, cellOptions);
+        this._createTimCalendarTableCell(prevDate, cellOptions);
         step -= 1;
       }
     }
@@ -182,7 +180,7 @@ export class TimUICalendarTableComponent
     const firstDayOfNextMonth = nextMonth.startOf('month');
     const firstDayOfWeekOfNextMonth = firstDayOfNextMonth.getDayOfWeek();
 
-    let cellOptions: TimUICalendarCellOption = {
+    let cellOptions: TimCalendarCellOption = {
       isCurrentMonth: false,
     };
 
@@ -199,14 +197,14 @@ export class TimUICalendarTableComponent
           nextDate
         );
 
-        this._createTimUICalendarTableCell(nextDate, cellOptions);
+        this._createTimCalendarTableCell(nextDate, cellOptions);
         day += 1;
       }
     }
   }
 
   private _markAsDisabledIfAfterMaxDate(
-    cellOptions: TimUICalendarCellOption,
+    cellOptions: TimCalendarCellOption,
     maxDate: IQAirDate,
     compareDate: IQAirDate
   ) {

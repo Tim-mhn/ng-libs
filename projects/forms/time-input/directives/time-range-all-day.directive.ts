@@ -2,9 +2,9 @@ import { Directive, Optional } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: 'iqair-checkbox[iqairTimeRangeAllDay]',
+  selector: 'tim-checkbox[TimeRangeAllDay]',
 })
-export class TimUITimeRangeAllDayDirective {
+export class TimTimeRangeAllDayDirective {
   constructor(@Optional() private ngControl: NgControl) {}
 
   public get control() {

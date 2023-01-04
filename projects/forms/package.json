@@ -1,6 +1,6 @@
 {
   "name": "@tim-mhn/ng-forms",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "peerDependencies": {
     "@angular/cdk": "12 - 13",
     "@angular/common": "12 - 13",

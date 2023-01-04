@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[iqairPrefix]',
+  selector: '[Prefix]',
 })
 export class TimUIPrefix {}

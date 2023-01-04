@@ -18,18 +18,18 @@ import { CanUseCustomCompareFn, CompareFn } from '@tim-mhn/ng-forms/core';
 import { RadioGroupChild } from '../../directives';
 
 @Component({
-  selector: 'iqair-radio-group',
+  selector: 'tim-radio-group',
   templateUrl: './radio-group.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
       /* eslint-disable no-use-before-define */
-      useExisting: forwardRef(() => TimUIRadioGroupComponent),
+      useExisting: forwardRef(() => TimRadioGroupComponent),
     },
   ],
 })
-export class TimUIRadioGroupComponent<T = any>
+export class TimRadioGroupComponent<T = any>
   extends ClickableContentChildrenParent<RadioGroupChild<T>>
   implements
     OnInit,

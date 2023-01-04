@@ -15,7 +15,7 @@ import { ButtonToggleComponent } from '../button-toggle/button-toggle.component'
 import { ButtonToggleVariant } from '../models/button-toggle-variant';
 
 @Component({
-  selector: 'iqair-button-toggle-group',
+  selector: 'tim-button-toggle-group',
   templateUrl: './button-toggle-group.component.html',
 })
 export class ButtonToggleGroupComponent<T>

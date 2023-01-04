@@ -1,26 +1,26 @@
 import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
-import { CalendarDropdownComponent } from '../components/calendar-dropdown/calendar-dropdown.component';
+import { TimCalendarDropdownComponent } from '../components/calendar-dropdown/calendar-dropdown.component';
 
 @Directive({
-  selector: '[iqairDatePickerTrigger]',
+  selector: '[timDatePickerTrigger]',
   host: {
     '(click)': '_handleClick($event)',
     class: 'cursor-pointer',
   },
 })
-export class TimUIDatePickerTriggerDirective
+export class TimDatePickerTriggerDirective
   extends CdkOverlayOrigin
   implements OnChanges
 {
-  @Input() iqairCalendarDropdown: CalendarDropdownComponent;
+  @Input() timCalendarDropdown: TimCalendarDropdownComponent;
 
   constructor(public el: ElementRef<HTMLElement>) {
     super(el);
   }
 
   ngOnChanges(): void {
-    this.iqairCalendarDropdown.setTrigger(this);
+    this.timCalendarDropdown.setTrigger(this);
   }
 
   _handleClick(event: MouseEvent) {
@@ -30,7 +30,7 @@ export class TimUIDatePickerTriggerDirective
   }
 
   _toggleCalendarDropDown() {
-    if (this.iqairCalendarDropdown.isOpen) this.iqairCalendarDropdown.close();
-    else this.iqairCalendarDropdown.open();
+    if (this.timCalendarDropdown.isOpen) this.timCalendarDropdown.close();
+    else this.timCalendarDropdown.open();
   }
 }

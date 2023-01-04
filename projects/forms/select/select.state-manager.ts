@@ -1,7 +1,7 @@
 import { QueryList } from '@angular/core';
 import { AbstractControl, FormGroupDirective } from '@angular/forms';
 import { DefaultStateManager, ErrorStateMatcher } from '@tim-mhn/ng-forms/core';
-import { TimUIOption } from './components';
+import { TimOption } from './components';
 
 export class SelectStateManager<T> extends DefaultStateManager {
   constructor(
@@ -12,7 +12,7 @@ export class SelectStateManager<T> extends DefaultStateManager {
     super(_control, _parent, errorStateMatcher);
   }
 
-  private options: QueryList<TimUIOption<T>>;
+  private options: QueryList<TimOption<T>>;
 
   /**
    * Make sure to emit when options changes to update the triggerValue accordingly
@@ -26,7 +26,7 @@ export class SelectStateManager<T> extends DefaultStateManager {
     this.registerSub(emitOnOptionsChangesSub);
   }
 
-  public setOptions(opts: QueryList<TimUIOption<T>>) {
+  public setOptions(opts: QueryList<TimOption<T>>) {
     this.options = opts;
     this._emitOnOptionsChanges();
   }

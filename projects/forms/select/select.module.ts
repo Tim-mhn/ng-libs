@@ -1,18 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { TimUISelect } from './select.component';
-import { TimUIOptionModule } from './components';
-import { TimUIFormsPipesModule } from '@tim-mhn/ng-forms/core';
+import { TimSelect } from './select.component';
+import { TimOptionModule } from './components';
+import { TimFormsPipesModule } from '@tim-mhn/ng-forms/core';
 
 @NgModule({
-  declarations: [TimUISelect],
-  imports: [
-    CommonModule,
-    OverlayModule,
-    TimUIFormsPipesModule,
-    TimUIOptionModule,
-  ],
-  exports: [TimUISelect, TimUIOptionModule],
+  declarations: [TimSelect],
+  imports: [CommonModule, OverlayModule, TimFormsPipesModule, TimOptionModule],
+  exports: [TimSelect, TimOptionModule],
 })
-export class TimUISelectModule {}
+export class TimSelectModule {}

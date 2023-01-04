@@ -1,5 +1,5 @@
 import { areDeepEqual } from '@tim-mhn/common/objects';
-import { TimUIControlOption } from '../models';
+import { TimControlOption } from '../models';
 import { MultiOptionControlUtil } from './multi-option-control.util';
 
 describe('MultiOptionControlUtil', () => {
@@ -13,9 +13,9 @@ describe('MultiOptionControlUtil', () => {
     describe('single select (isOptionSelectedFromSingleValue)', () => {
       describe('defaultEqualFn', () => {
         it('isSelected with string value', () => {
-          const option: TimUIControlOption<string> = {
+          const option: TimControlOption<string> = {
             value: 'a',
-          } as TimUIControlOption<string>;
+          } as TimControlOption<string>;
 
           const optionIsSelected = util.isOptionSelectedFromSingleValue(
             option,
@@ -26,9 +26,9 @@ describe('MultiOptionControlUtil', () => {
         });
 
         it('notSelected with string value', () => {
-          const option: TimUIControlOption<string> = {
+          const option: TimControlOption<string> = {
             value: 'a',
-          } as TimUIControlOption<string>;
+          } as TimControlOption<string>;
 
           const optionIsSelected = util.isOptionSelectedFromSingleValue(
             option,
@@ -39,9 +39,9 @@ describe('MultiOptionControlUtil', () => {
         });
 
         it('isSelected with numbers', () => {
-          const option: TimUIControlOption<number> = {
+          const option: TimControlOption<number> = {
             value: 1,
-          } as TimUIControlOption<number>;
+          } as TimControlOption<number>;
 
           const optionIsSelected = util.isOptionSelectedFromSingleValue(
             option,
@@ -53,9 +53,9 @@ describe('MultiOptionControlUtil', () => {
 
         describe('it should work with falsy values', () => {
           it('with 0', () => {
-            const option: TimUIControlOption<number> = {
+            const option: TimControlOption<number> = {
               value: 0,
-            } as TimUIControlOption<number>;
+            } as TimControlOption<number>;
 
             const optionIsSelected = util.isOptionSelectedFromSingleValue(
               option,
@@ -66,9 +66,9 @@ describe('MultiOptionControlUtil', () => {
           });
 
           it('with false', () => {
-            const option: TimUIControlOption<boolean> = {
+            const option: TimControlOption<boolean> = {
               value: false,
-            } as TimUIControlOption<boolean>;
+            } as TimControlOption<boolean>;
 
             const optionIsSelected = util.isOptionSelectedFromSingleValue(
               option,
@@ -83,9 +83,9 @@ describe('MultiOptionControlUtil', () => {
           const user = {
             name: 'john',
           };
-          const option: TimUIControlOption<any> = {
+          const option: TimControlOption<any> = {
             value: user,
-          } as TimUIControlOption<any>;
+          } as TimControlOption<any>;
 
           const optionIsSelected = util.isOptionSelectedFromSingleValue(
             option,
@@ -101,9 +101,9 @@ describe('MultiOptionControlUtil', () => {
           const user = {
             name: 'john',
           };
-          const option: TimUIControlOption<any> = {
+          const option: TimControlOption<any> = {
             value: user,
-          } as TimUIControlOption<any>;
+          } as TimControlOption<any>;
 
           const optionIsSelected = util.isOptionSelectedFromSingleValue(
             option,
@@ -124,9 +124,9 @@ describe('MultiOptionControlUtil', () => {
             age: 30,
           };
 
-          const option: TimUIControlOption<any> = {
+          const option: TimControlOption<any> = {
             value: user1,
-          } as TimUIControlOption<any>;
+          } as TimControlOption<any>;
 
           util.updateCompareFn(areDeepEqual);
 
@@ -157,9 +157,9 @@ describe('MultiOptionControlUtil', () => {
 
           util.updateCompareFn(compareById);
 
-          const option: TimUIControlOption<any> = {
+          const option: TimControlOption<any> = {
             value: bobWithId,
-          } as TimUIControlOption<any>;
+          } as TimControlOption<any>;
 
           const optionIsSelected = util.isOptionSelectedFromSingleValue(
             option,
@@ -173,12 +173,12 @@ describe('MultiOptionControlUtil', () => {
     describe('multi select (isOptionSelectedFromArray)', () => {
       describe('primitive types with default equal fn', () => {
         it('strings', () => {
-          const helloOption: TimUIControlOption<string> = {
+          const helloOption: TimControlOption<string> = {
             value: 'hello',
-          } as TimUIControlOption<string>;
-          const barOption: TimUIControlOption<string> = {
+          } as TimControlOption<string>;
+          const barOption: TimControlOption<string> = {
             value: 'bar',
-          } as TimUIControlOption<string>;
+          } as TimControlOption<string>;
 
           const value = ['bar', 'world'];
 
@@ -199,14 +199,14 @@ describe('MultiOptionControlUtil', () => {
           it('should correctly mark numbers as selected / not selected', () => {
             const VALUE = [1, 2, 14, 13];
             const oneIsSelected = util.isOptionSelectedFromArray(
-              <TimUIControlOption<number>>{
+              <TimControlOption<number>>{
                 value: 1,
               },
               VALUE
             );
 
             const threeIsSelected = util.isOptionSelectedFromArray(
-              <TimUIControlOption<number>>{ value: 3 },
+              <TimControlOption<number>>{ value: 3 },
               VALUE
             );
 
@@ -216,7 +216,7 @@ describe('MultiOptionControlUtil', () => {
           it('should work with 0', () => {
             const VALUE = [1, 0, 2, 14, 13];
             const zeroIsSelected = util.isOptionSelectedFromArray(
-              <TimUIControlOption<number>>{
+              <TimControlOption<number>>{
                 value: 0,
               },
               VALUE
@@ -231,13 +231,13 @@ describe('MultiOptionControlUtil', () => {
             const VALUE = [true, false];
 
             const falseIsSelected = util.isOptionSelectedFromArray(
-              <TimUIControlOption<boolean>>{
+              <TimControlOption<boolean>>{
                 value: false,
               },
               VALUE
             );
             const trueIsSelected = util.isOptionSelectedFromArray(
-              <TimUIControlOption<boolean>>{
+              <TimControlOption<boolean>>{
                 value: true,
               },
               VALUE
@@ -251,13 +251,13 @@ describe('MultiOptionControlUtil', () => {
             const VALUE = [false];
 
             const falseIsSelected = util.isOptionSelectedFromArray(
-              <TimUIControlOption<boolean>>{
+              <TimControlOption<boolean>>{
                 value: false,
               },
               VALUE
             );
             const trueIsSelected = util.isOptionSelectedFromArray(
-              <TimUIControlOption<boolean>>{
+              <TimControlOption<boolean>>{
                 value: true,
               },
               VALUE

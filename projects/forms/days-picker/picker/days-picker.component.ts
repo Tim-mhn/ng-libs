@@ -11,12 +11,12 @@ import { BaseControlValueAccessor } from '@tim-mhn/ng-forms/core';
 import { ALL_DAYS_OF_WEEK } from '@tim-mhn/common/date';
 
 @Component({
-  selector: 'iqair-days-picker',
+  selector: 'tim-days-picker',
   templateUrl: './days-picker.component.html',
   // eslint-disable-next-line no-use-before-define
-  providers: [stateManageableProvider(TimUIDaysPickerComponent)],
+  providers: [stateManageableProvider(TimDaysPickerComponent)],
 })
-export class TimUIDaysPickerComponent
+export class TimDaysPickerComponent
   extends BaseControlValueAccessor<DayOfWeek[]>
   implements OnInit, StateManageable, OnDestroy
 {

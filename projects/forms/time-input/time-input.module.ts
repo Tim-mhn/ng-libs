@@ -1,34 +1,34 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TimUIFormsDirectivesModule } from '@tim-mhn/ng-forms/core';
-import { TimUITimeInputComponent } from './components/time-input/time-input.component';
-import { TimUITimePeriodInputComponent } from './components/time-period-input/time-period-input.component';
-import { TimUITimeRangeInputComponent } from './components/time-range-input/time-range-input.component';
+import { TimFormsDirectivesModule } from '@tim-mhn/ng-forms/core';
+import { TimTimeInputComponent } from './components/time-input/time-input.component';
+import { TimTimePeriodInputComponent } from './components/time-period-input/time-period-input.component';
+import { TimTimeRangeInputComponent } from './components/time-range-input/time-range-input.component';
 import { ValidTimePipe } from './pipes/valid-time.pipe';
-import { TimUIStartTimeDirective } from './directives/start-time.directive';
-import { TimUIEndTimeDirective } from './directives/end-time.directive';
-import { TimUITimeRangeAllDayDirective } from './directives/time-range-all-day.directive';
-import { TimUIConnectedTimeRangeAllDayInputsComponent } from './components/connected-time-range-all-day-inputs/connected-time-range-all-day-inputs.component';
+import { TimStartTimeDirective } from './directives/start-time.directive';
+import { TimEndTimeDirective } from './directives/end-time.directive';
+import { TimTimeRangeAllDayDirective } from './directives/time-range-all-day.directive';
+import { TimConnectedTimeRangeAllDayInputsComponent } from './components/connected-time-range-all-day-inputs/connected-time-range-all-day-inputs.component';
 
 @NgModule({
   declarations: [
-    TimUITimeInputComponent,
-    TimUITimePeriodInputComponent,
-    TimUITimeRangeInputComponent,
+    TimTimeInputComponent,
+    TimTimePeriodInputComponent,
+    TimTimeRangeInputComponent,
     ValidTimePipe,
-    TimUIStartTimeDirective,
-    TimUIEndTimeDirective,
-    TimUIConnectedTimeRangeAllDayInputsComponent,
-    TimUITimeRangeAllDayDirective,
+    TimStartTimeDirective,
+    TimEndTimeDirective,
+    TimConnectedTimeRangeAllDayInputsComponent,
+    TimTimeRangeAllDayDirective,
   ],
-  imports: [CommonModule, TimUIFormsDirectivesModule],
+  imports: [CommonModule, TimFormsDirectivesModule],
   exports: [
-    TimUITimeInputComponent,
-    TimUITimeRangeInputComponent,
-    TimUIStartTimeDirective,
-    TimUIEndTimeDirective,
-    TimUIConnectedTimeRangeAllDayInputsComponent,
-    TimUITimeRangeAllDayDirective,
+    TimTimeInputComponent,
+    TimTimeRangeInputComponent,
+    TimStartTimeDirective,
+    TimEndTimeDirective,
+    TimConnectedTimeRangeAllDayInputsComponent,
+    TimTimeRangeAllDayDirective,
   ],
 })
-export class TimUITimeInputModule {}
+export class TimTimeInputModule {}

@@ -7,11 +7,11 @@ import {
   startWith,
   switchMap,
 } from 'rxjs';
-import { TimUIControlOption } from '../models/control-option';
+import { TimControlOption } from '../models/control-option';
 
 @Directive()
 export abstract class ClickableContentChildrenParent<
-  ChildComponent extends TimUIControlOption
+  ChildComponent extends TimControlOption
 > implements AfterContentInit
 {
   protected abstract children: QueryList<ChildComponent>;

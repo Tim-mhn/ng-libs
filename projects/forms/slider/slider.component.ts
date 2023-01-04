@@ -14,7 +14,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { EmitOnUserChange } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-slider',
+  selector: 'tim-slider',
   templateUrl: './slider.component.html',
 })
 export class SliderComponent

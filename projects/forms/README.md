@@ -44,7 +44,7 @@ export class ExampleComponent {
 
 _List of modules_
 
-- `TimButtonToggleModule`
+- `TimUIButtonToggleModule`
 - `TimCheckboxModule`
 - `TimDateRangePickerModule`
 - `TimDaysPickerModule`

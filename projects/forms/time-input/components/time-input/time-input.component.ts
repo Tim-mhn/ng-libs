@@ -18,15 +18,15 @@ import { StateManager } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
 import { DefaultStateManager } from '@tim-mhn/ng-forms/core';
 import { requiredTimeInputValidator } from '../../validators/required.validator';
-import { TimUITimePeriodInputComponent } from '../time-period-input/time-period-input.component';
+import { TimTimePeriodInputComponent } from '../time-period-input/time-period-input.component';
 
 @Component({
-  selector: 'iqair-time-input',
+  selector: 'tim-time-input',
   templateUrl: './time-input.component.html',
   // eslint-disable-next-line no-use-before-define
-  providers: [stateManageableProvider(TimUITimeInputComponent)],
+  providers: [stateManageableProvider(TimTimeInputComponent)],
 })
-export class TimUITimeInputComponent
+export class TimTimeInputComponent
   extends BaseControlValueAccessor<TimeOfDay>
   implements ControlValueAccessor, StateManageable
 {
@@ -47,9 +47,9 @@ export class TimUITimeInputComponent
   @Input() disabledMinutes = false;
 
   @ViewChild('hoursInput', { static: true })
-  hoursInput: TimUITimePeriodInputComponent;
+  hoursInput: TimTimePeriodInputComponent;
   @ViewChild('minsInput', { static: true })
-  minsInput: TimUITimePeriodInputComponent;
+  minsInput: TimTimePeriodInputComponent;
 
   public hasError$: Observable<boolean>;
 
@@ -150,7 +150,7 @@ export class TimUITimeInputComponent
   }
 
   private _focusOnHoursOrMinutes(
-    hoursOrMins: TimUITimePeriodInputComponent,
+    hoursOrMins: TimTimePeriodInputComponent,
     position: CursorPosition = 'start'
   ) {
     setTimeout(() => {

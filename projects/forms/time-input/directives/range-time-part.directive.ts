@@ -1,8 +1,8 @@
 import { CursorPosition } from '@tim-mhn/common/dom-utils';
-import { TimUITimeInputComponent } from '../components/time-input/time-input.component';
+import { TimTimeInputComponent } from '../components/time-input/time-input.component';
 
-export class TimUIRangeTimePart {
-  constructor(public timeInput: TimUITimeInputComponent) {}
+export class TimRangeTimePart {
+  constructor(public timeInput: TimTimeInputComponent) {}
 
   public get control() {
     return this.timeInput.control;

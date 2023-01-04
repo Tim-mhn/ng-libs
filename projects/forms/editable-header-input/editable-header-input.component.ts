@@ -22,7 +22,7 @@ import {
 } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-editable-header-input',
+  selector: 'tim-editable-header-input',
   templateUrl: './editable-header-input.component.html',
 })
 export class EditableHeaderInputComponent

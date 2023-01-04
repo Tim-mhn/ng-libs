@@ -17,7 +17,7 @@ import {
   IMAGE_VALIDATION_ERROR_MESSAGES,
   SUPPORTED_MIME_TYPES_STRING,
 } from '../../../domain/constants';
-import { TimUIBaseImageUpload } from '../../../domain/entities/abstract-base-image-upload';
+import { TimBaseImageUpload } from '../../../domain/entities/abstract-base-image-upload';
 import { ImageUploadError } from '../../../domain/errors/image-upload.errors';
 import { ImageFileBuilder } from '../../../application/services/image-file.builder';
 import { ProfileImageUploadSize } from '../../../domain/models/profile-image-upload-size';
@@ -25,11 +25,11 @@ import { ImageUploader } from '../../../domain/models/image-uploader';
 import { ErrorStateMatcher } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-profile-image-upload',
+  selector: 'tim-profile-image-upload',
   templateUrl: './profile-image-upload.component.html',
 })
-export class TimUIProfileImageUploadComponent
-  extends TimUIBaseImageUpload
+export class TimProfileImageUploadComponent
+  extends TimBaseImageUpload
   implements OnInit, OnChanges
 {
   showProfileImage = true;
@@ -66,7 +66,7 @@ export class TimUIProfileImageUploadComponent
       _dialogService
     );
   }
-  ngOnChanges(changes: TypedChanges<TimUIProfileImageUploadComponent>): void {
+  ngOnChanges(changes: TypedChanges<TimProfileImageUploadComponent>): void {
     if (changes.placeholderText || changes.profilePlaceholderSrc) {
       this._handleProfilePlaceHolder();
     }

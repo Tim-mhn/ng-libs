@@ -4,15 +4,15 @@ import { from, switchMap } from 'rxjs';
 import { RequestState, RequestStateController } from '@tim-mhn/common/http';
 import { ImageFile } from '../../../domain/entities/image.entity';
 import { ImageFileBuilder } from '../../../application/services/image-file.builder';
-import { TimUIImageCropperComponent } from '../image-cropper/image-cropper.component';
+import { TimImageCropperComponent } from '../image-cropper/image-cropper.component';
 
 export type ImageCropperDialogInput = ImageFile;
 export type ImageCropperDialogOutput = ImageFile;
 @Component({
-  selector: 'iqair-image-cropper-dialog',
+  selector: 'tim-image-cropper-dialog',
   templateUrl: './image-cropper-dialog.component.html',
 })
-export class TimUIImageCropperDialogComponent implements OnInit {
+export class TimImageCropperDialogComponent implements OnInit {
   constructor(
     @Inject(IQAIR_DIALOG_DATA) public inputImage: ImageCropperDialogInput,
     @Inject(TimUIDialogRef)
@@ -21,7 +21,7 @@ export class TimUIImageCropperDialogComponent implements OnInit {
     private _reqStateController: RequestStateController
   ) {}
 
-  @ViewChild(TimUIImageCropperComponent) cropper: TimUIImageCropperComponent;
+  @ViewChild(TimImageCropperComponent) cropper: TimImageCropperComponent;
 
   requestState = new RequestState();
   ngOnInit() {}

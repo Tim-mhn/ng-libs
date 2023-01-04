@@ -1,12 +1,12 @@
 import { AbstractControl, FormGroupDirective } from '@angular/forms';
 import { combineLatest, filter, skip, startWith, take } from 'rxjs';
 import { ErrorStateMatcher, DefaultStateManager } from '@tim-mhn/ng-forms/core';
-import { TimUIEndTimeDirective } from '../directives/end-time.directive';
-import { TimUIStartTimeDirective } from '../directives/start-time.directive';
+import { TimEndTimeDirective } from '../directives/end-time.directive';
+import { TimStartTimeDirective } from '../directives/start-time.directive';
 
 export class TimeRangeInputStateManager extends DefaultStateManager {
-  private _startTime: TimUIStartTimeDirective;
-  private _endTime: TimUIEndTimeDirective;
+  private _startTime: TimStartTimeDirective;
+  private _endTime: TimEndTimeDirective;
 
   constructor(
     control: AbstractControl,
@@ -17,8 +17,8 @@ export class TimeRangeInputStateManager extends DefaultStateManager {
   }
 
   public setStartEndTimes(
-    startTime: TimUIStartTimeDirective,
-    endTime: TimUIEndTimeDirective
+    startTime: TimStartTimeDirective,
+    endTime: TimEndTimeDirective
   ) {
     this._startTime = startTime;
     this._endTime = endTime;

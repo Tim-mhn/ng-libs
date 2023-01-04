@@ -1,12 +1,12 @@
 import { Directive } from '@angular/core';
-import { TimUITimeInputComponent } from '../components/time-input/time-input.component';
-import { TimUIRangeTimePart } from './range-time-part.directive';
+import { TimTimeInputComponent } from '../components/time-input/time-input.component';
+import { TimRangeTimePart } from './range-time-part.directive';
 
 @Directive({
-  selector: 'iqair-time-input[iqairStartTime]',
+  selector: 'tim-time-input[StartTime]',
 })
-export class TimUIStartTimeDirective extends TimUIRangeTimePart {
-  constructor(input: TimUITimeInputComponent) {
+export class TimStartTimeDirective extends TimRangeTimePart {
+  constructor(input: TimTimeInputComponent) {
     super(input);
   }
 

@@ -8,4 +8,4 @@ import { SliderComponent } from './slider.component';
   imports: [CommonModule, ReactiveFormsModule],
   exports: [SliderComponent],
 })
-export class TimUISliderModule {}
+export class TimSliderModule {}

@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { ButtonToggleVariant } from '../models/button-toggle-variant';
 
 @Component({
-  selector: 'iqair-button-toggle',
+  selector: 'tim-button-toggle',
   templateUrl: './button-toggle.component.html',
   host: {
     class: 'flex flex-1',

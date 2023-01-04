@@ -12,14 +12,14 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { ClickableContentChildrenParent } from '@tim-mhn/ng-forms/core';
 import { CanUseCustomCompareFn, CompareFn } from '@tim-mhn/ng-forms/core';
 import { MultiOptionControlUtil } from '@tim-mhn/ng-forms/core';
-import { TimUICheckboxGroupOptionComponent } from '../checkbox-group-option/checkbox-group-option.component';
+import { TimCheckboxGroupOptionComponent } from '../checkbox-group-option/checkbox-group-option.component';
 
 @Component({
-  selector: 'iqair-checkbox-group',
+  selector: 'tim-checkbox-group',
   templateUrl: './checkbox-group.component.html',
 })
-export class TimUICheckboxGroupComponent<T>
-  extends ClickableContentChildrenParent<TimUICheckboxGroupOptionComponent<T>>
+export class TimCheckboxGroupComponent<T>
+  extends ClickableContentChildrenParent<TimCheckboxGroupOptionComponent<T>>
   implements
     OnInit,
     AfterContentInit,
@@ -29,8 +29,8 @@ export class TimUICheckboxGroupComponent<T>
   @Input() set compareFn(compareFn: CompareFn<T>) {
     this.multiOptionControlUtil.updateCompareFn(compareFn);
   }
-  @ContentChildren(TimUICheckboxGroupOptionComponent, { descendants: true })
-  protected children: QueryList<TimUICheckboxGroupOptionComponent<T>>;
+  @ContentChildren(TimCheckboxGroupOptionComponent, { descendants: true })
+  protected children: QueryList<TimCheckboxGroupOptionComponent<T>>;
 
   private _value: T[] = [];
 

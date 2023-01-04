@@ -6,4 +6,4 @@ import { ValidationErrorToMessagePipe } from './validation-error-to-message.pipe
   imports: [],
   exports: [ValidationErrorToMessagePipe],
 })
-export class TimUIFormsPipesModule {}
+export class TimFormsPipesModule {}

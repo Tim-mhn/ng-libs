@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
-  TimUIInputHint,
-  TimUIInputLabel,
-  TimUIFormsPipesModule,
-  TimUIFormsDirectivesModule,
+  TimInputHint,
+  TimInputLabel,
+  TimFormsPipesModule,
+  TimFormsDirectivesModule,
 } from '@tim-mhn/ng-forms/core';
-import { TimUIInputModule } from '@tim-mhn/ng-forms/input';
-import { TimUIInputField } from './input-field.component';
+import { TimInputModule } from '@tim-mhn/ng-forms/input';
+import { TimInputField } from './input-field.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    TimUIInputModule,
-    TimUIFormsPipesModule,
-    TimUIFormsDirectivesModule,
+    TimInputModule,
+    TimFormsPipesModule,
+    TimFormsDirectivesModule,
   ],
-  declarations: [TimUIInputField],
-  exports: [TimUIInputField, TimUIInputHint, TimUIInputLabel],
+  declarations: [TimInputField],
+  exports: [TimInputField, TimInputHint, TimInputLabel],
 })
-export class TimUIInputFieldModule {}
+export class TimInputFieldModule {}

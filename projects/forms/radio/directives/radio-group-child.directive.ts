@@ -1,11 +1,11 @@
 import { Directive, Input } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TimUIControlOption } from '@tim-mhn/ng-forms/core';
+import { TimControlOption } from '@tim-mhn/ng-forms/core';
 
 @Directive({
   selector: 'radio-group-child', // not used as directive
 })
-export abstract class RadioGroupChild<T> implements TimUIControlOption<T> {
+export abstract class RadioGroupChild<T> implements TimControlOption<T> {
   constructor() {}
 
   selected: boolean;

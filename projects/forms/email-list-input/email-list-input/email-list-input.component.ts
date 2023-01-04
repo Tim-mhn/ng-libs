@@ -20,12 +20,12 @@ import {
 } from '@tim-mhn/ng-forms/core';
 
 @Component({
-  selector: 'iqair-email-list-input',
+  selector: 'tim-email-list-input',
   templateUrl: './email-list-input.component.html',
   // eslint-disable-next-line no-use-before-define
-  providers: [stateManageableProvider(TimUIEmailListInputComponent)],
+  providers: [stateManageableProvider(TimEmailListInputComponent)],
 })
-export class TimUIEmailListInputComponent
+export class TimEmailListInputComponent
   extends BaseControlValueAccessor<string[]>
   implements OnInit, StateManageable, OnDestroy
 {

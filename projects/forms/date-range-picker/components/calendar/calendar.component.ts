@@ -3,10 +3,10 @@ import { IQAirDate } from '@tim-mhn/common/date';
 import { DateRange } from '../../domain/models/date-picker';
 
 @Component({
-  selector: 'iqair-calendar',
+  selector: 'tim-calendar',
   templateUrl: './calendar.component.html',
 })
-export class TimUICalendarComponent implements OnInit {
+export class TimCalendarComponent implements OnInit {
   @Input() monthYear: IQAirDate;
   @Input() dateRange: DateRange;
   @Input() maxDate: IQAirDate;

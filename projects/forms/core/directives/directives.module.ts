@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { TimUIInputHint } from './input-hint.directive';
-import { TimUIInputLabel } from './label.directive';
+import { TimInputHint } from './input-hint.directive';
+import { TimInputLabel } from './label.directive';
 import { TimUIPrefix } from './prefix.directive';
 import { TimUISuffix } from './suffix.directive';
 import { ContentEditableIfDirective } from './content-editable-if.directive';
@@ -15,8 +15,8 @@ import { ScrollableToControlDirective } from './scrollable-to-control.directive'
   declarations: [
     TimUIPrefix,
     TimUISuffix,
-    TimUIInputLabel,
-    TimUIInputHint,
+    TimInputLabel,
+    TimInputHint,
     ContentEditableIfDirective,
     ContentEditableFitWidthDirective,
     ContentEditableMaxLengthDirective,
@@ -29,8 +29,8 @@ import { ScrollableToControlDirective } from './scrollable-to-control.directive'
   exports: [
     TimUIPrefix,
     TimUISuffix,
-    TimUIInputLabel,
-    TimUIInputHint,
+    TimInputLabel,
+    TimInputHint,
     ContentEditableIfDirective,
     ContentEditableFitWidthDirective,
     ContentEditableMaxLengthDirective,
@@ -40,4 +40,4 @@ import { ScrollableToControlDirective } from './scrollable-to-control.directive'
     ScrollableToControlDirective,
   ],
 })
-export class TimUIFormsDirectivesModule {}
+export class TimFormsDirectivesModule {}
