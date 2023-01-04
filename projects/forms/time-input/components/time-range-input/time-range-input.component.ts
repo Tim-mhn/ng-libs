@@ -11,9 +11,11 @@ import { Subject, takeUntil } from 'rxjs';
 import { ErrorStateMatcher } from '@tim-mhn/ng-forms/core';
 import { StateManageable } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
-import { TimeRangeInputStateManager } from '@tim-mhn/ng-forms/core';
-import { TimUIEndTimeDirective } from '@tim-mhn/ng-forms/core';
-import { TimUIStartTimeDirective } from '@tim-mhn/ng-forms/core';
+import {
+  TimUIEndTimeDirective,
+  TimUIStartTimeDirective,
+} from '../../directives';
+import { TimeRangeInputStateManager } from '../../state-managers/time-range-input.state-manager';
 
 @Component({
   selector: 'iqair-time-range-input',

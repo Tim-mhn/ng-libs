@@ -1,24 +1,79 @@
-# Forms
+# TimForms
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+Angular UI library for forms components built with Material CDK, Tailwindcss and Reactive Forms
 
-## Code scaffolding
+### only works with Angular Reactive Forms
 
-Run `ng generate component component-name --project forms` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project forms`.
-> Note: Don't forget to add `--project forms` or else it will be added to the default project in your `angular.json` file. 
+## Get started
+
+##### Download the package from NPM
+
+`npm install @tim-mhn/ng-forms`
+
+##### Import the stylesheet
+
+In your global `.scss` or `.css` file, add
+`@import "@tim-mhn/ng-forms/styles.css"`
+
+##### Import the modules you want to use
+
+Example with `TimInputModule`
+
+```
+// example.module.ts
+import { TimInputModule } from '@tim-mhn/ng-forms/input';
+
+@NgModule({
+  imports: [TimInputModule],
+  declarations: [ExampleComponent]
+})
+export class ExampleModule {}
+
+// example.component.html
+<tim-input [formControl]="fc"></tim-input>
+
+// example.component.ts
+@Component({})
+export class ExampleComponent {
+
+  constructor(private fb: FormBuilder) {}
+
+  fc = this.fb.control('')
+}
+```
+
+_List of modules_
+
+- `TimButtonToggleModule`
+- `TimCheckboxModule`
+- `TimDateRangePickerModule`
+- `TimDaysPickerModule`
+- `TimEditableHeaderInputModule`
+- `TimEmailListInputModule`
+- `TimImageUploadModule`
+- `TimInputModule`
+- `TimInputFieldModule`
+- `TimPasswordInputModule`
+- `TimRadioModule`
+- `TimSelectModule`
+- `TimSliderModule`
+- `TimTextEditorModule`
+- `TimTimeInputModule`
+- `TimToggleModule`
 
 ## Build
 
-Run `ng build forms` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build:forms` to build the project.
 
-## Publishing
+## Build & Publish
 
-After building your library with `ng build forms`, go to the dist folder `cd dist/forms` and run `npm publish`.
+- **Bump the version**: `npm version major|minor|patch`
+- **Build the library**: `npm run build:forms`
+  The build artifacts will be stored in the `dist/` directory.
+  This will also run the _tailwind_ command to generate the `.css` file reusing the `iqair-tailwind` config.
+
+- **Publish to NPM**: go to the dist folder `cd dist/forms` run `npm publish`
 
 ## Running unit tests
 
 Run `ng test forms` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

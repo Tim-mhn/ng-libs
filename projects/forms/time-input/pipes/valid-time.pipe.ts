@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TimeOfDay } from '../../../../date/entities/time-of-day.entity';
+import { TimeOfDay } from '@tim-mhn/common/date';
 import { isValidTime } from '../utils/is-valid-time.util';
 
 @Pipe({

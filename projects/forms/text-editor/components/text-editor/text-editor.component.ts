@@ -9,16 +9,17 @@ import {
 } from '@angular/core';
 import { FormGroupDirective, NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { BaseControlValueAccessor } from '@tim-mhn/ng-forms/core';
+import {
+  BaseControlValueAccessor,
+  handleFocusLost,
+} from '@tim-mhn/ng-forms/core';
 import { ErrorStateMatcher } from '@tim-mhn/ng-forms/core';
 import { StateManageable } from '@tim-mhn/ng-forms/core';
 import { StateManager } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
 import { DefaultStateManager } from '@tim-mhn/ng-forms/core';
-import { handleFocusLost } from '../../../../utils/handle-focus-lost.util';
 import { TEXT_EDITOR_ACTIONS } from '../../constants/editor-actions.constant';
-import { TextEditorAction } from '@tim-mhn/ng-forms/core';
-
+import { TextEditorAction } from '../../models/editor-action';
 @Component({
   selector: 'iqair-text-editor',
   templateUrl: './text-editor.component.html',

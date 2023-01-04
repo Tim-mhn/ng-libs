@@ -1,5 +1,4 @@
 import { fromBlob } from 'file-type/browser';
-import { logMethod } from '../../../../../decorators';
 import { SUPPORTED_MIME_TYPES } from '../constants/supported-formats.constant';
 
 export class FileType {
@@ -10,7 +9,6 @@ export class FileType {
     return fileType;
   }
 
-  @logMethod
   public static async isTypeSupported(file: Blob) {
     const fileType = await this._getFileType(file);
     const mime = fileType?.mime;

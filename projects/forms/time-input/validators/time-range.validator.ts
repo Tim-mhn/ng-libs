@@ -1,6 +1,6 @@
 import { ValidatorFn } from '@angular/forms';
 import { TimeOfDay } from '@tim-mhn/common/date';
-import { TypedAbstractControl } from '../../../../typed-forms';
+import { TypedAbstractControl } from '@tim-mhn/common/typed-forms';
 import {
   END_TIME_AFTER_START_ERROR_KEY,
   END_TIME_REQUIRED_ERROR_KEY,

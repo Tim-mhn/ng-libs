@@ -68,7 +68,7 @@
     "forms": {
       "projectType": "library",
       "root": "projects/forms",
-      "sourceRoot": "projects/forms/src",
+      "sourceRoot": "projects/forms",
       "prefix": "lib",
       "architect": {
         "build": {
