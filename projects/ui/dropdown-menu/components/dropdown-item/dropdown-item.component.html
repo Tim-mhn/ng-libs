@@ -6,10 +6,10 @@
   (click)="_onClick($event)"
 >
   <div *ngIf="hasPrefix" class="h-5 w-5">
-    <ng-content select="[iqairPrefix]"></ng-content>
+    <ng-content select="[timPrefix]"></ng-content>
   </div>
   <ng-content></ng-content>
   <div *ngIf="hasSuffix" class="h-5 w-5 flex flex-row grow justify-end">
-    <ng-content select="[iqairSuffix]"></ng-content>
+    <ng-content select="[timSuffix]"></ng-content>
   </div>
 </div>

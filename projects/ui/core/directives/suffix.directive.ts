@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[iqairSuffix]',
+  selector: '[timSuffix]',
 })
 export class TimUISuffix {}

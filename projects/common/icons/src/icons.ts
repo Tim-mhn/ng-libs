@@ -1,7 +1,7 @@
 import { objectEntries } from '@tim-mhn/common/objects';
 
 const HOST_DOMAIN = 'https://imagedelivery.net/Zq_y_wPpJ_fjpNFHNAHfpQ/';
-//
+
 const ICONS_HOST_KEYS = {
   ARROW_DOWN_GRAY: '837eecb3-322d-408c-3620-6a9ed92a0d00',
   ARROW_LEFT: 'a1d43235-6808-4092-52a2-30c38c56a800',
@@ -44,7 +44,7 @@ const ICONS_HOST_KEYS = {
   NEW_TAB_ICON: 'e5eefb40-9a53-4620-b0fe-97abf84cca00',
   OUTDOOR_BLUE: 'd58e6480-c522-46ca-3ebf-d624faf99c00',
   OUTDOOR_GRAY: '368b9b06-1634-4039-89e7-e26910835c00',
-  PENCIL_GRAY: '51f4b5a6-fa8d-4677-007f-0394e4c13d00',
+  PENCIL_GRAY: 'c03b8012-1860-4c66-3e63-d7440c8eb500',
   PLUS_BLACK: 'f336d11a-4dc9-461e-2824-f780ff54fc00',
   PLUS_BLUE: '8cc0fbf0-af0b-4bfd-f632-85b60815c900',
   PLUS_GRAY: '51f4b5a6-fa8d-4677-007f-0394e4c13d00',
