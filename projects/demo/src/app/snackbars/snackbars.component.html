@@ -1,0 +1,83 @@
+<div class="p-1 text-gray-800 flex justify-start gap-4 flex-wrap">
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="
+      openSnackbar('Simple snackbar', { dismissible: false, duration: 1000 })
+    "
+  >
+    Open simple snackbar (1s)
+  </button>
+
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="openSnackbar('Simple snackbar', { dismissible: false })"
+  >
+    Open simple snackbar (3s)
+  </button>
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="openSnackbar('Snackbar', { dismissible: true })"
+  >
+    Open dismissible snackbar
+  </button>
+
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="openSnackbar('Snackbar', { dismissible: true, duration: null })"
+  >
+    Open endless dismissible snackbar
+  </button>
+
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="
+      openSnackbar('Email verified successfully', {
+        dismissible: false,
+        mode: 'success'
+      })
+    "
+  >
+    Open success snackbar
+  </button>
+
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="
+      openSnackbar('Loading ...', { dismissible: false, mode: 'loading' })
+    "
+  >
+    Open loading snackbar
+  </button>
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="
+      openSnackbar('Email verified successfully', {
+        dismissible: true,
+        mode: 'success'
+      })
+    "
+  >
+    Open dismissible success snackbar
+  </button>
+
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="
+      openSnackbar('Loading ...', { dismissible: true, mode: 'loading' })
+    "
+  >
+    Open dismissible loading snackbar
+  </button>
+
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="
+      openSnackbar('An unexpected error occured', {
+        dismissible: false,
+        mode: 'error'
+      })
+    "
+  >
+    Open error snackbar
+  </button>
+</div>
