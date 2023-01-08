@@ -1,0 +1,25 @@
+<div
+  class="flex items-center gap-0.5 relative"
+  [ngClass]="editMode ? 'visible' : 'hidden'"
+>
+  <tim-input
+    class="w-18"
+    [type]="type"
+    [formControl]="inputControl"
+  ></tim-input>
+
+  <div
+    class="absolute text-gray-800 text-sm font-medium flex w-full gap-0.5 top-12 children:bg-gray-50 children:p-2 children:w-8 children:h-8 children:rounded-sm hover:children:bg-gray-200 children:cursor-pointer children:shadow-md children:border children:border-gray-300 children:flex children:justify-center children:items-center"
+  >
+    <div (click)="confirmChanges()">✓</div>
+    <div (click)="cancelChanges()">X</div>
+  </div>
+</div>
+<tim-chip
+  *ngIf="!editMode"
+  (chipClick)="activateEditMode()"
+  [color]="color"
+  [clickable]="!isDisabled"
+>
+  {{ value }}
+</tim-chip>

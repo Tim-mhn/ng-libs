@@ -1,8 +1,9 @@
 <div
   [class]="{color, size, clickable, withAction} | chipClass"
   class="flex w-fit rounded-2xl text-xs font-medium py-0.5 items-center whitespace-nowrap max-w-full"
+  (click)="onParentClick($event)"
 >
-  <div (click)="onClick($event)" class="flex">
+  <div (click)="onClick($event)" class="flex flex-grow">
     <div *ngIf="hasPrefix" class="flex-none h-4 w-4 mr-1 flex items-center">
       <ng-content select="[timPrefix]"></ng-content>
     </div>

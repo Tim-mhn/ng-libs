@@ -13,14 +13,14 @@ import {
 import { FormGroupDirective, NgControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Key } from '@tim-mhn/common/keyboard';
-import { InputType } from '@tim-mhn/ng-forms/core';
 import { TimUIPrefix } from '@tim-mhn/ng-forms/core';
 import { BaseControlValueAccessor } from '@tim-mhn/ng-forms/core';
 import { ErrorStateMatcher } from '@tim-mhn/ng-forms/core';
 import { DefaultStateManager } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
 import { StateManageable, handleFocusLost } from '@tim-mhn/ng-forms/core';
-import { InputStyle } from '@tim-mhn/ng-forms/core';
+import { InputType } from './models/input-type';
+import { InputStyle } from './models/input-style';
 
 @Component({
   selector: 'tim-input',

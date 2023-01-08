@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, Input, ViewChild } from '@angular/core';
-import { InputType } from '@tim-mhn/ng-forms/core';
+import { InputType } from '@tim-mhn/ng-forms/input';
 import { StateManageable } from '@tim-mhn/ng-forms/core';
 import { StateManager } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';

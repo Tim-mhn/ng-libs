@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimUICoreModule } from '@tim-mhn/ng-ui/core';
-import { TimUIChipComponent } from './chip.component';
+import { TimUIChip } from './chip.component';
 import { ChipClassPipe } from '../pipes/chip-class.pipe';
 
 @NgModule({
-  declarations: [TimUIChipComponent, ChipClassPipe],
+  declarations: [TimUIChip, ChipClassPipe],
   imports: [CommonModule, TimUICoreModule],
-  exports: [TimUIChipComponent, TimUICoreModule],
+  exports: [TimUIChip, TimUICoreModule],
 })
 export class TimUIChipModule {}

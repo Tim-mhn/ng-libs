@@ -8,6 +8,7 @@ module.exports = {
     "**/forms/core/**/*.{html,ts}",
     "**/forms/date-range-picker/**/*.{html,ts}",
     "**/forms/days-picker/**/*.{html,ts}",
+    "**/forms/editable-chip/**/*.{html,ts}",
     "**/forms/editable-header-input/**/*.{html,ts}",
     "**/forms/email-list-input/**/*.{html,ts}",
     "**/forms/image-upload/**/*.{html,ts}",
