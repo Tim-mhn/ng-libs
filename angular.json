@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ui",
       "sourceRoot": "projects/ui",
-      "prefix": "lib",
+      "prefix": "tim",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -69,7 +69,13 @@
       "projectType": "library",
       "root": "projects/forms",
       "sourceRoot": "projects/forms",
-      "prefix": "lib",
+      "prefix": "tim",
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true,
+          "style": "none"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

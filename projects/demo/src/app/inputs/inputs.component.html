@@ -1,0 +1,144 @@
+<form [formGroup]="form">
+  <div class="flex flex-col gap-2 mt-4">
+    <div class="flex flex-row gap-8 items-start">
+      <div class="flex flex-col gap-8">
+        <div>
+          <p class="mb-4">Simple input</p>
+          <tim-input formControlName="name"></tim-input>
+        </div>
+        <div>
+          <p class="mb-4">Input Field with validation</p>
+          <tim-input-field [name]="'Name'">
+            <tim-input-label>Name</tim-input-label>
+            <tim-input
+              formControlName="name2"
+              [placeholder]="'Name'"
+            ></tim-input>
+            <tim-input-hint>Enter a name with 10+ characters</tim-input-hint>
+          </tim-input-field>
+        </div>
+
+        <div>
+          <p class="mb-4">Simple disabled input</p>
+          <tim-input formControlName="name3"></tim-input>
+        </div>
+        <div>
+          <p class="mb-4">Disabled input field</p>
+          <tim-input-field [name]="'Name'">
+            <tim-input-label>Name</tim-input-label>
+            <tim-input
+              formControlName="name4"
+              [placeholder]="'Name'"
+            ></tim-input>
+            <tim-input-hint>Enter a name with 10+ characters</tim-input-hint>
+          </tim-input-field>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-8">
+        <div>
+          <p class="mb-4">Input field with prefix icon</p>
+          <tim-input-field [name]="'Username'">
+            <tim-input-label>Username</tim-input-label>
+
+            <tim-input
+              formControlName="name5"
+              [placeholder]="'Enter your username'"
+            >
+              <img
+                timPrefix
+                class="h-4 w-4"
+                [src]="QUESTION_CIRCLE_ICON"
+                height="16"
+                width="16"
+              />
+            </tim-input>
+          </tim-input-field>
+        </div>
+
+        <div>
+          <p class="mb-4">Input field with suffix icon</p>
+          <tim-input-field [name]="'Username'">
+            <tim-input-label>Username</tim-input-label>
+
+            <tim-input
+              formControlName="name6"
+              [placeholder]="'Enter your username'"
+            >
+              <img
+                timSuffix
+                class="h-4 w-4"
+                [src]="QUESTION_CIRCLE_ICON"
+                height="16"
+                width="16"
+              />
+            </tim-input>
+          </tim-input-field>
+        </div>
+
+        <div>
+          <p class="mb-4">Input field with prefix and suffix icons</p>
+          <tim-input-field [name]="'Username'">
+            <tim-input-label>Username</tim-input-label>
+
+            <tim-input
+              formControlName="name7"
+              [placeholder]="'Enter your username'"
+            >
+              <img
+                timPrefix
+                class="h-4 w-4"
+                [src]="QUESTION_CIRCLE_ICON"
+                height="16"
+                width="16"
+              />
+
+              <img
+                timSuffix
+                class="h-4 w-4"
+                [src]="QUESTION_CIRCLE_ICON"
+                height="16"
+                width="16"
+              />
+            </tim-input>
+          </tim-input-field>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-8">
+        <div>
+          <p class="mb-4">Password input</p>
+
+          <tim-password-input formControlName="password1"></tim-password-input>
+        </div>
+
+        <div>
+          <p class="mb-4">Password input in input field</p>
+          <tim-input-field [name]="'Password'">
+            <tim-input-label>Password</tim-input-label>
+
+            <tim-password-input
+              formControlName="password2"
+              [placeholder]="'password'"
+            ></tim-password-input>
+
+            <tim-input-hint>Enter a strong password</tim-input-hint>
+          </tim-input-field>
+        </div>
+
+        <div>
+          <p class="mb-4">Disabled password input</p>
+          <tim-input-field [name]="'Password'">
+            <tim-input-label>Password</tim-input-label>
+
+            <tim-password-input
+              formControlName="password3"
+            ></tim-password-input>
+
+            <tim-input-hint>Enter a strong password</tim-input-hint>
+          </tim-input-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

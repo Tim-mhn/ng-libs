@@ -7,9 +7,10 @@ import { ContentEditableIfDirective } from './content-editable-if.directive';
 import { ContentEditableFitWidthDirective } from './content-editable-fit-width.directive';
 import { ContentEditableMaxLengthDirective } from './content-editable-max-length.directive';
 import { ContentEditablePlaceholderDirective } from './content-editable-placeholder.directive';
-import { ConnectedSubmitFormGroupDirective } from './connected-submit-form-group.directive';
 import { ScrollToFirstInvalidControlOnSubmitDirective } from './scroll-to-first-invalid-control-on-submit.directive';
 import { ScrollableToControlDirective } from './scrollable-to-control.directive';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConnectedSubmitFormGroupDirective } from './connected-submit-form-group.directive';
 
 @NgModule({
   declarations: [
