@@ -8,7 +8,6 @@ import {
   OnInit,
   Optional,
   Output,
-  OnChanges,
 } from '@angular/core';
 import { TimUIPrefix } from '@tim-mhn/ng-ui/core';
 import { TimUIDropdownTrigger } from '@tim-mhn/ng-ui/dropdown-menu';
@@ -22,7 +21,7 @@ import { ChipSize } from '../models/chip-size';
     class: 'overflow-hidden',
   },
 })
-export class TimUIChip implements OnInit, OnChanges {
+export class TimUIChip implements OnInit {
   @Input() size: ChipSize = 'md';
   @Input() color: ChipColor = 'primary';
   @Input() withAction: boolean = false;
@@ -41,10 +40,6 @@ export class TimUIChip implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.hasPrefix = !!this._prefix;
-  }
-
-  ngOnChanges(ch: any) {
-    console.log(ch);
   }
 
   onActionClick(event: Event) {
