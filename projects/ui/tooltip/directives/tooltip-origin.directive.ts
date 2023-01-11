@@ -7,7 +7,7 @@ import { TooltipPosition } from '../models/tooltip-position';
 import { TimUITooltip } from './tooltip.directive';
 
 @Directive({
-  selector: '[iqairTooltipOrigin]',
+  selector: '[timTooltipOrigin]',
 })
 export class TimUITooltipOrigin implements OnDestroy {
   constructor(
@@ -19,7 +19,7 @@ export class TimUITooltipOrigin implements OnDestroy {
   hideTimeoutId: any;
   @Input() tooltipPosition: TooltipPosition = TooltipPosition.BOTTOM;
   @Input() disabled: boolean;
-  @Input() set iqairTooltipOrigin(tooltip: TimUITooltip) {
+  @Input() set timTooltipOrigin(tooltip: TimUITooltip) {
     this._tooltip = tooltip;
     this.elementRef.nativeElement.onmouseover = () =>
       this.disabled ? this.hideTooltip() : this.showTooltip();
