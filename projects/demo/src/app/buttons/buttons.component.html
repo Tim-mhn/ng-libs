@@ -1,382 +1,208 @@
 <div class="w-full py-12 bg-[#e5e5e5]">
   <div
-    class="grid grid-cols-5 place-items-center gap-x-8 gap-y-4 w-fit mx-auto"
+    class="grid grid-cols-6 place-items-center gap-x-8 gap-y-4 w-fit mx-auto"
   >
-    <span></span>
+    <span>2xs</span>
     <span>xs</span>
     <span>sm</span>
     <span>md</span>
     <span>lg</span>
+    <span></span>
 
     <span>flat-primary</span>
-    <button tim-flat-button>Button CTA</button>
-    <button tim-flat-button size="sm">Button CTA</button>
-    <button tim-flat-button size="md">Button CTA</button>
-    <button tim-flat-button size="lg">Button CTA</button>
+    <button tim-flat-button *ngFor="let size of SIZES">Button CTA</button>
 
     <span>flat-primary-disabled</span>
-    <button tim-flat-button [disabled]="true">Button CTA</button>
-    <button tim-flat-button [disabled]="true" size="sm">Button CTA</button>
-    <button tim-flat-button [disabled]="true" size="md">Button CTA</button>
-    <button tim-flat-button [disabled]="true" size="lg">Button CTA</button>
+    <button tim-flat-button [disabled]="true" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span>flat-primary-loading</span>
-    <button tim-flat-button [loading]="true">Button CTA</button>
-    <button tim-flat-button [loading]="true" size="sm">Button CTA</button>
-    <button tim-flat-button [loading]="true" size="md">Button CTA</button>
-    <button tim-flat-button [loading]="true" size="lg">Button CTA</button>
+    <button tim-flat-button [loading]="true" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span class="mt-6">flat-primary-prefix</span>
-    <button tim-flat-button class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="sm" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="md" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="lg" class="mt-6">
+    <button tim-flat-button class="mt-6" *ngFor="let size of SIZES">
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
     </button>
 
     <span>flat-primary-prefix-disabled</span>
-    <button tim-flat-button [disabled]="true">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-flat-button [disabled]="true" size="sm">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-flat-button [disabled]="true" size="md">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-flat-button [disabled]="true" size="lg">
+    <button tim-flat-button [disabled]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
     </button>
 
     <span>flat-primary-prefix-loading</span>
-    <button tim-flat-button [loading]="true" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="sm" [loading]="true" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="md" [loading]="true" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="lg" [loading]="true" class="mt-6">
+    <button
+      tim-flat-button
+      [loading]="true"
+      class="mt-6"
+      *ngFor="let size of SIZES"
+    >
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_WHITE" />
     </button>
 
     <span class="mt-6">flat-primary-suffix</span>
-    <button tim-flat-button class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="sm" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="md" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button size="lg" class="mt-6">
+    <button tim-flat-button class="mt-6" *ngFor="let size of SIZES">
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
     </button>
 
     <span>flat-primary-suffix-disabled</span>
-    <button tim-flat-button [disabled]="true">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-flat-button [disabled]="true" size="sm">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-flat-button [disabled]="true" size="md">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-flat-button [disabled]="true" size="lg">
+    <button tim-flat-button [disabled]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
     </button>
 
     <span>flat-primary-suffix-loading</span>
-    <button tim-flat-button [loading]="true">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button [loading]="true" size="sm">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button [loading]="true" size="md">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
-    </button>
-    <button tim-flat-button [loading]="true" size="lg">
+    <button tim-flat-button [loading]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_WHITE" />
     </button>
 
     <span class="mt-12">faint-primary</span>
-    <button tim-faint-button class="mt-12">Button CTA</button>
-    <button tim-faint-button size="sm" class="mt-12">Button CTA</button>
-    <button tim-faint-button size="md" class="mt-12">Button CTA</button>
-    <span></span>
+    <button tim-faint-button class="mt-12" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span>faint-primary-disabled</span>
-    <button tim-faint-button [disabled]="true">Button CTA</button>
-    <button tim-faint-button size="sm" [disabled]="true">Button CTA</button>
-    <button tim-faint-button size="md" [disabled]="true">Button CTA</button>
-    <span></span>
+    <button tim-faint-button [disabled]="true" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span>faint-primary-disabled</span>
-    <button tim-faint-button [loading]="true">Button CTA</button>
-    <button tim-faint-button size="sm" [loading]="true">Button CTA</button>
-    <button tim-faint-button size="md" [loading]="true">Button CTA</button>
-    <span></span>
+    <button tim-faint-button [loading]="true" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span class="mt-6">faint-primary-prefix</span>
-    <button tim-faint-button class="mt-6">
+    <button tim-faint-button class="mt-6" *ngFor="let size of SIZES">
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_BLUE" />
     </button>
-    <button tim-faint-button size="sm" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <button tim-faint-button size="md" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <span></span>
 
     <span>faint-primary-prefix-disabled</span>
-    <button tim-faint-button [disabled]="true">
+    <button tim-faint-button [disabled]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
     </button>
-    <button tim-faint-button [disabled]="true" size="sm">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-faint-button [disabled]="true" size="md">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <span></span>
 
     <span class="mt-6">faint-primary-suffix</span>
-    <button tim-faint-button class="mt-6">
+    <button tim-faint-button class="mt-6" *ngFor="let size of SIZES">
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_BLUE" />
     </button>
-    <button tim-faint-button size="sm" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <button tim-faint-button size="md" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <span></span>
 
     <span>faint-primary-suffix-disabled</span>
-    <button tim-faint-button [disabled]="true">
+    <button
+      tim-faint-button
+      [disabled]="true"
+      *ngFor="let size of SIZES"
+      [size]="size"
+    >
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
     </button>
-    <button tim-faint-button [disabled]="true" size="sm">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-faint-button [disabled]="true" size="md">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <span></span>
 
     <span class="mt-12">simple-primary</span>
-    <button tim-simple-button class="mt-12">Button CTA</button>
-    <button tim-simple-button size="sm" class="mt-12">Button CTA</button>
-    <button tim-simple-button size="md" class="mt-12">Button CTA</button>
-    <span></span>
+    <button tim-simple-button class="mt-12" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span>simple-primary-disabled</span>
-    <button tim-simple-button [disabled]="true">Button CTA</button>
-    <button tim-simple-button size="sm" [disabled]="true">Button CTA</button>
-    <button tim-simple-button size="md" [disabled]="true">Button CTA</button>
-    <span></span>
+    <button tim-simple-button [disabled]="true" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span>simple-primary-loading</span>
-    <button tim-simple-button [loading]="true">Button CTA</button>
-    <button tim-simple-button size="sm" [loading]="true">Button CTA</button>
-    <button tim-simple-button size="md" [loading]="true">Button CTA</button>
-    <span></span>
+    <button tim-simple-button [loading]="true" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
 
     <span class="mt-6">simple-primary-prefix</span>
-    <button tim-simple-button class="mt-6">
+    <button tim-simple-button class="mt-6" *ngFor="let size of SIZES">
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_BLUE" />
     </button>
-    <button tim-simple-button size="sm" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <button tim-simple-button size="md" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <span></span>
 
     <span>simple-primary-prefix-disabled</span>
-    <button tim-simple-button [disabled]="true">
+    <button tim-simple-button [disabled]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
     </button>
-    <button tim-simple-button [disabled]="true" size="sm">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-simple-button [disabled]="true" size="md">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <span></span>
 
     <span class="mt-6">simple-primary-suffix</span>
-    <button tim-simple-button class="mt-6">
+    <button tim-simple-button class="mt-6" *ngFor="let size of SIZES">
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_BLUE" />
     </button>
-    <button tim-simple-button size="sm" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <button tim-simple-button size="md" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLUE" />
-    </button>
-    <span></span>
 
     <span>simple-primary-suffix-disabled</span>
-    <button tim-simple-button [disabled]="true">
+    <button tim-simple-button [disabled]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
     </button>
-    <button tim-simple-button [disabled]="true" size="sm">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-simple-button [disabled]="true" size="md">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <span></span>
 
     <span class="mt-12">stroked-neutral</span>
-    <button tim-stroked-button color="neutral" class="mt-12">Button CTA</button>
-    <button tim-stroked-button color="neutral" size="sm" class="mt-12">
+    <button
+      tim-stroked-button
+      color="neutral"
+      class="mt-12"
+      *ngFor="let size of SIZES"
+    >
       Button CTA
     </button>
-    <button tim-stroked-button color="neutral" size="md" class="mt-12">
-      Button CTA
-    </button>
-    <span></span>
 
     <span>stroked-neutral-disabled</span>
-    <button tim-stroked-button [disabled]="true">Button CTA</button>
-    <button tim-stroked-button size="sm" [disabled]="true">Button CTA</button>
-    <button tim-stroked-button size="md" [disabled]="true">Button CTA</button>
-    <span></span>
-
+    <button tim-stroked-button [disabled]="true" *ngFor="let size of SIZES">
+      Button CTA
+    </button>
     <span>stroked-neutral-loading</span>
-    <button tim-stroked-button color="neutral" [loading]="true">
+    <button
+      tim-stroked-button
+      color="neutral"
+      [loading]="true"
+      *ngFor="let size of SIZES"
+    >
       Button CTA
     </button>
-    <button tim-stroked-button color="neutral" size="sm" [loading]="true">
-      Button CTA
-    </button>
-    <button tim-stroked-button color="neutral" size="md" [loading]="true">
-      Button CTA
-    </button>
-    <span></span>
 
     <span class="mt-6">stroked-neutral-prefix</span>
-    <button tim-stroked-button color="neutral" class="mt-6">
+    <button
+      tim-stroked-button
+      color="neutral"
+      class="mt-6"
+      *ngFor="let size of SIZES"
+    >
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_GRAY" />
     </button>
-    <button tim-stroked-button color="neutral" size="sm" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_GRAY" />
-    </button>
-    <button tim-stroked-button color="neutral" size="md" class="mt-6">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_GRAY" />
-    </button>
-    <span></span>
 
     <span>stroked-neutral-prefix-disabled</span>
-    <button tim-stroked-button [disabled]="true">
+    <button tim-stroked-button [disabled]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
     </button>
-    <button tim-stroked-button [disabled]="true" size="sm">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-stroked-button [disabled]="true" size="md">
-      Button CTA
-      <img timPrefix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <span></span>
 
     <span class="mt-6">stroked-neutral-suffix</span>
-    <button tim-stroked-button color="neutral" class="mt-6">
+    <button
+      tim-stroked-button
+      color="neutral"
+      class="mt-6"
+      *ngFor="let size of SIZES"
+    >
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_GRAY" />
     </button>
-    <button tim-stroked-button color="neutral" size="sm" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_GRAY" />
-    </button>
-    <button tim-stroked-button color="neutral" size="md" class="mt-6">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_GRAY" />
-    </button>
-    <span></span>
 
     <span>stroked-neutral-suffix-disabled</span>
-    <button tim-stroked-button [disabled]="true">
+    <button tim-stroked-button [disabled]="true" *ngFor="let size of SIZES">
       Button CTA
       <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
     </button>
-    <button tim-stroked-button [disabled]="true" size="sm">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <button tim-stroked-button [disabled]="true" size="md">
-      Button CTA
-      <img timSuffix [src]="PLUS_OUTLINE_BLACK" />
-    </button>
-    <span></span>
 
     <span class="mt-12">simple-neutral</span>
     <button tim-simple-button color="neutral" class="mt-12">Button CTA</button>
@@ -895,6 +721,8 @@
     <span></span>
 
     <span>simple-primary-icon-button</span>
+    <button tim-simple-button size="2xs" iconBtn="plus"></button>
+
     <button tim-simple-button size="xs" iconBtn="plus"></button>
     <button tim-simple-button size="sm" iconBtn="plus"></button>
     <button tim-simple-button size="md" iconBtn="plus"></button>
