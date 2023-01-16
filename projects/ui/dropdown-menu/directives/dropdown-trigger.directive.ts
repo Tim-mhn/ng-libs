@@ -12,7 +12,7 @@ import { TimUIDropdownMenuClickEvent } from '../entities/menu-click-event';
 import { TimUIDropdownTriggerCloseEvent } from '../entities/trigger-close-event';
 
 @Directive({
-  selector: '[iqairDropdownTrigger]',
+  selector: '[timDropdownTrigger]',
   host: {
     '(click)': '_handleClick($event)',
     class: 'cursor-pointer',
@@ -31,8 +31,8 @@ export class TimUIDropdownTrigger
     return this._id;
   }
 
-  @Input('iqairDropdownMenuTriggerFor') menu: TimUIDropdownMenu;
-  @Input('iqairDropdownMenuTriggerCloseOnClick') closeOnClick = true;
+  @Input('timDropdownMenuTriggerFor') menu: TimUIDropdownMenu;
+  @Input('timDropdownMenuTriggerCloseOnClick') closeOnClick = true;
   ngOnChanges() {
     this.menu?.setTrigger(this);
   }

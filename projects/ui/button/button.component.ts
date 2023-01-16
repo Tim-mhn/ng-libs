@@ -23,6 +23,7 @@ import { map, startWith, Subject, takeUntil } from 'rxjs';
 import { SpinnerColor } from '@tim-mhn/ng-ui/spinner';
 import { ButtonIcon } from './models/button-icon';
 import { ButtonType } from './models/button-type';
+import { ButtonSize } from './models/button-size';
 
 @Component({
   selector:
@@ -37,7 +38,7 @@ export class TimUIButton
   implements OnChanges, AfterContentInit, AfterViewInit, OnDestroy
 {
   @Input() color: ThemeColor = 'primary';
-  @Input() size: ThemeSize = 'xs';
+  @Input() size: ButtonSize = 'xs';
   @Input() disabled: boolean;
   @Input() loading: boolean;
   @Input() iconBtn: ButtonIcon;

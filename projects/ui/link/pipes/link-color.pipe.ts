@@ -5,14 +5,14 @@ import { TimUILinkProps } from '../models/link-props';
   name: 'linkColor',
 })
 export class LinkColorPipe implements PipeTransform {
-  transform(iqairLink: TimUILinkProps): string {
-    if (iqairLink.disabled) {
-      return iqairLink.color === 'white'
+  transform(timLink: TimUILinkProps): string {
+    if (timLink.disabled) {
+      return timLink.color === 'white'
         ? 'text-white opacity-20'
         : 'text-black opacity-20';
     }
 
-    switch (iqairLink.color) {
+    switch (timLink.color) {
       case 'primary':
         return 'text-blue-500 hover:text-blue-600';
       case 'neutral':

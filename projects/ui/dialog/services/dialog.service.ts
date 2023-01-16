@@ -1,7 +1,7 @@
 import { ComponentType, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { Injectable, Injector, StaticProvider, Type } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { IQAIR_DIALOG_DATA } from '../providers/dialog-data';
+import { TIM_DIALOG_DATA } from '../providers/dialog-data';
 import { TimUIDialogRef } from '../entities/dialog-ref';
 import { FullScreenDialogContainerComponent } from '../components/full-screen-dialog-container/full-screen-dialog-container.component';
 import { DefaultDialogContainerComponent } from '../components/default-dialog-container/default-dialog-container.component';
@@ -16,7 +16,7 @@ interface DialogOptions {
 export class TimUIDialogService {
   private _overlayConfigs = new OverlayConfig({
     hasBackdrop: true,
-    backdropClass: ['bg-black', 'bg-opacity-40'],
+    backdropClass: ['bg-black', '!bg-opacity-40'],
   });
 
   constructor(private _overlay: Overlay, private _injector: Injector) {}
@@ -58,7 +58,7 @@ export class TimUIDialogService {
         useValue: dialogRef,
       },
       {
-        provide: IQAIR_DIALOG_DATA,
+        provide: TIM_DIALOG_DATA,
         useValue: data,
       },
     ];

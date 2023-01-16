@@ -95,12 +95,14 @@
     [ngClass]="
       !iconBtn
         ? {
+            '2xs': 'py-2 px-4 h-6',
             xs: 'py-2 px-4 h-9',
             sm: 'py-3 px-5 h-11',
             md: 'py-3 px-6 h-12',
             lg: 'py-4 px-8 h-15'
           }[size]
         : {
+            '2xs': 'justify-center h-6 w-6',
             xs: 'justify-center h-9 w-9',
             sm: 'justify-center h-10 w-10',
             md: 'justify-center h-11 w-11',
@@ -113,13 +115,14 @@
       class="flex-none"
       [ngClass]="{
         'w-6 h-6': size === 'lg',
-        'w-5 h-5': size === 'xs' || size === 'sm' || size === 'md'
+        'w-5 h-5': size === 'xs' || size === 'sm' || size === 'md',
+        'w-4 h-4': size === '2xs'
       }"
     >
       <ng-content select="[timPrefix]"></ng-content>
     </div>
 
-    <div class="h-5 w-5" *ngIf="iconBtn">
+    <div [class]="size === '2xs' ? 'h-4 w-4' : 'h-5 w-5'" *ngIf="iconBtn">
       <img
         [src]="buttonType | iconSrc : iconBtn : color : disabled"
         class="h-5 w-5"
@@ -131,6 +134,7 @@
       [ngClass]="[
         'w-full font-medium',
         {
+          '2xs': 'text-sm leading-5',
           xs: 'text-sm leading-5',
           sm: 'text-sm leading-5',
           md: 'text-base leading-6',
@@ -150,7 +154,8 @@
       class="flex-none"
       [ngClass]="{
         'w-6 h-6': size === 'lg',
-        'w-5 h-5': size === 'xs' || size === 'sm' || size === 'md'
+        'w-5 h-5': size === 'xs' || size === 'sm' || size === 'md',
+        'w-4 h-4': size === '2xs'
       }"
     >
       <ng-content select="[timSuffix]"></ng-content>
@@ -163,6 +168,7 @@
     class="flex items-center justify-center relative"
     [ngClass]="
       {
+        '2xs': 'h-6 w-6',
         xs: 'h-9 w-9',
         sm: 'h-10 w-10',
         md: 'h-11 w-11',
@@ -172,7 +178,7 @@
   >
     <img
       [src]="buttonType | iconSrc : iconBtn : color : disabled"
-      class="h-5 w-5"
+      [class]="size === '2xs' ? 'h-4 w-4' : 'h-5 w-5'"
     />
   </div>
 </ng-template>
@@ -183,7 +189,7 @@
     <tim-spinner
       *ngIf="loading"
       [color]="spinnerColor"
-      [size]="size === 'lg' ? 'md' : size"
+      [size]="size === 'lg' ? 'md' : size === '2xs' ? 'xs' : size"
     ></tim-spinner>
   </div>
 </ng-template>

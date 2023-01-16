@@ -7,7 +7,7 @@ import { TimUIDropdownPosition } from '../../models/positions';
 @Component({
   selector: 'tim-dropdown-menu',
   templateUrl: './dropdown-menu.component.html',
-  exportAs: 'iqairMenu',
+  exportAs: 'timMenu',
 })
 export class TimUIDropdownMenu implements OnInit {
   trigger: TimUIDropdownTrigger;

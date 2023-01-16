@@ -2,7 +2,7 @@ import { Directive, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { DialogBgColor } from '../models/dialog-bg-color';
 
 @Directive({
-  selector: '[iqairDialogContainer]',
+  selector: '[timDialogContainer]',
 })
 export class DialogContainer {
   @ViewChild('container', { read: ViewContainerRef, static: true })

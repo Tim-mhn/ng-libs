@@ -2,7 +2,7 @@ import { Directive, HostListener, Input } from '@angular/core';
 import { TimUIDialogRef } from '../entities/dialog-ref';
 
 @Directive({
-  selector: '[iqairCloseDialogButton]',
+  selector: '[timCloseDialogButton]',
   host: {
     class: 'cursor-pointer',
   },
@@ -10,7 +10,7 @@ import { TimUIDialogRef } from '../entities/dialog-ref';
 export class TimUICloseDialogButtonDirective<T = any> {
   constructor(private _dialogRef: TimUIDialogRef<T>) {}
 
-  @Input('iqairCloseDialogButton') dialogCloseOutput: T;
+  @Input('timCloseDialogButton') dialogCloseOutput: T;
 
   @HostListener('click', ['$event'])
   closeDialogOnClick() {

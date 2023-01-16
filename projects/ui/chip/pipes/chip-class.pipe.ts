@@ -6,7 +6,7 @@ import { TimUIChipProps } from '../models/chip-props';
   name: 'chipClass',
 })
 export class ChipClassPipe implements PipeTransform {
-  transform(iqairChip: TimUIChipProps): string {
+  transform(timChip: TimUIChipProps): string {
     const COLOR_CLASSES: { [c in ChipColor]: string } = {
       primary: 'text-blue-600 bg-blue-50',
       neutral: 'text-gray-600 bg-gray-100',
@@ -23,15 +23,14 @@ export class ChipClassPipe implements PipeTransform {
       lg: 'px-3',
     };
 
-    const colorClasses =
-      COLOR_CLASSES[iqairChip.color] || COLOR_CLASSES.primary;
-    const sizeClass = SIZE_CLASSES[iqairChip.size] || SIZE_CLASSES.md;
-    const hoverClass = this._getHoverClass(iqairChip);
+    const colorClasses = COLOR_CLASSES[timChip.color] || COLOR_CLASSES.primary;
+    const sizeClass = SIZE_CLASSES[timChip.size] || SIZE_CLASSES.md;
+    const hoverClass = this._getHoverClass(timChip);
 
     return `${colorClasses} ${sizeClass} ${hoverClass}`;
   }
 
-  private _getHoverClass(iqairChip: TimUIChipProps) {
+  private _getHoverClass(timChip: TimUIChipProps) {
     const HOVER_CLASSES: { [key in ChipColor]: string } = {
       primary: 'hover:bg-blue-200',
       neutral: 'hover:bg-gray-200',
@@ -43,9 +42,9 @@ export class ChipClassPipe implements PipeTransform {
       'success-darker': '',
     };
     const hoverClass =
-      iqairChip.clickable || iqairChip.withAction
-        ? HOVER_CLASSES[iqairChip.color]
+      timChip.clickable || timChip.withAction
+        ? HOVER_CLASSES[timChip.color]
         : '';
-    return iqairChip.clickable ? `cursor-pointer ${hoverClass}` : hoverClass;
+    return timChip.clickable ? `cursor-pointer ${hoverClass}` : hoverClass;
   }
 }

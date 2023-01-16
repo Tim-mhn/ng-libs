@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonsModule } from './buttons/buttons.module';
+import { DialogsComponent } from './dialogs/dialogs.component';
+import { DialogsModule } from './dialogs/dialogs.module';
 import { EditableChipsComponent } from './editable-chips-demo/editable-chips-demo.component';
 import { EditableChipsModule } from './editable-chips-demo/editable-chips-demo.module';
 import { InputsComponent } from './inputs/inputs.component';
@@ -26,6 +28,10 @@ const routes: Routes = [
     path: 'editable-chips',
     component: EditableChipsComponent,
   },
+  {
+    path: 'dialogs',
+    component: DialogsComponent,
+  },
 ];
 
 @NgModule({
@@ -35,6 +41,7 @@ const routes: Routes = [
     SnackbarsModule,
     InputsModule,
     EditableChipsModule,
+    DialogsModule,
   ],
   exports: [RouterModule],
 })

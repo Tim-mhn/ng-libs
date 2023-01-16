@@ -19,8 +19,8 @@ Example with `TimUIButtonModule` and `TimUIChipModule`
 
 ```
 // example.module.ts
-import { TimUIButtonModule } from 'iqair-ui/button';
-  import { TimUIChipModule } from 'iqair-ui/chip'
+import { TimUIButtonModule } from 'tim-ui/button';
+  import { TimUIChipModule } from 'tim-ui/chip'
 
 @NgModule({
   imports: [TimUIButtonModule, TimUIChipModule],
@@ -29,8 +29,8 @@ import { TimUIButtonModule } from 'iqair-ui/button';
 export class ExampleModule {}
 
 // example.component.html
-<button iqair-flat-button color="primary" size="md">Click</button>
-<iqair-chip color="destructive" size="sm">chip</iqair-chip>
+<button tim-flat-button color="primary" size="md">Click</button>
+<tim-chip color="destructive" size="sm">chip</tim-chip>
 ```
 
 _List of modules_
@@ -60,7 +60,7 @@ Run `npm run build:ui` to build the project.
 - **Bump the version**: `npm version major|minor|patch`
 - **Build the library**: `npm run build:ui`
   The build artifacts will be stored in the `dist/` directory.
-  This will also run the _tailwind_ command to generate the `.css` file reusing the `iqair-tailwind` config.
+  This will also run the _tailwind_ command to generate the `.css` file reusing the `tim-tailwind` config.
 
 - **Publish to NPM**: go to the dist folder `cd dist/ui` run `npm publish`
 
