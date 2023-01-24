@@ -20,6 +20,7 @@ export class TimUITooltipOrigin implements OnDestroy {
   @Input() tooltipPosition: TooltipPosition = TooltipPosition.BOTTOM;
   @Input() disabled: boolean;
   @Input() set timTooltipOrigin(tooltip: TimUITooltip) {
+    console.log('set tim tooltip called');
     this._tooltip = tooltip;
     this.elementRef.nativeElement.onmouseover = () =>
       this.disabled ? this.hideTooltip() : this.showTooltip();
@@ -42,6 +43,11 @@ export class TimUITooltipOrigin implements OnDestroy {
     }
     if (this._tooltipContainer) {
       this._tooltipContainer.visible = true;
+      return;
+    }
+
+    if (!this._tooltip) {
+      if (this._tooltipContainer) this._tooltipContainer.visible = false;
       return;
     }
     this._createOverlay();

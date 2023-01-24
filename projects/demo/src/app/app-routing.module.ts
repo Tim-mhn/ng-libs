@@ -10,6 +10,8 @@ import { InputsComponent } from './inputs/inputs.component';
 import { InputsModule } from './inputs/inputs.module';
 import { SnackbarsComponent } from './snackbars/snackbars.component';
 import { SnackbarsModule } from './snackbars/snackbars.module';
+import { TooltipsComponent } from './tooltips/tooltips.component';
+import { TooltipsModule } from './tooltips/tooltips.module';
 
 const routes: Routes = [
   {
@@ -32,6 +34,10 @@ const routes: Routes = [
     path: 'dialogs',
     component: DialogsComponent,
   },
+  {
+    path: 'tooltips',
+    component: TooltipsComponent,
+  },
 ];
 
 @NgModule({
@@ -42,6 +48,7 @@ const routes: Routes = [
     InputsModule,
     EditableChipsModule,
     DialogsModule,
+    TooltipsModule,
   ],
   exports: [RouterModule],
 })

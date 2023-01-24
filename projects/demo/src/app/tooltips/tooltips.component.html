@@ -1,0 +1,16 @@
+<div class="p-2 flex flex-col gap-2">
+  <span [timTooltipOrigin]="tooltip" [disabled]="!showTooltip"
+    >hover to see a tooltip</span
+  >
+
+  <tim-tooltip #tooltip>This is a tooltip</tim-tooltip>
+
+  <button
+    class="border border-blue-800 inline w-fit"
+    (click)="toggleShowTooltip()"
+  >
+    enable/disable tooltip
+  </button>
+
+  {{ showTooltip }}
+</div>
