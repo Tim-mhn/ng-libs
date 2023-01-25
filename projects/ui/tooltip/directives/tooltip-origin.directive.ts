@@ -20,13 +20,14 @@ export class TimUITooltipOrigin implements OnDestroy {
   @Input() tooltipPosition: TooltipPosition = TooltipPosition.BOTTOM;
   @Input() disabled: boolean;
   @Input() set timTooltipOrigin(tooltip: TimUITooltip) {
-    console.log('set tim tooltip called');
-    this._tooltip = tooltip;
-    this.elementRef.nativeElement.onmouseover = () =>
-      this.disabled ? this.hideTooltip() : this.showTooltip();
-    this.elementRef.nativeElement.onmouseout = () => {
-      this.hideTooltip();
-    };
+    setTimeout(() => {
+      this._tooltip = tooltip;
+      this.elementRef.nativeElement.onmouseover = () =>
+        this.disabled ? this.hideTooltip() : this.showTooltip();
+      this.elementRef.nativeElement.onmouseout = () => {
+        this.hideTooltip();
+      };
+    });
   }
 
   ngOnDestroy(): void {
