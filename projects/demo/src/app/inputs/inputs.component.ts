@@ -36,7 +36,20 @@ export class InputsComponent implements OnInit {
       [Validators.required, Validators.minLength(15)],
     ],
     password3: { value: '', disabled: true },
+    smallInput: '',
   });
+
+  onFocus = (e: Event) => {
+    console.group('onFocus');
+    console.log(e);
+    console.groupEnd();
+  };
+
+  onBlur = (e: Event) => {
+    console.group('onBlur');
+    console.log(e);
+    console.groupEnd();
+  };
 
   ngOnInit(): void {}
 }

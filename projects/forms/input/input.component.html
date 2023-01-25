@@ -7,7 +7,7 @@
   }"
 >
   <div
-    class="flex flex-row justify-around w-full shadow-sm text-sm leading-5 font-normal rounded-md px-4 py-2.5 ring-offset-0 h-11 text-gray-900 max-w-full"
+    class="flex flex-row justify-around w-full shadow-sm text-sm leading-5 font-normal rounded-md px-4 py-2.5 ring-offset-0 text-gray-900 max-w-full"
     [ngClass]="{
       'border border-solid bg-white': style === 'normal',
       'bg-gray-50 hover:bg-gray-100': style === 'no-border',
@@ -17,7 +17,9 @@
       'border-gray-300': !(hasError$ | async),
       'ring-blue-100': hasFocus && !(hasError$ | async),
       'bg-black/4': isDisabled,
-      'rounded-r-none': squaredRightBorder
+      'rounded-r-none': squaredRightBorder,
+      'h-11': size === 'md',
+      'h-8': size === 'sm'
     }"
   >
     <div class="flex flex-row justify-start flex-grow items-center max-w-full">
@@ -36,8 +38,8 @@
         [placeholder]="placeholder"
         [disabled]="isDisabled"
         (input)="onInputChange($event)"
-        (blur)="onFocusChange(false)"
-        (focus)="onFocusChange(true)"
+        (blur)="onFocusChange(false, $event)"
+        (focus)="onFocusChange(true, $event)"
         [min]="minValue"
       />
     </div>

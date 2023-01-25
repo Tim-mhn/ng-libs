@@ -3,11 +3,13 @@ import {
   Component,
   ContentChild,
   ElementRef,
+  EventEmitter,
   HostListener,
   Input,
   OnDestroy,
   OnInit,
   Optional,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { FormGroupDirective, NgControl } from '@angular/forms';
@@ -21,6 +23,7 @@ import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
 import { StateManageable, handleFocusLost } from '@tim-mhn/ng-forms/core';
 import { InputType } from './models/input-type';
 import { InputStyle } from './models/input-style';
+import { InputSize } from './models/input-size';
 
 @Component({
   selector: 'tim-input',
@@ -69,6 +72,15 @@ export class TimInput<T = any>
   @Input()
   style: InputStyle = 'normal';
 
+  @Input()
+  size: InputSize = 'md';
+
+  @Output()
+  focus = new EventEmitter<FocusEvent>();
+
+  @Output()
+  blur = new EventEmitter<FocusEvent>();
+
   @ContentChild(TimUIPrefix) private _prefix: TimUIPrefix;
   public hasPrefix = false;
 
@@ -111,13 +123,16 @@ export class TimInput<T = any>
     this.stateManager?.init();
   }
 
-  onFocusChange(hasFocus: boolean) {
+  onFocusChange(hasFocus: boolean, nativeEvent: FocusEvent) {
     this.hasFocus = hasFocus;
     if (!hasFocus) {
       handleFocusLost(this.ngControl, this.stateManager);
       if (this.ngControl.control.updateOn === 'blur')
         this.setValue(this._tempValue);
     }
+
+    if (hasFocus) this.focus.emit(nativeEvent);
+    else this.blur.emit(nativeEvent);
   }
 
   ngAfterContentInit() {
