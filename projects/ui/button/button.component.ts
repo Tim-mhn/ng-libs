@@ -1,6 +1,7 @@
 import {
   AfterContentInit,
   AfterViewInit,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
@@ -24,6 +25,7 @@ import { SpinnerColor } from '@tim-mhn/ng-ui/spinner';
 import { ButtonIcon } from './models/button-icon';
 import { ButtonType } from './models/button-type';
 import { ButtonSize } from './models/button-size';
+import { captureRejectionSymbol } from 'events';
 
 @Component({
   selector:
@@ -33,6 +35,7 @@ import { ButtonSize } from './models/button-size';
     class: 'outline-none',
   },
   templateUrl: './button.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimUIButton
   implements OnChanges, AfterContentInit, AfterViewInit, OnDestroy
