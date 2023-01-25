@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   ContentChild,
   ElementRef,
@@ -35,6 +36,7 @@ import { InputSize } from './models/input-size';
     // eslint-disable-next-line no-use-before-define
     stateManageableProvider(TimInput),
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimInput<T = any>
   extends BaseControlValueAccessor<T>
