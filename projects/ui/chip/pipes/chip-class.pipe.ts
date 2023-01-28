@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { getChipColorClasses } from '../components/utils/chip-color-classes.util';
 import { ChipColor } from '../models/chip-color';
 import { TimUIChipProps } from '../models/chip-props';
 
@@ -7,23 +8,13 @@ import { TimUIChipProps } from '../models/chip-props';
 })
 export class ChipClassPipe implements PipeTransform {
   transform(timChip: TimUIChipProps): string {
-    const COLOR_CLASSES: { [c in ChipColor]: string } = {
-      primary: 'text-blue-600 bg-blue-50',
-      neutral: 'text-gray-600 bg-gray-100',
-      success: 'text-green-600 bg-green-50',
-      destructive: 'text-red-600 bg-red-50',
-      warn: 'text-yellow-600 bg-yellow-50',
-      'success-darker': 'text-green-800 bg-green-200',
-      'neutral-darker': 'bg-gray-500 text-white',
-      'primary-darker': 'bg-blue-500 text-white',
-    };
     const SIZE_CLASSES = {
       sm: 'px-2',
       md: 'px-2.5',
       lg: 'px-3',
     };
 
-    const colorClasses = COLOR_CLASSES[timChip.color] || COLOR_CLASSES.primary;
+    const colorClasses = getChipColorClasses(timChip.color);
     const sizeClass = SIZE_CLASSES[timChip.size] || SIZE_CLASSES.md;
     const hoverClass = this._getHoverClass(timChip);
 

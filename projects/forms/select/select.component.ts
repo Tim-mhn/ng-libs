@@ -49,13 +49,10 @@ export class TimSelect<T = any>
     StateManageable,
     CanUseCustomCompareFn<T>
 {
-  public readonly ARROW_UP_SRC = 'assets/icons/chevron-up-outline-gray-500.svg';
-  public readonly ARROW_DOWN_SRC =
-    'assets/icons/chevron-down-outline-gray-500.svg';
-  public readonly ARROW_UP_BLUE_SRC =
-    'assets/icons/chevron-up-outline-blue-500.svg';
-  public readonly ARROW_DOWN_BLUE_SRC =
-    'assets/icons/chevron-down-outline-blue-500.svg';
+  public readonly ARROW_UP_SRC = ICONS.ARROW_UP_GRAY;
+  public readonly ARROW_DOWN_SRC = ICONS.ARROW_DOWN_GRAY;
+  public readonly ARROW_UP_BLUE_SRC = ICONS.ARROW_UP_BLUE;
+  public readonly ARROW_DOWN_BLUE_SRC = ICONS.ARROW_DOWN_BLUE;
 
   public readonly PLUS_SRC = ICONS.PLUS_BLUE;
 

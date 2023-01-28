@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonsModule } from './buttons/buttons.module';
+import { ChipsComponent } from './chips/chips.component';
+import { ChipsModule } from './chips/chips.module';
 import { DialogsComponent } from './dialogs/dialogs.component';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { EditableChipsComponent } from './editable-chips-demo/editable-chips-demo.component';
 import { EditableChipsModule } from './editable-chips-demo/editable-chips-demo.module';
 import { InputsComponent } from './inputs/inputs.component';
 import { InputsModule } from './inputs/inputs.module';
+import { SelectsComponent } from './selects/selects.component';
+import { SelectsModule } from './selects/selects.module';
 import { SnackbarsComponent } from './snackbars/snackbars.component';
 import { SnackbarsModule } from './snackbars/snackbars.module';
 import { TooltipsComponent } from './tooltips/tooltips.component';
@@ -17,6 +21,10 @@ const routes: Routes = [
   {
     path: 'buttons',
     component: ButtonsComponent,
+  },
+  {
+    path: 'chips',
+    component: ChipsComponent,
   },
   {
     path: 'snackbars',
@@ -38,6 +46,10 @@ const routes: Routes = [
     path: 'tooltips',
     component: TooltipsComponent,
   },
+  {
+    path: 'selects',
+    component: SelectsComponent,
+  },
 ];
 
 @NgModule({
@@ -49,6 +61,8 @@ const routes: Routes = [
     EditableChipsModule,
     DialogsModule,
     TooltipsModule,
+    SelectsModule,
+    ChipsModule,
   ],
   exports: [RouterModule],
 })

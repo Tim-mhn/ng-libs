@@ -1,0 +1,16 @@
+<div
+  [class]="
+    'bg-blue-400 h-4 w-4 p-0.5 flex items-center justify-center' + colorClasses
+  "
+  [ngClass]="{
+    'rounded-full': shape === 'circle',
+    'rounded-sm': shape === 'square',
+    'h-4 w-4': size === 'sm',
+    'h-5 w-5': size === 'md',
+    'h-6 w-6': size === 'lg',
+    'cursor-pointer outline outline-2 outline-transparent hover:outline-gray-200':
+      clickable
+  }"
+>
+  <img [src]="icon" />
+</div>

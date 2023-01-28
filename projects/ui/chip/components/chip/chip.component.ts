@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import { TimUIPrefix } from '@tim-mhn/ng-ui/core';
 import { TimUIDropdownTrigger } from '@tim-mhn/ng-ui/dropdown-menu';
-import { ChipColor } from '../models/chip-color';
-import { ChipSize } from '../models/chip-size';
+import { ChipColor } from '../../models/chip-color';
+import { ChipSize } from '../../models/chip-size';
 
 @Component({
   selector: 'tim-chip',
