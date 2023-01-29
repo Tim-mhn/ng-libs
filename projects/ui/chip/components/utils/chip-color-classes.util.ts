@@ -9,6 +9,23 @@ const COLOR_CLASSES: { [c in ChipColor]: string } = {
   'neutral-darker': 'bg-gray-500 text-white',
   'primary-darker': 'bg-blue-500 text-white',
 };
-export function getChipColorClasses(c: ChipColor): string {
-  return COLOR_CLASSES[c] || COLOR_CLASSES.primary;
+
+const CHIP_ICON_COLOR_CLASSES: { [c in ChipColor]: string } = {
+  primary: 'bg-blue-500',
+  neutral: 'bg-gray-500',
+  success: 'bg-green-500',
+  destructive: 'bg-red-500',
+  warn: 'bg-yellow-500',
+  'success-darker': 'bg-green-700',
+  'neutral-darker': 'bg-gray-700 ',
+  'primary-darker': 'bg-blue-700 ',
+};
+
+export function getChipColorClasses(
+  c: ChipColor,
+  component: 'default' | 'icon' = 'default'
+): string {
+  const colorClassesMap =
+    component == 'icon' ? CHIP_ICON_COLOR_CLASSES : COLOR_CLASSES;
+  return colorClassesMap[c] || colorClassesMap.primary;
 }

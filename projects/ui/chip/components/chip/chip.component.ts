@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { TimUIPrefix } from '@tim-mhn/ng-ui/core';
 import { TimUIDropdownTrigger } from '@tim-mhn/ng-ui/dropdown-menu';
+import { ICONS } from '@tim-mhn/common/icons';
 import { ChipColor } from '../../models/chip-color';
 import { ChipSize } from '../../models/chip-size';
 
@@ -29,7 +30,7 @@ export class TimUIChip implements OnInit {
   @Output() actionClick = new EventEmitter<void>();
   @Output() chipClick = new EventEmitter<void>();
 
-  public readonly ICON_CROSS = 'assets/icons/ic-cross.svg';
+  public readonly ICON_CROSS = ICONS.X_WHITE;
 
   @ContentChild(TimUIPrefix, { static: true }) private _prefix: TimUIPrefix;
   hasPrefix: boolean;
