@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
@@ -15,16 +14,14 @@ import { getChipColorClasses } from '../utils/chip-color-classes.util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimIconChip implements OnInit {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor() {}
 
   icon: string = ICONS.CHECK_WHITE;
-  @Input() size: ChipSize;
-  @Input() shape: IconChipShape;
+  @Input() size: ChipSize = 'md';
+  @Input() shape: IconChipShape = 'circle';
   @Input() clickable: boolean;
   @Input() set color(color: ChipColor) {
     this.colorClasses = getChipColorClasses(color, 'icon');
-    console.log(this.colorClasses);
-    // this.cdr.detectChanges();
   }
 
   @Input('icon') set _icon(icon: ChipIcon) {

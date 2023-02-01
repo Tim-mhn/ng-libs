@@ -53,6 +53,10 @@ export class TimTextEditorComponent
 
   hasError$: Observable<boolean>;
 
+  focus() {
+    setTimeout(() => this.editor.nativeElement.focus());
+  }
+
   setStateManager() {
     this.stateManager = new DefaultStateManager(
       this.ngControl.control,

@@ -25,9 +25,6 @@
           <div
             class="flex items-center gap-1 justify-center flex-grow children:w-1/3"
           >
-            <!-- <div>No X / Not clickable</div>
-        <div>With X & clickable</div>
-        <div>No X & clickable</div> -->
             <tim-chip
               [color]="color"
               [size]="size"
@@ -45,15 +42,14 @@
           </div>
 
           <div class="flex gap-1 items-center">
-            <ng-container *ngFor="let clickable of [false, true]">
-              <ng-container *ngFor="let shape of SHAPES">
-                <tim-icon-chip
-                  [shape]="shape"
-                  [size]="size"
-                  [color]="color"
-                  [clickable]="clickable"
-                ></tim-icon-chip>
-              </ng-container>
+            <ng-container *ngFor="let opts of ICON_CHIPS_OPTIONS">
+              <tim-icon-chip
+                [shape]="opts.shape"
+                [size]="size"
+                [color]="color"
+                [clickable]="opts.clickable"
+                [icon]="opts.icon"
+              ></tim-icon-chip>
             </ng-container>
           </div>
         </div>
