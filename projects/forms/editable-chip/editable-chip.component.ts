@@ -1,4 +1,10 @@
-import { Component, Input, Optional, ViewChild } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  Optional,
+  ViewChild,
+} from '@angular/core';
 import { FormGroupDirective, NgControl } from '@angular/forms';
 import {
   BaseControlValueAccessor,
@@ -19,6 +25,7 @@ import { TimInput, InputType } from '@tim-mhn/ng-forms/input';
 import { EditableChipType } from './models/editable-chip-type';
 import { TypedFormBuilder } from '@tim-mhn/common/typed-forms';
 import { ChipColor } from '@tim-mhn/ng-ui/chip';
+import { Key } from '@tim-mhn/common/keyboard';
 
 @Component({
   selector: 'tim-editable-chip',
@@ -107,6 +114,11 @@ export class TimEditableChip
 
   updateValue() {
     this.toggleEditMode(false);
+  }
+
+  @HostListener('keydown', ['$event'])
+  confirmChangesOnEnter(event: KeyboardEvent) {
+    if (event.key == Key.Enter) this.confirmChanges();
   }
 
   override ngOnDestroy() {

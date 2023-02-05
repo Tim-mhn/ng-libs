@@ -51,5 +51,7 @@ export class InputsComponent implements OnInit {
     console.groupEnd();
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(console.log);
+  }
 }

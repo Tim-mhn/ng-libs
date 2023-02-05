@@ -55,6 +55,9 @@ export class TimInput<T = any>
   @Input()
   squaredRightBorder: boolean;
 
+  @Input()
+  blurOnEnter = true;
+
   /**
    * When the input errors, show an error icon.
    * This would replace any Suffix element
@@ -78,10 +81,13 @@ export class TimInput<T = any>
   size: InputSize = 'md';
 
   @Output()
-  focus = new EventEmitter<FocusEvent>();
+  focus = new EventEmitter<Event>();
 
   @Output()
-  blur = new EventEmitter<FocusEvent>();
+  blur = new EventEmitter<Event>();
+
+  @Output()
+  escaped = new EventEmitter<void>();
 
   @ContentChild(TimUIPrefix) private _prefix: TimUIPrefix;
   public hasPrefix = false;
@@ -125,7 +131,7 @@ export class TimInput<T = any>
     this.stateManager?.init();
   }
 
-  onFocusChange(hasFocus: boolean, nativeEvent: FocusEvent) {
+  onFocusChange(hasFocus: boolean, nativeEvent: Event) {
     this.hasFocus = hasFocus;
     if (!hasFocus) {
       handleFocusLost(this.ngControl, this.stateManager);
@@ -161,6 +167,11 @@ export class TimInput<T = any>
     if (event.key === Key.Escape) {
       event.preventDefault();
       event.stopPropagation();
+      this.escaped.emit();
+    }
+
+    if (event.key === Key.Enter) {
+      if (this.blurOnEnter) this.input.nativeElement.blur();
     }
   }
 }
