@@ -12,7 +12,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { IQAirDate } from '@tim-mhn/common/date';
+import { TimDate } from '@tim-mhn/common/date';
 import { WEEK_DAY } from '../../domain/constants/calendar.constant';
 import {
   DateRange,
@@ -28,16 +28,16 @@ import { TimCalendarTableCellComponent } from '../calendar-table-cell/calendar-t
 export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
   private _calendarCells: ComponentRef<TimCalendarTableCellComponent>[];
 
-  @Input() monthYear: IQAirDate;
+  @Input() monthYear: TimDate;
   @Input() dateRange: DateRange;
 
   // Maximun date that allow user to select from calendar
-  @Input() maxDate: IQAirDate;
+  @Input() maxDate: TimDate;
 
   @ViewChild('calendarTableRef', { read: ViewContainerRef, static: true })
   calendarTableRef: ViewContainerRef;
 
-  @Output() dateSelected = new EventEmitter<IQAirDate>();
+  @Output() dateSelected = new EventEmitter<TimDate>();
 
   private _onDestroy$ = new Subject<void>();
 
@@ -93,7 +93,7 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
     this.calendarTableRef.clear();
   }
 
-  private _renderCalendarTable(monthYear: IQAirDate, maxDate?: IQAirDate) {
+  private _renderCalendarTable(monthYear: TimDate, maxDate?: TimDate) {
     this._clearCalendarTable();
 
     this._renderDaysForPreviousMonth(monthYear, maxDate);
@@ -106,7 +106,7 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private _createTimCalendarTableCell(
-    date: IQAirDate,
+    date: TimDate,
     options: TimCalendarCellOption
   ) {
     const cell = this.calendarTableRef.createComponent(
@@ -124,7 +124,7 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
     return cell;
   }
 
-  private _renderDaysForCurrentMonth(date: IQAirDate, maxDate?: IQAirDate) {
+  private _renderDaysForCurrentMonth(date: TimDate, maxDate?: TimDate) {
     const numDaysInMonth = date.daysInMonth;
 
     let day = 1;
@@ -133,7 +133,7 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
         isCurrentMonth: true,
       };
 
-      const dayInCurrentMonth = IQAirDate.local(date.year, date.month, day);
+      const dayInCurrentMonth = TimDate.local(date.year, date.month, day);
 
       cellOptions = this._markAsDisabledIfAfterMaxDate(
         cellOptions,
@@ -146,7 +146,7 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  private _renderDaysForPreviousMonth(date: IQAirDate, maxDate?: IQAirDate) {
+  private _renderDaysForPreviousMonth(date: TimDate, maxDate?: TimDate) {
     const prevMonth = date.plus({ months: -1 });
     const lastDayOfPrevMonth = prevMonth.endOf('month');
     const lastDayOfWeekOfPrevMonth =
@@ -175,7 +175,7 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  private _renderDaysForNextMonth(date: IQAirDate, maxDate?: IQAirDate) {
+  private _renderDaysForNextMonth(date: TimDate, maxDate?: TimDate) {
     const nextMonth = date.plus({ months: 1 });
     const firstDayOfNextMonth = nextMonth.startOf('month');
     const firstDayOfWeekOfNextMonth = firstDayOfNextMonth.getDayOfWeek();
@@ -189,7 +189,7 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
       const numberDaysUntilFirstSaturday =
         this._getNumberOfDaysUntilFirstSaturday(firstDayOfWeekOfNextMonth);
       while (day < numberDaysUntilFirstSaturday) {
-        const nextDate = IQAirDate.local(nextMonth.year, nextMonth.month, day);
+        const nextDate = TimDate.local(nextMonth.year, nextMonth.month, day);
 
         cellOptions = this._markAsDisabledIfAfterMaxDate(
           cellOptions,
@@ -205,8 +205,8 @@ export class TimCalendarTableComponent implements OnInit, OnChanges, OnDestroy {
 
   private _markAsDisabledIfAfterMaxDate(
     cellOptions: TimCalendarCellOption,
-    maxDate: IQAirDate,
-    compareDate: IQAirDate
+    maxDate: TimDate,
+    compareDate: TimDate
   ) {
     if (compareDate.isAfter(maxDate)) {
       return { ...cellOptions, isDisabled: true };

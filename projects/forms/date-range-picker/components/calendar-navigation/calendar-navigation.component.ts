@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ICONS } from '@tim-mhn/common/icons';
-import { IQAirDate } from '@tim-mhn/common/date';
+import { TimDate } from '@tim-mhn/common/date';
 import { MONTH_LABELS } from '../../domain/constants/calendar.constant';
 
 @Component({
@@ -8,14 +8,14 @@ import { MONTH_LABELS } from '../../domain/constants/calendar.constant';
   templateUrl: './calendar-navigation.component.html',
 })
 export class TimCalendarNavigationComponent implements OnInit {
-  @Input() set monthYear(date: IQAirDate) {
+  @Input() set monthYear(date: TimDate) {
     this.selectedDate = date;
     this.year = this.selectedDate.year;
     this.month = this.selectedDate.month - 1;
   }
-  @Output() monthChanged = new EventEmitter<IQAirDate>();
+  @Output() monthChanged = new EventEmitter<TimDate>();
 
-  private selectedDate: IQAirDate;
+  private selectedDate: TimDate;
   public month: number;
   public year: number;
 

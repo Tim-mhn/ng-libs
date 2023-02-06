@@ -6,7 +6,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { IQAirDate } from '@tim-mhn/common/date';
+import { TimDate } from '@tim-mhn/common/date';
 import { WEEK_DAY } from '../../domain/constants/calendar.constant';
 import { TimCalendarCellOption } from '../../domain/models/date-picker';
 
@@ -16,9 +16,9 @@ import { TimCalendarCellOption } from '../../domain/models/date-picker';
 })
 export class TimCalendarTableCellComponent implements OnInit {
   @ViewChild('dateCell', { static: true }) dateCell: ElementRef;
-  @Output() calendarCellClicked = new EventEmitter<IQAirDate>();
+  @Output() calendarCellClicked = new EventEmitter<TimDate>();
 
-  public fullDate: IQAirDate;
+  public fullDate: TimDate;
   public options: TimCalendarCellOption;
 
   public fullDateText: string;
@@ -35,7 +35,7 @@ export class TimCalendarTableCellComponent implements OnInit {
 
   ngOnInit() {
     const { year, month, day } = this.fullDate;
-    this.fullDateText = IQAirDate.local(year, month, day).toISO();
+    this.fullDateText = TimDate.local(year, month, day).toISO();
     this.date = this.fullDate.day;
 
     this._isStartOfWeek = this.fullDate.getDayOfWeek() === WEEK_DAY.Sunday;
@@ -46,7 +46,7 @@ export class TimCalendarTableCellComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
 
-    const selectedDate = IQAirDate.fromISO(this.fullDateText);
+    const selectedDate = TimDate.fromISO(this.fullDateText);
     this.calendarCellClicked.emit(selectedDate);
   }
 

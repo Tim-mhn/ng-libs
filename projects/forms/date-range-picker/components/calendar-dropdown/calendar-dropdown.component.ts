@@ -6,8 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { objectKeys } from '@tim-mhn/common/objects';
-import { DateDiff, IQAirDate } from '@tim-mhn/common/date';
+import { DateDiff, TimDate } from '@tim-mhn/common/date';
 import { DateRange } from '../../domain/models/date-picker';
 import { TimDatePickerTriggerDirective } from '../../directives/date-picker-trigger.directive';
 
@@ -24,23 +23,12 @@ export class TimCalendarDropdownComponent implements OnInit, OnChanges {
       return;
     }
 
-    this.monthYearForCalendarTwo = this.dateRange?.end || IQAirDate.now();
+    this.monthYearForCalendarTwo = this.dateRange?.end || TimDate.now();
     this.monthYearForCalendarOne =
       this.dateRange?.start.month === this.monthYearForCalendarTwo.month
         ? this.dateRange?.start.plus({ months: -1 })
         : this.dateRange?.start;
   }
-
-  @Input() set maxRange(maxRange: DateDiff) {
-    if (maxRange) {
-      const keys = objectKeys(maxRange);
-      if (keys.length > 0 && keys[0] === 'days')
-        this._maxRange = { days: maxRange.days - 1 };
-      else this._maxRange = maxRange;
-    } else this._maxRange = maxRange;
-  }
-
-  private _maxRange: DateDiff;
 
   @Output() dateRangeChanged = new EventEmitter<DateRange>();
   @Output() calendarOpened = new EventEmitter();
@@ -56,13 +44,12 @@ export class TimCalendarDropdownComponent implements OnInit, OnChanges {
   private _isChangingStartDate = false;
   private _isChangingEndDate = false;
 
-  public monthYearForCalendarOne: IQAirDate;
-  public monthYearForCalendarTwo: IQAirDate;
+  public monthYearForCalendarOne: TimDate;
+  public monthYearForCalendarTwo: TimDate;
 
   public disableApply: boolean = true;
 
-  private _today = IQAirDate.now();
-  public maxDate: IQAirDate = this._today;
+  public maxDate: TimDate = null;
 
   constructor() {}
 
@@ -83,7 +70,6 @@ export class TimCalendarDropdownComponent implements OnInit, OnChanges {
 
   public close() {
     this.isOpen = false;
-    this.maxDate = this._today;
     this._restorePreviousDateRange();
     this.calendarClosed.emit();
   }
@@ -92,10 +78,9 @@ export class TimCalendarDropdownComponent implements OnInit, OnChanges {
     this.trigger = trigger;
   }
 
-  handleDateSelected(newDate: IQAirDate) {
+  handleDateSelected(newDate: TimDate) {
     if (!this.dateRange) {
       this.dateRange = { start: newDate, end: null };
-      this._updateMaxDate(this.dateRange.start);
       return;
     }
 
@@ -107,7 +92,6 @@ export class TimCalendarDropdownComponent implements OnInit, OnChanges {
       }
 
       this._isChangingStartDate = false;
-      this._updateMaxDate(this.dateRange.start);
       this._toggleDisableApply();
       return;
     }
@@ -132,12 +116,10 @@ export class TimCalendarDropdownComponent implements OnInit, OnChanges {
       }
     }
 
-    this._updateMaxDate(this.dateRange.start);
     this._toggleDisableApply();
   }
 
   onStartDateClick() {
-    this.maxDate = this._today;
     this._isChangingStartDate = true;
   }
 
@@ -168,24 +150,8 @@ export class TimCalendarDropdownComponent implements OnInit, OnChanges {
     else this.disableApply = true;
   }
 
-  private _updateMaxDate(startDate: IQAirDate) {
-    const newMaxDate = this._maxRange
-      ? startDate.plus(this._maxRange)
-      : this._today;
-    this.maxDate = newMaxDate.isAfter(this._today, { ignoreTime: true })
-      ? this._today
-      : newMaxDate;
-
-    if (
-      this.dateRange.end &&
-      this.dateRange.end.isAfter(this.maxDate, { ignoreTime: true })
-    ) {
-      this.dateRange.end = this.maxDate;
-    }
-  }
-
   private _setDefaultDateRange() {
-    this.monthYearForCalendarTwo = IQAirDate.now();
+    this.monthYearForCalendarTwo = TimDate.now();
     this.monthYearForCalendarOne = this.monthYearForCalendarTwo.plus({
       months: -1,
     });

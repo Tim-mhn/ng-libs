@@ -4,6 +4,8 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonsModule } from './buttons/buttons.module';
 import { ChipsComponent } from './chips/chips.component';
 import { ChipsModule } from './chips/chips.module';
+import { DatePickersComponent } from './date-pickers/date-pickers.component';
+import { DatePickersModule } from './date-pickers/date-pickers.module';
 import { DialogsComponent } from './dialogs/dialogs.component';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { EditableChipsComponent } from './editable-chips-demo/editable-chips-demo.component';
@@ -25,6 +27,10 @@ const routes: Routes = [
   {
     path: 'chips',
     component: ChipsComponent,
+  },
+  {
+    path: 'date-pickers',
+    component: DatePickersComponent,
   },
   {
     path: 'snackbars',
@@ -63,6 +69,7 @@ const routes: Routes = [
     TooltipsModule,
     SelectsModule,
     ChipsModule,
+    DatePickersModule,
   ],
   exports: [RouterModule],
 })

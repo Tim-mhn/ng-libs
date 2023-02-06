@@ -1,8 +1,8 @@
-import { IQAirDate } from '@tim-mhn/common/date';
+import { TimDate } from '@tim-mhn/common/date';
 
 export interface DateRange {
-  start?: IQAirDate;
-  end?: IQAirDate;
+  start?: TimDate;
+  end?: TimDate;
 }
 
 export interface TimCalendarCellOption {

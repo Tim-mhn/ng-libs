@@ -3,7 +3,7 @@ import { TimTimeInputComponent } from '../components/time-input/time-input.compo
 import { TimRangeTimePart } from './range-time-part.directive';
 
 @Directive({
-  selector: 'tim-time-input[StartTime]',
+  selector: 'tim-time-input[timStartTime]',
 })
 export class TimStartTimeDirective extends TimRangeTimePart {
   constructor(input: TimTimeInputComponent) {

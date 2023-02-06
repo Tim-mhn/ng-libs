@@ -7,4 +7,4 @@ import { TimeOfDayLabelPipe } from './pipes/time-of-day-label.pipe';
   providers: [TimeOfDayLabelPipe, DateTimeFormatPipe],
   exports: [TimeOfDayLabelPipe, DateTimeFormatPipe],
 })
-export class IQAirDateModule {}
+export class TimDateModule {}

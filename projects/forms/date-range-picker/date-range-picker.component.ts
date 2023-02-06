@@ -30,8 +30,7 @@ import { DateRange } from './domain/models/date-picker';
 export class TimDateRangePickerComponent
   implements OnInit, ControlValueAccessor, StateManageable, OnDestroy
 {
-  @Input() placeholder: string = 'Select date';
-  @Input() maxRange: DateDiff;
+  @Input() placeholder: string = 'Select dates';
   @Input() size: ThemeSize = 'sm';
   @Input() showErrorMessage = true;
 
@@ -39,8 +38,8 @@ export class TimDateRangePickerComponent
 
   public readonly CALENDAR_GRAY = ICONS.CALENDAR_OUTLINE_GRAY_500;
 
-  private _onChange: any;
-  private _onTouched: any;
+  private _onChange = (v: any) => {};
+  private _onTouched = () => {};
 
   public isActive = false;
 

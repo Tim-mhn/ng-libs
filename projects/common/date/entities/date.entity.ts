@@ -3,7 +3,7 @@ import { AbstractDate } from '../models/abtract-date';
 import { DateDiff } from '../models/date-diff';
 import { DayOfWeekNumber } from '../models/day-of-week';
 
-export class IQAirDate extends AbstractDate {
+export class TimDate extends AbstractDate {
   private constructor(_luxonDate: DateTime) {
     super();
     this._luxonDate = _luxonDate;
@@ -33,8 +33,8 @@ export class IQAirDate extends AbstractDate {
     this.millisecond = this._luxonDate.millisecond;
   }
 
-  public static override now(): IQAirDate {
-    return new IQAirDate(DateTime.now());
+  public static override now(): TimDate {
+    return new TimDate(DateTime.now());
   }
 
   public toFormat(format: string): string {
@@ -43,13 +43,13 @@ export class IQAirDate extends AbstractDate {
 
   public static override fromISO(iso: string, timezone?: string) {
     const _luxonDate = timezone
-      ? IQAirDate._timezoneLuxonDateIfValid(iso, timezone)
+      ? TimDate._timezoneLuxonDateIfValid(iso, timezone)
       : DateTime.fromISO(iso);
 
     if (!_luxonDate.isValid)
-      console.debug('Invalid iso string to build IQAirDate : ', iso);
+      console.debug('Invalid iso string to build TimDate : ', iso);
 
-    return new IQAirDate(_luxonDate);
+    return new TimDate(_luxonDate);
   }
 
   private static _timezoneLuxonDateIfValid(iso: string, timezone?: string) {
@@ -68,7 +68,7 @@ export class IQAirDate extends AbstractDate {
     return this._luxonDate.toISO();
   }
 
-  public diff(date: IQAirDate): DateDiff {
+  public diff(date: TimDate): DateDiff {
     return this._luxonDate
       .diff(date._luxonDate, ['years', 'months', 'days'])
       .toObject();
@@ -76,16 +76,16 @@ export class IQAirDate extends AbstractDate {
 
   public plus(diff: DateDiff) {
     const _luxonPlus = this._luxonDate.plus(diff);
-    return new IQAirDate(_luxonPlus);
+    return new TimDate(_luxonPlus);
   }
   public minus(diff: DateDiff) {
     const _luxonMinus = this._luxonDate.minus(diff);
-    return new IQAirDate(_luxonMinus);
+    return new TimDate(_luxonMinus);
   }
 
   public setTimezone(tz: string) {
     const _newTzDate = this._luxonDate.setZone(tz);
-    return new IQAirDate(_newTzDate);
+    return new TimDate(_newTzDate);
   }
 
   public isLastDayOfMonth(): boolean {
@@ -106,27 +106,27 @@ export class IQAirDate extends AbstractDate {
 
   public startOf(unit: 'week' | 'month' | 'day') {
     const startOfDate = DateTime.local(this.year, this.month).startOf(unit);
-    return new IQAirDate(startOfDate);
+    return new TimDate(startOfDate);
   }
 
   public endOf(unit: 'week' | 'month') {
     const endOfDate = DateTime.local(this.year, this.month).endOf(unit);
-    return new IQAirDate(endOfDate);
+    return new TimDate(endOfDate);
   }
 
   public static override local(year?: number, month?: number, day?: number) {
     const date = DateTime.local(year, month, day);
-    return new IQAirDate(date);
+    return new TimDate(date);
   }
 
   public toLocal() {
     const date = DateTime.local(this.year, this.month, this.day, {
       zone: 'utc',
     });
-    return new IQAirDate(date);
+    return new TimDate(date);
   }
 
-  public equals(otherDate: IQAirDate, opt = { ignoreTime: false }) {
+  public equals(otherDate: TimDate, opt = { ignoreTime: false }) {
     const date1 = opt.ignoreTime ? this._removeTime(this) : this;
     const date2 = opt.ignoreTime ? this._removeTime(otherDate) : otherDate;
     return date1._luxonDate.equals(date2._luxonDate);
@@ -136,7 +136,7 @@ export class IQAirDate extends AbstractDate {
     return this._luxonDate.toMillis();
   }
 
-  public isAfter(compareDate: IQAirDate, opt = { ignoreTime: false }) {
+  public isAfter(compareDate: TimDate, opt = { ignoreTime: false }) {
     if (compareDate) {
       const date1 = opt.ignoreTime ? this._removeTime(this) : this;
       const date2 = opt.ignoreTime
@@ -147,8 +147,8 @@ export class IQAirDate extends AbstractDate {
     return false;
   }
 
-  private _removeTime(date: IQAirDate) {
+  private _removeTime(date: TimDate) {
     const { year, month, day } = date;
-    return IQAirDate.local(year, month, day);
+    return TimDate.local(year, month, day);
   }
 }

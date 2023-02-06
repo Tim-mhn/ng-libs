@@ -1,8 +1,8 @@
-import { IQAirDate } from './entities/date.entity';
+import { TimDate } from './entities/date.entity';
 import { DateDiff } from './models/date-diff';
 import { TimeUnit } from './models/time-unit';
 import { DayOfWeek, DayOfWeekNumber } from './models/day-of-week';
-import { IQAirDateModule } from './module';
+import { TimDateModule } from './module';
 import {
   TimeOfDay,
   TimeOfDayConstructorProps,
@@ -17,12 +17,12 @@ export * from './constants/date-time-format.constants';
 export * from './constants/days.constant';
 
 export {
-  IQAirDate,
+  TimDate,
   TimeUnit,
   DateDiff,
   DayOfWeek,
   DayOfWeekNumber,
-  IQAirDateModule,
+  TimDateModule,
   TimeOfDay,
   TimeOfDayConstructorProps,
   TimeOfDayOutOfBounds,
