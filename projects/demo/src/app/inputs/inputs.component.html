@@ -148,6 +148,28 @@
 
           <tim-input size="sm" formControlName="smallInput"></tim-input>
         </div>
+
+        <div>
+          <p>Input with suggestions</p>
+
+          <tim-html-input
+            formControlName="inputSuggester"
+            [timAutocomplete]="suggester"
+          ></tim-html-input>
+
+          <tim-autocomplete
+            #suggester
+            [newTagTemplate]="customTagTemplateBuilder"
+          >
+            <tim-autocomplete-suggestion
+              *ngFor="let suggestion of autocompleteSuggestions"
+              [value]="suggestion"
+              >{{ suggestion }}</tim-autocomplete-suggestion
+            >
+          </tim-autocomplete>
+
+          <tim-html-input formControlName="htmlInput"></tim-html-input>
+        </div>
       </div>
     </div>
   </div>

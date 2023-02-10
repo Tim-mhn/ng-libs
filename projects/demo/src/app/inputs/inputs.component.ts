@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ICONS } from '@tim-mhn/common/icons';
+import { TagTemplateBuilder } from '@tim-mhn/ng-forms/autocomplete';
 @Component({
   selector: 'demo-inputs',
   templateUrl: './inputs.component.html',
@@ -37,21 +38,26 @@ export class InputsComponent implements OnInit {
     ],
     password3: { value: '', disabled: true },
     smallInput: '',
+    inputSuggester: '',
+    htmlInput: "<span style='color:blue'>HTML</span> input",
   });
 
   onFocus = (e: Event) => {
     console.group('onFocus');
-    console.log(e);
     console.groupEnd();
   };
 
   onBlur = (e: Event) => {
     console.group('onBlur');
-    console.log(e);
     console.groupEnd();
   };
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(console.log);
+    // this.form.valueChanges.subscribe(console.log);
   }
+
+  customTagTemplateBuilder: TagTemplateBuilder = (text: string) =>
+    `<strong class="text-gray-800 border border-gray-200 rounded-md shadow-lg bg-gray-100">text</strong>`;
+
+  autocompleteSuggestions = ['hello', 'world', 'tim', 'tom'];
 }

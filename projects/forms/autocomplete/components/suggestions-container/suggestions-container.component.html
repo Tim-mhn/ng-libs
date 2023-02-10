@@ -1,0 +1,16 @@
+<div
+  class="p-2 rounded text-xs font-medium max-w-65 shadow-lg bg-white children:cursor-pointer"
+  [class.hidden]="!visible"
+>
+  <div
+    *ngFor="let sugg of suggestions$ | async"
+    class="cursor-pointer"
+    (click)="sugg.click()"
+  >
+    <ng-container *ngTemplateOutlet="sugg.template"></ng-container>
+  </div>
+
+  <div *ngIf="tagInput$ | async" (click)="createCustomTag()">
+    Create tag "{{ tagInput$ | async }}"
+  </div>
+</div>

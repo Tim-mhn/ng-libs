@@ -14,7 +14,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormGroupDirective, NgControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Key } from '@tim-mhn/common/keyboard';
 import { TimUIPrefix } from '@tim-mhn/ng-forms/core';
 import { BaseControlValueAccessor } from '@tim-mhn/ng-forms/core';
@@ -101,7 +101,8 @@ export class TimInput<T = any>
   constructor(
     @Optional() public parent: FormGroupDirective,
     private errorStateMatcher: ErrorStateMatcher,
-    @Optional() public override ngControl: NgControl
+    @Optional() public override ngControl: NgControl,
+    public elementRef: ElementRef<HTMLElement>
   ) {
     super(ngControl);
     this.setStateManager();
@@ -162,12 +163,16 @@ export class TimInput<T = any>
     this.stateManager?.destroy();
   }
 
+  private _escaped$ = new Subject<void>();
+  public escaped$ = this._escaped$.asObservable();
+
   @HostListener('keydown', ['$event'])
   cancelEscape(event: KeyboardEvent) {
     if (event.key === Key.Escape) {
       event.preventDefault();
       event.stopPropagation();
       this.escaped.emit();
+      this._escaped$.next();
     }
 
     if (event.key === Key.Enter) {

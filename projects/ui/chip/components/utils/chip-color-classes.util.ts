@@ -5,7 +5,7 @@ const COLOR_CLASSES: { [c in ChipColor]: string } = {
   success: 'text-green-600 bg-green-50',
   destructive: 'text-red-600 bg-red-50',
   warn: 'text-yellow-600 bg-yellow-50',
-  'success-darker': 'text-green-800 bg-green-200',
+  'success-darker': 'text-white bg-green-500',
   'neutral-darker': 'bg-gray-500 text-white',
   'primary-darker': 'bg-blue-500 text-white',
 };

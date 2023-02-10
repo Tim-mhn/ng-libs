@@ -6,6 +6,7 @@ import { TimPasswordInputModule } from '@tim-mhn/ng-forms/password-input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TimInputFieldModule } from '@tim-mhn/ng-forms/input-field';
 import { TypedFormsModule } from '@tim-mhn/common/typed-forms';
+import { TimAutocompleteModule } from '@tim-mhn/ng-forms/autocomplete';
 
 @NgModule({
   declarations: [InputsComponent],
@@ -13,8 +14,10 @@ import { TypedFormsModule } from '@tim-mhn/common/typed-forms';
     CommonModule,
     TimInputModule,
     TimInputFieldModule,
+    TimAutocompleteModule,
     TimPasswordInputModule,
     ReactiveFormsModule,
+    TypedFormsModule,
   ],
 })
 export class InputsModule {}

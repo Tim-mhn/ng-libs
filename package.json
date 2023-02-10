@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:forms:watch": "ng test forms --browsers=ChromeHeadless",
     "build:ui": "ng build ui && npm run build:ui:styles",
     "build:ui:styles": "npx tailwind -c projects/ui/tailwind.config.js -i projects/ui/styles.scss -o dist/ui/styles.css",
     "build:forms": "ng build forms && npm run build:forms:styles",

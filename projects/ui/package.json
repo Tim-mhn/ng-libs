@@ -5,7 +5,7 @@
     "directory": "projects/forms",
     "url": "https://github.com/Tim-mhn/ng-libs/tree/master/projects/forms"
   },
-  "version": "1.5.5",
+  "version": "1.5.7",
   "peerDependencies": {
     "@angular/cdk": "12 - 13",
     "@angular/common": "12 - 13",
