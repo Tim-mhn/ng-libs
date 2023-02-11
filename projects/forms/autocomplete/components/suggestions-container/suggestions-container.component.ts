@@ -37,8 +37,13 @@ export class TimHashtagOptionComponentsContainer implements OnInit {
     this.visible = false;
   }
 
+  onTagSuggestionClick(tag: TimHashtagOptionComponent) {
+    this.hide();
+    tag.click();
+  }
+
   createCustomTag() {
-    console.log(this.currentTagInput);
+    this.hide();
     this._createTag$.next(this.currentTagInput);
   }
 

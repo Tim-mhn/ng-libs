@@ -4,6 +4,7 @@ import {
   ElementRef,
   HostListener,
   Inject,
+  Input,
   OnInit,
   Optional,
   ViewChild,
@@ -41,7 +42,8 @@ export class TimHtmlInput
   }
 
   @ViewChild('input', { static: true }) input: ElementRef<HTMLDivElement>;
-
+  @Input() noLineBreak = false;
+  @Input() placeholder: string;
   stateManager: StateManager;
 
   hasError$: Observable<boolean>;
@@ -101,6 +103,11 @@ export class TimHtmlInput
   emitEscape(e: KeyboardEvent) {
     if (e.key == Key.Escape) this._escaped$.next();
     this._allowNonEditableChildrenToBeDeleted(e);
+    this._preventLineBreakIfNotAllowed(e);
+  }
+
+  private _preventLineBreakIfNotAllowed(e: KeyboardEvent) {
+    if (e.key === Key.Enter && this.noLineBreak) e.preventDefault();
   }
 
   private _allowNonEditableChildrenToBeDeleted(event: KeyboardEvent) {

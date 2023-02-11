@@ -5,12 +5,15 @@
   <div
     *ngFor="let sugg of suggestions$ | async"
     class="cursor-pointer"
-    (click)="sugg.click()"
+    (click)="$event.stopPropagation(); onTagSuggestionClick(sugg)"
   >
     <ng-container *ngTemplateOutlet="sugg.template"></ng-container>
   </div>
 
-  <div *ngIf="tagInput$ | async" (click)="createCustomTag()">
+  <div
+    *ngIf="tagInput$ | async"
+    (click)="$event.stopPropagation(); createCustomTag()"
+  >
     Create tag "{{ tagInput$ | async }}"
   </div>
 </div>

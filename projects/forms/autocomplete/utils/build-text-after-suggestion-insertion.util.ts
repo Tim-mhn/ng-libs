@@ -7,10 +7,6 @@ export function buildTextAfterSuggestionInsertion(
   currentText: string,
   suggestion: TimHashtagOption
 ): string {
-  console.group('buildTextAfterSuggestionInsertion');
-  console.log('current text = ', currentText);
-  console.log('suggestion.value = ', suggestion.value);
-  debugger;
   if (!currentText) return suggestion.value;
 
   const [_, ...groupMatches] = currentText?.match(HASHTAG_REGEX) || [];
@@ -30,8 +26,6 @@ export function buildTextAfterSuggestionInsertion(
   const newText =
     groupsAndReplaceTemporaryHashTagWithSuggestion?.join('') || '';
 
-  console.log('Returning: ', newText);
-  console.groupEnd();
   return newText;
 }
 
