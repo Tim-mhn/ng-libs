@@ -1,11 +1,11 @@
-import { TimAutocompleteSuggestion } from '../models';
+import { TimHashtagOption } from '../models';
 
 const HASHTAG_REGEX = /(.*)(#(?:[^ ]*)?)(.*)/;
 
 const HASHTAG_GROUP_INDEX = 1;
 export function buildTextAfterSuggestionInsertion(
   currentText: string,
-  suggestion: TimAutocompleteSuggestion
+  suggestion: TimHashtagOption
 ): string {
   console.group('buildTextAfterSuggestionInsertion');
   console.log('current text = ', currentText);
@@ -41,11 +41,11 @@ function noMatches(groupMatches: string[]) {
 
 function concatCurrentTextAndSuggestion(
   currentText: string,
-  suggestion: TimAutocompleteSuggestion
+  suggestion: TimHashtagOption
 ) {
   return `${currentText}${suggestionWithExtraSpace(suggestion)}`;
 }
 
-function suggestionWithExtraSpace(suggestion: TimAutocompleteSuggestion) {
+function suggestionWithExtraSpace(suggestion: TimHashtagOption) {
   return `${suggestion.value}&nbsp;`;
 }

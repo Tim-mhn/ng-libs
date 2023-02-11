@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, share, Subject, tap } from 'rxjs';
-import { TimAutocompleteSuggestionComponent } from '../autocomplete-suggestion/autocomplete-suggestion.component';
+import { TimHashtagOptionComponent } from '../autocomplete-suggestion/autocomplete-suggestion.component';
 
 @Component({
   selector: 'tim-suggestions-container',
   templateUrl: './suggestions-container.component.html',
 })
-export class TimSuggestionsContainerComponent implements OnInit {
+export class TimHashtagOptionComponentsContainer implements OnInit {
   constructor() {}
 
   private _createTag$ = new Subject<string>();
   public createTagClick$ = this._createTag$.asObservable();
 
-  suggestions$: Observable<TimAutocompleteSuggestionComponent[]>;
+  suggestions$: Observable<TimHashtagOptionComponent[]>;
 
   visible = true;
 
@@ -21,7 +21,7 @@ export class TimSuggestionsContainerComponent implements OnInit {
   currentTagInput: string;
   public init(opts: {
     tagInput: Observable<string>;
-    suggestions: Observable<TimAutocompleteSuggestionComponent[]>;
+    suggestions: Observable<TimHashtagOptionComponent[]>;
   }) {
     this.tagInput$ = opts.tagInput.pipe(
       tap((tag) => (this.currentTagInput = tag))

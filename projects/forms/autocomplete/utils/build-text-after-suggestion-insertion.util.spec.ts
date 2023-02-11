@@ -1,8 +1,8 @@
-import { TimAutocompleteSuggestion } from '../models/suggestion';
+import { TimHashtagOption } from '../models/suggestion';
 import { buildTextAfterSuggestionInsertion } from './build-text-after-suggestion-insertion.util';
 
 describe('buildTextAfterSuggestionInsertion', () => {
-  let suggestion: TimAutocompleteSuggestion;
+  let suggestion: TimHashtagOption;
 
   beforeEach(() => {
     suggestion = {

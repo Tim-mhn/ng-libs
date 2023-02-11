@@ -1,3 +1,3 @@
-export interface TimAutocompleteSuggestion {
+export interface TimHashtagOption {
   value: string;
 }

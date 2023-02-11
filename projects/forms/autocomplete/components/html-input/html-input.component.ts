@@ -100,5 +100,44 @@ export class TimHtmlInput
   @HostListener('keydown', ['$event'])
   emitEscape(e: KeyboardEvent) {
     if (e.key == Key.Escape) this._escaped$.next();
+    this._allowNonEditableChildrenToBeDeleted(e);
+  }
+
+  private _allowNonEditableChildrenToBeDeleted(event: KeyboardEvent) {
+    if (window.getSelection && event.key === Key.Backspace) {
+      var selection = window.getSelection();
+      if (!selection.isCollapsed || !selection.rangeCount) {
+        return;
+      }
+
+      var curRange = selection.getRangeAt(selection.rangeCount - 1);
+      if (
+        curRange.commonAncestorContainer.nodeType == 3 &&
+        curRange.startOffset > 0
+      ) {
+        // we are in child selection. The characters of the text node is being deleted
+        return;
+      }
+
+      var range = document.createRange();
+      if (selection.anchorNode != this.input.nativeElement) {
+        // selection is in character mode. expand it to the whole editable field
+        range.selectNodeContents(this.input.nativeElement);
+        range.setEndBefore(selection.anchorNode);
+      } else if (selection.anchorOffset > 0) {
+        range.setEnd(this.input.nativeElement, selection.anchorOffset);
+      } else {
+        // reached the beginning of editable field
+        return;
+      }
+      range.setStart(this.input.nativeElement, range.endOffset - 1);
+
+      var previousNode = range.cloneContents().lastChild;
+      if (previousNode && (previousNode as any).contentEditable == 'false') {
+        // this is some rich content, e.g. smile. We should help the user to delete it
+        range.deleteContents();
+        event.preventDefault();
+      }
+    }
   }
 }

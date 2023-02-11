@@ -13,24 +13,21 @@ import { firstValueFrom, skip, take } from 'rxjs';
 import { Key } from '@tim-mhn/common/keyboard';
 import { TimHtmlInput } from '../components/html-input/html-input.component';
 import { TimAutocompleteModule } from '../module';
-import { TimAutoCompleteDirective } from './autocomplete.directive';
+import { TimHashtagAutoCompleteDirective } from './hashtag-autocomplete.directive';
 
 @Component({
   template: `
     <tim-html-input
       [formControl]="fc"
       #timInput
-      [timAutocomplete]="autocomplete"
+      [timHashtagAutocomplete]="autocomplete"
     ></tim-html-input>
 
-    <tim-autocomplete #autocomplete>
-      <tim-autocomplete-suggestion
-        *ngFor="let sugg of suggestions"
-        [value]="sugg"
+    <tim-hashtag-autocomplete #autocomplete>
+      <tim-hashtag-option *ngFor="let sugg of suggestions" [value]="sugg">
+        {{ sugg }}</tim-hashtag-option
       >
-        {{ sugg }}</tim-autocomplete-suggestion
-      >
-    </tim-autocomplete>
+    </tim-hashtag-autocomplete>
   `,
 })
 class HostComponent {
@@ -46,12 +43,12 @@ class HostComponent {
 
 const ALL_SUGGESTIONS = ['sports', 'cooking', 'yoga', 'museums', 'arts'];
 
-describe('TimAutoCompleteDirective', () => {
+describe('TimHashtagAutoCompleteDirective', () => {
   let fixture: ComponentFixture<HostComponent>;
-  let dir: TimAutoCompleteDirective;
+  let dir: TimHashtagAutoCompleteDirective;
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
-      declarations: [HostComponent, TimAutoCompleteDirective],
+      declarations: [HostComponent, TimHashtagAutoCompleteDirective],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [OverlayModule, ReactiveFormsModule, TimAutocompleteModule],
     }).createComponent(HostComponent);
@@ -59,11 +56,11 @@ describe('TimAutoCompleteDirective', () => {
     fixture.detectChanges();
 
     const des = fixture.debugElement.queryAll(
-      By.directive(TimAutoCompleteDirective)
+      By.directive(TimHashtagAutoCompleteDirective)
     );
     dir = des[0].injector.get(
-      TimAutoCompleteDirective
-    ) as TimAutoCompleteDirective;
+      TimHashtagAutoCompleteDirective
+    ) as TimHashtagAutoCompleteDirective;
 
     spyOn(dir, 'toggleSuggestions').and.callThrough();
     spyOn(dir, 'hide').and.callThrough();

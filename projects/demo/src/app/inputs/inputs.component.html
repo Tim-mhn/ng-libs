@@ -154,19 +154,16 @@
 
           <tim-html-input
             formControlName="inputSuggester"
-            [timAutocomplete]="suggester"
+            [timHashtagAutocomplete]="suggester"
           ></tim-html-input>
 
-          <tim-autocomplete
-            #suggester
-            [newTagTemplate]="customTagTemplateBuilder"
-          >
-            <tim-autocomplete-suggestion
+          <tim-hashtag-autocomplete #suggester [tagTemplate]="tagTemplate">
+            <tim-hashtag-option
               *ngFor="let suggestion of autocompleteSuggestions"
               [value]="suggestion"
-              >{{ suggestion }}</tim-autocomplete-suggestion
+              >{{ suggestion }}</tim-hashtag-option
             >
-          </tim-autocomplete>
+          </tim-hashtag-autocomplete>
 
           <tim-html-input formControlName="htmlInput"></tim-html-input>
         </div>

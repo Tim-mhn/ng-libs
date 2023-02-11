@@ -7,18 +7,16 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TimAutocompleteSuggestion } from '../../models/suggestion';
+import { TimHashtagOption } from '../../models/suggestion';
 
 @Component({
-  selector: 'tim-autocomplete-suggestion',
+  selector: 'tim-hashtag-option',
   templateUrl: './autocomplete-suggestion.component.html',
   host: {
     class: 'cursor-pointer ',
   },
 })
-export class TimAutocompleteSuggestionComponent
-  implements OnInit, TimAutocompleteSuggestion
-{
+export class TimHashtagOptionComponent implements OnInit, TimHashtagOption {
   constructor() {}
 
   @Input() value: string;

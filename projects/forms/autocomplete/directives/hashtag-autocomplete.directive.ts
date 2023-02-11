@@ -21,18 +21,18 @@ import {
   Subscription,
   switchMap,
 } from 'rxjs';
-import { TimAutocompleteUIComponent } from '../components/autocomplete-ui.component';
+import { TimHashtagAutocompleteUIComponent } from '../components/hashtag-autocomplete-ui.component';
 import { TimHtmlInput } from '../components/html-input/html-input.component';
-import { TimSuggestionsContainerComponent } from '../components/suggestions-container/suggestions-container.component';
+import { TimHashtagOptionComponentsContainer } from '../components/suggestions-container/suggestions-container.component';
 import { HASH_TAG } from '../constants/hash-tag.constant';
-import { TimAutocompleteSuggestion } from '../models/suggestion';
-import { TimAutocompleteSuggestionComponent } from '../components/autocomplete-suggestion/autocomplete-suggestion.component';
+import { TimHashtagOption } from '../models/suggestion';
+import { TimHashtagOptionComponent } from '../components/autocomplete-suggestion/autocomplete-suggestion.component';
 import { buildTextAfterSuggestionInsertion } from '../utils/build-text-after-suggestion-insertion.util';
 
 @Directive({
-  selector: 'tim-html-input[timAutocomplete]',
+  selector: 'tim-html-input[timHashtagAutocomplete]',
 })
-export class TimAutoCompleteDirective
+export class TimHashtagAutoCompleteDirective
   implements OnInit, AfterViewInit, OnDestroy
 {
   constructor(
@@ -41,9 +41,10 @@ export class TimAutoCompleteDirective
     private _overlay: Overlay
   ) {}
 
-  @Input('timAutocomplete') autocomplete: TimAutocompleteUIComponent;
+  @Input('timHashtagAutocomplete')
+  autocomplete: TimHashtagAutocompleteUIComponent;
 
-  container: TimSuggestionsContainerComponent;
+  container: TimHashtagOptionComponentsContainer;
   ngOnInit(): void {}
 
   subs = new Subscription();
@@ -72,12 +73,12 @@ export class TimAutoCompleteDirective
   }
 
   private _updateInputValueOnSuggestionClick() {
-    const suggestionClicked$: Observable<TimAutocompleteSuggestion> =
+    const suggestionClicked$: Observable<TimHashtagOption> =
       this.allSuggestions$.pipe(
         switchMap((suggestions) => merge(...suggestions.map((s) => s.clicked$)))
       );
 
-    const createTagClick$: Observable<TimAutocompleteSuggestion> =
+    const createTagClick$: Observable<TimHashtagOption> =
       this.container.createTagClick$.pipe(
         map((tagText) => ({ value: tagText }))
       );
@@ -103,8 +104,8 @@ export class TimAutoCompleteDirective
 
   private _buildContainerWithOverlay() {
     const containerPortal =
-      new ComponentPortal<TimSuggestionsContainerComponent>(
-        TimSuggestionsContainerComponent
+      new ComponentPortal<TimHashtagOptionComponentsContainer>(
+        TimHashtagOptionComponentsContainer
       );
     this._createOverlay();
     const containerRef = this._overlayRef.attach(containerPortal);
@@ -116,12 +117,12 @@ export class TimAutoCompleteDirective
     this.tagInput$.next(this.tagText);
   }
 
-  allSuggestions$: Observable<QueryList<TimAutocompleteSuggestionComponent>>;
+  allSuggestions$: Observable<QueryList<TimHashtagOptionComponent>>;
 
   setAllSuggestions() {
     this.allSuggestions$ = this.autocomplete.suggestions.changes.pipe(
       startWith(this.autocomplete.suggestions)
-    ) as Observable<QueryList<TimAutocompleteSuggestionComponent>>;
+    ) as Observable<QueryList<TimHashtagOptionComponent>>;
   }
 
   private _initContainer() {
@@ -168,7 +169,7 @@ export class TimAutoCompleteDirective
           {
             originX: 'start',
             originY: 'bottom',
-            overlayX: 'end',
+            overlayX: 'start',
             overlayY: 'top',
           },
         ]),
