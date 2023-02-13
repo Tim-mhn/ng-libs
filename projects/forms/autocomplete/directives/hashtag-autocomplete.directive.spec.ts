@@ -135,10 +135,15 @@ describe('TimHashtagAutoCompleteDirective', () => {
 
       expect(dir.hide).toHaveBeenCalled();
     });
+
+    it('should hide suggestions when the host is destroyed', () => {
+      fixture.destroy();
+      expect(dir.hide).toHaveBeenCalled();
+    });
   });
 
   describe('list of suggestions', () => {
-    it('should show all suggestions after the first # entered', (done: DoneFn) => {
+    it('should show all suggestions after the first # entered', () => {
       dispatchInputEvent('#', fixture);
       fixture.detectChanges();
 
@@ -146,7 +151,6 @@ describe('TimHashtagAutoCompleteDirective', () => {
 
       suggestions$.subscribe((suggestions) => {
         expect(suggestions.length).toEqual(ALL_SUGGESTIONS.length);
-        done();
       });
     });
 
@@ -162,6 +166,22 @@ describe('TimHashtagAutoCompleteDirective', () => {
         expect(suggestions[0].value).toEqual('cooking');
         done();
       });
+    });
+
+    it('should reset the tagText after a suggestion has been clicked', async () => {
+      dispatchInputEvent('#', fixture);
+      dispatchInputEvent('c', fixture);
+      dispatchInputEvent('o', fixture);
+
+      fixture.detectChanges();
+
+      const suggestions = await getSuggestions();
+
+      suggestions[0].click();
+
+      dispatchInputEvent('y', fixture);
+
+      expect(dir.tagText).toEqual('y');
     });
   });
 

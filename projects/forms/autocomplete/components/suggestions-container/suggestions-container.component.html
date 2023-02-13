@@ -4,7 +4,7 @@
 >
   <div
     *ngFor="let sugg of suggestions$ | async"
-    class="cursor-pointer"
+    class="cursor-pointer hover:bg-gray-100 hover:shadow-sm"
     (click)="$event.stopPropagation(); onTagSuggestionClick(sugg)"
   >
     <ng-container *ngTemplateOutlet="sugg.template"></ng-container>

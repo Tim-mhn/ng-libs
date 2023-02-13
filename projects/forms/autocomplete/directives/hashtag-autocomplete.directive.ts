@@ -4,10 +4,12 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
+  EventEmitter,
   HostListener,
   Input,
   OnDestroy,
   OnInit,
+  Output,
   QueryList,
 } from '@angular/core';
 import { Key } from '@tim-mhn/common/keyboard';
@@ -20,6 +22,7 @@ import {
   startWith,
   Subscription,
   switchMap,
+  tap,
 } from 'rxjs';
 import { TimHashtagAutocompleteUIComponent } from '../components/hashtag-autocomplete-ui.component';
 import { TimHtmlInput } from '../components/html-input/html-input.component';
@@ -43,6 +46,9 @@ export class TimHashtagAutoCompleteDirective
 
   @Input('timHashtagAutocomplete')
   autocomplete: TimHashtagAutocompleteUIComponent;
+
+  @Output()
+  optionClicked = new EventEmitter<void>();
 
   container: TimHashtagOptionComponentsContainer;
   ngOnInit(): void {}
@@ -80,7 +86,7 @@ export class TimHashtagAutoCompleteDirective
 
     const createTagClick$: Observable<TimHashtagOption> =
       this.container.createTagClick$.pipe(
-        map((tagText) => ({ value: tagText }))
+        map((_tagText) => ({ value: _tagText }))
       );
 
     const tagClickedWithTemplate$ = merge(
@@ -89,7 +95,9 @@ export class TimHashtagAutoCompleteDirective
     ).pipe(
       map((suggestion) => ({
         value: this.autocomplete.tagTemplate(suggestion.value),
-      }))
+      })),
+      tap(() => this._resetTagText()),
+      tap(() => this.optionClicked.emit())
     );
 
     tagClickedWithTemplate$.subscribe((clickedSuggestion) => {
@@ -113,8 +121,8 @@ export class TimHashtagAutoCompleteDirective
   }
 
   private _emitInitialEmptyTagInput() {
-    this.tagText = '';
-    this.tagInput$.next(this.tagText);
+    this._tagText = '';
+    this.tagInput$.next(this._tagText);
   }
 
   allSuggestions$: Observable<QueryList<TimHashtagOptionComponent>>;
@@ -147,7 +155,11 @@ export class TimHashtagAutoCompleteDirective
 
   private tagInput$ = new ReplaySubject<string>();
 
-  private tagText = '';
+  private _tagText = '';
+  public get tagText() {
+    return this._tagText;
+  }
+
   hide() {
     this._resetTagText();
     if (!this.container) return;
@@ -155,7 +167,7 @@ export class TimHashtagAutoCompleteDirective
   }
 
   private _resetTagText() {
-    this.tagText = '';
+    this._tagText = '';
     this._emitTagInput();
   }
 
@@ -197,7 +209,7 @@ export class TimHashtagAutoCompleteDirective
   }
 
   removeCharFromTagText() {
-    this.tagText = this.tagText.slice(0, this.tagText?.length - 1);
+    this._tagText = this._tagText.slice(0, this._tagText?.length - 1);
     this._emitTagInput();
   }
 
@@ -208,12 +220,12 @@ export class TimHashtagAutoCompleteDirective
 
   private _appendTagText(char: string) {
     if (!char) return;
-    this.tagText += char;
+    this._tagText += char;
     this._emitTagInput();
   }
 
   private _emitTagInput() {
-    this.tagInput$.next(this.tagText);
+    this.tagInput$.next(this._tagText);
   }
 
   toggleSuggestions() {
@@ -222,6 +234,7 @@ export class TimHashtagAutoCompleteDirective
   }
 
   ngOnDestroy() {
+    this.hide();
     this.subs?.unsubscribe();
   }
 }

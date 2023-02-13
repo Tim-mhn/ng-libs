@@ -43,20 +43,27 @@ export class InputsComponent implements OnInit {
   });
 
   onFocus = (e: Event) => {
-    console.group('onFocus');
-    console.groupEnd();
+    // console.group('onFocus');
+    // console.groupEnd();
   };
 
   onBlur = (e: Event) => {
-    console.group('onBlur');
-    console.groupEnd();
+    setTimeout(() => {
+      console.group('onBlur');
+      console.groupEnd();
+    }, 10);
   };
 
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe(console.log);
+  onOptionClicked() {
+    console.group('option clicked');
+    console.groupEnd();
   }
 
-  onkeydown = console.log;
+  ngOnInit(): void {
+    // this.form.valueChanges.subscribe(console.log);
+  }
+
+  // onkeydown = console.log;
 
   tagTemplate: TagTemplateBuilder = (text: string) =>
     `<span contentEditable="false" class="text-gray-800 border border-gray-200 rounded-md shadow-lg bg-gray-100">${text}</span> `;

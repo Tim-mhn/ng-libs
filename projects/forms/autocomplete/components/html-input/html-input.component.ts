@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import {
   Component,
+  ComponentFactoryResolver,
   ElementRef,
   EventEmitter,
   HostListener,
@@ -131,7 +132,6 @@ export class TimHtmlInput
   private _preventLineBreakAndBlurIfNotAllowed(e: KeyboardEvent) {
     if (e.key === Key.Enter && this.noLineBreak) {
       e.preventDefault();
-      debugger;
       this.input.nativeElement.blur();
     }
   }

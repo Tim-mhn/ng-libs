@@ -154,13 +154,14 @@
 
           <tim-html-input
             formControlName="inputSuggester"
-            (keydown)="onkeydown($event)"
             [noLineBreak]="true"
-            (blur)="onBlur($event)"
-            (focus)="onFocus($event)"
             placeholder="This is a placeholder ..."
             [timHashtagAutocomplete]="suggester"
-          ></tim-html-input>
+            (optionClicked)="onOptionClicked()"
+            (blur)="onBlur($event)"
+            (focus)="onFocus($event)"
+          >
+          </tim-html-input>
 
           <tim-hashtag-autocomplete #suggester [tagTemplate]="tagTemplate">
             <tim-hashtag-option
