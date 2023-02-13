@@ -2,11 +2,13 @@ import { DOCUMENT } from '@angular/common';
 import {
   Component,
   ElementRef,
+  EventEmitter,
   HostListener,
   Inject,
   Input,
   OnInit,
   Optional,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { FormGroupDirective, NgControl } from '@angular/forms';
@@ -44,6 +46,16 @@ export class TimHtmlInput
   @ViewChild('input', { static: true }) input: ElementRef<HTMLDivElement>;
   @Input() noLineBreak = false;
   @Input() placeholder: string;
+
+  @Output()
+  focus = new EventEmitter<Event>();
+
+  @Output()
+  blur = new EventEmitter<Event>();
+
+  @Output()
+  escaped = new EventEmitter<void>();
+
   stateManager: StateManager;
 
   hasError$: Observable<boolean>;
@@ -78,13 +90,18 @@ export class TimHtmlInput
     this.setValue(newHTML);
   }
 
-  focus() {
+  focusInput() {
     this.input.nativeElement.focus();
     moveCursorToEnd(this.input.nativeElement, this._doc, this.window);
   }
 
-  onFocusLost() {
-    handleFocusLost(this.ngControl, this.stateManager);
+  onFocusChange(hasFocus: boolean, nativeEvent: Event) {
+    if (!hasFocus) {
+      handleFocusLost(this.ngControl, this.stateManager);
+      this.blur.emit(nativeEvent);
+    } else {
+      this.focus.emit(nativeEvent);
+    }
   }
 
   private get window() {
@@ -101,13 +118,22 @@ export class TimHtmlInput
 
   @HostListener('keydown', ['$event'])
   emitEscape(e: KeyboardEvent) {
-    if (e.key == Key.Escape) this._escaped$.next();
+    if (e.key == Key.Escape) this._emitEscape();
     this._allowNonEditableChildrenToBeDeleted(e);
-    this._preventLineBreakIfNotAllowed(e);
+    this._preventLineBreakAndBlurIfNotAllowed(e);
   }
 
-  private _preventLineBreakIfNotAllowed(e: KeyboardEvent) {
-    if (e.key === Key.Enter && this.noLineBreak) e.preventDefault();
+  private _emitEscape() {
+    this._escaped$.next();
+    this.escaped.emit();
+  }
+
+  private _preventLineBreakAndBlurIfNotAllowed(e: KeyboardEvent) {
+    if (e.key === Key.Enter && this.noLineBreak) {
+      e.preventDefault();
+      debugger;
+      this.input.nativeElement.blur();
+    }
   }
 
   private _allowNonEditableChildrenToBeDeleted(event: KeyboardEvent) {

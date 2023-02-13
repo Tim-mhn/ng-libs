@@ -98,7 +98,7 @@ export class TimHashtagAutoCompleteDirective
         clickedSuggestion
       );
       this.input.updateFormValueAndUI(inputNewText);
-      this.input.focus();
+      this.input.focusInput();
     });
   }
 

@@ -1,9 +1,10 @@
 <div
   #input
-  class="cursor-text overflow-auto flex items-center focus:outline-none px-2 py-2 rounded-md font-normal border border-gray-300 text-sm"
+  class="cursor-text overflow-auto flex items-center focus:outline-none px-2 py-2 min-h-[38] rounded-md font-normal border border-gray-300 text-sm"
   [ngClass]="{ 'whitespace-nowrap': noLineBreak }"
   [contentEditableIf]="!isDisabled"
-  [contentEditablePlaceholder]="placeholder"
+  [contentEditablePlaceholder]="placeholder || ''"
   (input)="onInputChange()"
-  (blur)="onFocusLost()"
+  (blur)="onFocusChange(false, $event)"
+  (focus)="onFocusChange(true, $event)"
 ></div>

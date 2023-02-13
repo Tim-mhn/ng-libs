@@ -53,8 +53,10 @@ export class InputsComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    // this.form.valueChanges.subscribe(console.log);
+    this.form.valueChanges.subscribe(console.log);
   }
+
+  onkeydown = console.log;
 
   tagTemplate: TagTemplateBuilder = (text: string) =>
     `<span contentEditable="false" class="text-gray-800 border border-gray-200 rounded-md shadow-lg bg-gray-100">${text}</span> `;

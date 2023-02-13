@@ -154,6 +154,10 @@
 
           <tim-html-input
             formControlName="inputSuggester"
+            (keydown)="onkeydown($event)"
+            [noLineBreak]="true"
+            (blur)="onBlur($event)"
+            (focus)="onFocus($event)"
             placeholder="This is a placeholder ..."
             [timHashtagAutocomplete]="suggester"
           ></tim-html-input>
