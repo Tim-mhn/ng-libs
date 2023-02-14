@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ICONS } from '@tim-mhn/common/icons';
-import { TagTemplateBuilder } from '@tim-mhn/ng-forms/autocomplete';
+import {
+  NewTagMessageFn,
+  TagTemplateBuilder,
+} from '@tim-mhn/ng-forms/autocomplete';
 @Component({
   selector: 'demo-inputs',
   templateUrl: './inputs.component.html',
@@ -42,26 +45,20 @@ export class InputsComponent implements OnInit {
     htmlInput: "<span style='color:blue'>HTML</span> input",
   });
 
+  customNewTagMessageFn: NewTagMessageFn = (newTag: string) =>
+    `Create a tag of your own: "${newTag}"`;
   onFocus = (e: Event) => {
     // console.group('onFocus');
     // console.groupEnd();
   };
 
-  onBlur = (e: Event) => {
-    setTimeout(() => {
-      console.group('onBlur');
-      console.groupEnd();
-    }, 10);
-  };
-
-  onOptionClicked() {
-    console.group('option clicked');
-    console.groupEnd();
-  }
+  onBlur = (e: Event) => {};
 
   ngOnInit(): void {
     // this.form.valueChanges.subscribe(console.log);
   }
+
+  onNewTagClicked = console.log;
 
   // onkeydown = console.log;
 

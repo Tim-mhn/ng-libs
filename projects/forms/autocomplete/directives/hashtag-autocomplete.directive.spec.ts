@@ -1,11 +1,5 @@
 import { OverlayModule } from '@angular/cdk/overlay';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  DebugElement,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -46,6 +40,7 @@ const ALL_SUGGESTIONS = ['sports', 'cooking', 'yoga', 'museums', 'arts'];
 describe('TimHashtagAutoCompleteDirective', () => {
   let fixture: ComponentFixture<HostComponent>;
   let dir: TimHashtagAutoCompleteDirective;
+
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
       declarations: [HostComponent, TimHashtagAutoCompleteDirective],
@@ -58,6 +53,7 @@ describe('TimHashtagAutoCompleteDirective', () => {
     const des = fixture.debugElement.queryAll(
       By.directive(TimHashtagAutoCompleteDirective)
     );
+
     dir = des[0].injector.get(
       TimHashtagAutoCompleteDirective
     ) as TimHashtagAutoCompleteDirective;
@@ -68,7 +64,8 @@ describe('TimHashtagAutoCompleteDirective', () => {
     spyOn(dir, 'onInput').and.callThrough();
   });
 
-  const getSuggestions = () => firstValueFrom(dir.container?.suggestions$);
+  const getSuggestions = () =>
+    firstValueFrom(dir.autocomplete.suggestionsToShow$);
 
   it('should be created', () => {
     expect(fixture).toBeDefined();
@@ -147,19 +144,20 @@ describe('TimHashtagAutoCompleteDirective', () => {
       dispatchInputEvent('#', fixture);
       fixture.detectChanges();
 
-      const suggestions$ = dir.container?.suggestions$;
+      const suggestions$ = dir.autocomplete?.suggestionsToShow$;
 
       suggestions$.subscribe((suggestions) => {
         expect(suggestions.length).toEqual(ALL_SUGGESTIONS.length);
       });
     });
 
+    // todo :check test after
     it('should show only the suggestions starting with the text after "#" ', (done: DoneFn) => {
       dispatchInputEvent('#', fixture);
       dispatchInputEvent('c', fixture);
       fixture.detectChanges();
 
-      const suggestions$ = dir.container?.suggestions$;
+      const suggestions$ = dir.autocomplete?.suggestionsToShow$;
 
       suggestions$.pipe(skip(1), take(1)).subscribe((suggestions) => {
         expect(suggestions.length).toEqual(1);

@@ -1,6 +1,6 @@
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import {
+  AfterContentInit,
   AfterViewInit,
   Directive,
   ElementRef,
@@ -14,68 +14,62 @@ import {
 } from '@angular/core';
 import { Key } from '@tim-mhn/common/keyboard';
 import {
+  BehaviorSubject,
   combineLatest,
   map,
   merge,
   Observable,
-  ReplaySubject,
   startWith,
   Subscription,
   switchMap,
   tap,
 } from 'rxjs';
-import { TimHashtagAutocompleteUIComponent } from '../components/hashtag-autocomplete-ui.component';
+import { TimHashtagAutocompleteComponent } from '../components/hashtag-autocomplete/hashtag-autocomplete.component';
 import { TimHtmlInput } from '../components/html-input/html-input.component';
-import { TimHashtagOptionComponentsContainer } from '../components/suggestions-container/suggestions-container.component';
 import { HASH_TAG } from '../constants/hash-tag.constant';
 import { TimHashtagOption } from '../models/suggestion';
-import { TimHashtagOptionComponent } from '../components/autocomplete-suggestion/autocomplete-suggestion.component';
+import { TimHashtagOptionComponent } from '../components/hashtag-option/hashtag-option.component';
 import { buildTextAfterSuggestionInsertion } from '../utils/build-text-after-suggestion-insertion.util';
+import { filterOptionsToShow } from '../utils/filter-options-to-show.util';
 
 @Directive({
   selector: 'tim-html-input[timHashtagAutocomplete]',
 })
 export class TimHashtagAutoCompleteDirective
-  implements OnInit, AfterViewInit, OnDestroy
+  extends CdkOverlayOrigin
+  implements OnInit, AfterViewInit, AfterContentInit, OnDestroy
 {
-  constructor(
-    public elementRef: ElementRef<TimHtmlInput>,
-    public input: TimHtmlInput,
-    private _overlay: Overlay
-  ) {}
+  constructor(elementRef: ElementRef<HTMLElement>, public input: TimHtmlInput) {
+    super(elementRef);
+  }
 
   @Input('timHashtagAutocomplete')
-  autocomplete: TimHashtagAutocompleteUIComponent;
+  autocomplete: TimHashtagAutocompleteComponent;
 
   @Output()
   optionClicked = new EventEmitter<void>();
 
-  container: TimHashtagOptionComponentsContainer;
   ngOnInit(): void {}
+
+  ngAfterContentInit() {
+    this.setAllSuggestions();
+    this._initContainer();
+    this._updateInputValueOnSuggestionClick();
+    this._emitInitialEmptyTagInput();
+  }
+
+  ngOnChanges() {
+    this.autocomplete?.setTrigger(this);
+  }
 
   subs = new Subscription();
 
   ngAfterViewInit() {
-    this.subs.add(this.input.escaped$.subscribe(() => this.hide()));
+    this.subs.add(this.input.escaped$.subscribe(() => this._resetTagText()));
   }
 
   show() {
-    if (this.container) {
-      this.container.show();
-      return;
-    }
-
-    this._buildContainerWithOverlay();
-    this.setAllSuggestions();
-    this._initContainer();
-    this._updateInputValueOnSuggestionClick();
-
-    this._emitInitialEmptyTagInput();
-    /** 1. merge clickSuggestion.click$
-     * 2. onclick:
-     * - 2.a. get new value # value
-     * - 2.b. input.setValue
-     */
+    this.autocomplete.show();
   }
 
   private _updateInputValueOnSuggestionClick() {
@@ -85,8 +79,8 @@ export class TimHashtagAutoCompleteDirective
       );
 
     const createTagClick$: Observable<TimHashtagOption> =
-      this.container.createTagClick$.pipe(
-        map((_tagText) => ({ value: _tagText }))
+      this.autocomplete.newTagClicked$.pipe(
+        map((tag) => ({ value: tag, new: true }))
       );
 
     const tagClickedWithTemplate$ = merge(
@@ -94,13 +88,14 @@ export class TimHashtagAutoCompleteDirective
       createTagClick$
     ).pipe(
       map((suggestion) => ({
+        ...suggestion,
         value: this.autocomplete.tagTemplate(suggestion.value),
       })),
       tap(() => this._resetTagText()),
       tap(() => this.optionClicked.emit())
     );
 
-    tagClickedWithTemplate$.subscribe((clickedSuggestion) => {
+    const sub = tagClickedWithTemplate$.subscribe((clickedSuggestion) => {
       const inputNewText = buildTextAfterSuggestionInsertion(
         this.input.value,
         clickedSuggestion
@@ -108,16 +103,8 @@ export class TimHashtagAutoCompleteDirective
       this.input.updateFormValueAndUI(inputNewText);
       this.input.focusInput();
     });
-  }
 
-  private _buildContainerWithOverlay() {
-    const containerPortal =
-      new ComponentPortal<TimHashtagOptionComponentsContainer>(
-        TimHashtagOptionComponentsContainer
-      );
-    this._createOverlay();
-    const containerRef = this._overlayRef.attach(containerPortal);
-    this.container = containerRef.instance;
+    this.subs.add(sub);
   }
 
   private _emitInitialEmptyTagInput() {
@@ -134,11 +121,7 @@ export class TimHashtagAutoCompleteDirective
   }
 
   private _initContainer() {
-    const suggestion$ = this.buildSuggestionsObservable();
-    this.container.init({
-      suggestions: suggestion$,
-      tagInput: this.tagInput$,
-    });
+    this.autocomplete.init(this.tagInput$);
   }
   buildSuggestionsObservable() {
     return combineLatest({
@@ -146,24 +129,16 @@ export class TimHashtagAutoCompleteDirective
       input: this.tagInput$,
     }).pipe(
       map(({ suggestions, input }) => {
-        return suggestions.filter((sugg) =>
-          this.autocomplete.suggestionsFilter(sugg.value, input)
-        );
+        return filterOptionsToShow(suggestions.toArray(), input);
       })
     );
   }
 
-  private tagInput$ = new ReplaySubject<string>();
+  private tagInput$ = new BehaviorSubject<string>('');
 
   private _tagText = '';
   public get tagText() {
     return this._tagText;
-  }
-
-  hide() {
-    this._resetTagText();
-    if (!this.container) return;
-    this.container.hide();
   }
 
   private _resetTagText() {
@@ -171,28 +146,9 @@ export class TimHashtagAutoCompleteDirective
     this._emitTagInput();
   }
 
-  private _overlayRef: OverlayRef;
-  private _createOverlay() {
-    const overlayConf = new OverlayConfig({
-      positionStrategy: this._overlay
-        .position()
-        .flexibleConnectedTo(this.elementRef)
-        .withPositions([
-          {
-            originX: 'start',
-            originY: 'bottom',
-            overlayX: 'start',
-            overlayY: 'top',
-          },
-        ]),
-      scrollStrategy: this._overlay.scrollStrategies.close(),
-    });
-    this._overlayRef = this._overlay.create(overlayConf);
-  }
-
   @HostListener('input', ['$event'])
   onInput(e: InputEvent) {
-    if (this.container?.visible) this._appendTagText(e?.data);
+    if (this.autocomplete?.visible) this._appendTagText(e?.data);
 
     if (e?.data === HASH_TAG) this.toggleSuggestions();
     else if (e?.data === ' ') this.hide();
@@ -203,9 +159,17 @@ export class TimHashtagAutoCompleteDirective
     this.hide();
   }
 
+  hide() {
+    this._resetTagText();
+    this.autocomplete?.hide();
+  }
+
   @HostListener('keydown', ['$event'])
   onKeyDown(e: KeyboardEvent) {
-    if (e.key == Key.Backspace) this.removeCharFromTagText();
+    if (e.key == Key.Backspace) {
+      this.removeCharFromTagText();
+      if (this._tagText == '') this.autocomplete.hide();
+    }
   }
 
   removeCharFromTagText() {
@@ -229,7 +193,7 @@ export class TimHashtagAutoCompleteDirective
   }
 
   toggleSuggestions() {
-    if (this.container?.visible) this.hide();
+    if (this.autocomplete?.visible) this.hide();
     else this.show();
   }
 

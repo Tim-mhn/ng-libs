@@ -157,13 +157,17 @@
             [noLineBreak]="true"
             placeholder="This is a placeholder ..."
             [timHashtagAutocomplete]="suggester"
-            (optionClicked)="onOptionClicked()"
             (blur)="onBlur($event)"
             (focus)="onFocus($event)"
           >
           </tim-html-input>
 
-          <tim-hashtag-autocomplete #suggester [tagTemplate]="tagTemplate">
+          <tim-hashtag-autocomplete
+            #suggester
+            [tagTemplate]="tagTemplate"
+            [newTagMessage]="customNewTagMessageFn"
+            (newTag)="onNewTagClicked($event)"
+          >
             <tim-hashtag-option
               *ngFor="let suggestion of autocompleteSuggestions"
               [value]="suggestion"
