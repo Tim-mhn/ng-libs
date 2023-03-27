@@ -5,11 +5,11 @@
   [cdkConnectedOverlayPush]="true"
 >
   <div
-    class="p-2 rounded text-xs font-medium max-w-65 shadow-lg bg-white children:cursor-pointer hover:children:bg-gray-100 hover:children:shadow-sm"
+    class="p-2 rounded text-xs font-medium max-w-65 shadow-lg bg-white children:cursor-pointer"
   >
     <div
       *ngFor="let sugg of suggestionsToShow$ | async"
-      class=""
+      class="cursor-pointer hover:bg-gray-100 hover:shadow-sm"
       (click)="$event.stopPropagation(); onTagSuggestionClick(sugg)"
     >
       <ng-container *ngTemplateOutlet="sugg.template"></ng-container>
@@ -17,6 +17,7 @@
 
     <div
       *ngIf="inputText$ | async"
+      class="cursor-pointer hover:bg-gray-100 hover:shadow-sm"
       (click)="$event.stopPropagation(); onNewTagClicked()"
     >
       {{ newTagMessage$ | async }}

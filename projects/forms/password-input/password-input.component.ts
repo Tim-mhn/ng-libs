@@ -4,6 +4,7 @@ import { StateManageable } from '@tim-mhn/ng-forms/core';
 import { StateManager } from '@tim-mhn/ng-forms/core';
 import { stateManageableProvider } from '@tim-mhn/ng-forms/core';
 import { TimInput } from '@tim-mhn/ng-forms/input';
+import { ICONS } from '@tim-mhn/common/icons';
 
 @Component({
   selector: 'tim-password-input',
@@ -12,8 +13,8 @@ import { TimInput } from '@tim-mhn/ng-forms/input';
   providers: [stateManageableProvider(TimPasswordInput)],
 })
 export class TimPasswordInput implements AfterContentInit, StateManageable {
-  public readonly EYE_OPEN_ICON_SRC = 'assets/icons/eye-outline-24px.svg';
-  public readonly EYE_CLOSED_ICON_SRC = 'assets/icons/eye-outline-off-24px.svg';
+  public readonly EYE_OPEN_ICON_SRC = ICONS.EYE_OPEN;
+  public readonly EYE_CLOSED_ICON_SRC = ICONS.EYE_CLOSED;
 
   @Input() placeholder: string = '';
   @Input() name = 'Password';
