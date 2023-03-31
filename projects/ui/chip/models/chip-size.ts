@@ -1,3 +1,3 @@
-import { ThemeSize } from '@tim-mhn/ng-ui/core';
+import { ExtendedThemeSize, ThemeSize } from '@tim-mhn/ng-ui/core';
 
-export type ChipSize = Exclude<ThemeSize, 'xs'>;
+export type ChipSize = Exclude<ExtendedThemeSize, 'xs' | '2xs'>;

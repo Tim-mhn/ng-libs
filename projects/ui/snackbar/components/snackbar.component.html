@@ -27,6 +27,14 @@
             {{ message }}
         </div>
 
+        <ng-container *ngIf="options?.action">
+            <div
+                class="mx-3 py-1.5 text-blue-400 hover:text-blue-300 font-medium cursor-pointer"
+                (click)="options?.action?.action?.()"
+            >
+                {{ options.action?.text }}
+            </div>
+        </ng-container>
         <ng-container *ngIf="options?.dismissible">
             <div class="h-full w-px bg-white opacity-10 mx-2"></div>
             <div class="py-1.5">

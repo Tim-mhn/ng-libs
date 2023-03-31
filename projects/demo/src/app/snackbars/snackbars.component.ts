@@ -13,4 +13,6 @@ export class SnackbarsComponent implements OnInit {
   openSnackbar(message: string, options?: TimUISnackBarOptions) {
     this._snackbar.open(message, options);
   }
+
+  logUndo = () => console.log('Undo !');
 }

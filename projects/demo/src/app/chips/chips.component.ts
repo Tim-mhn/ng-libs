@@ -16,7 +16,7 @@ export class ChipsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  readonly SIZES: ChipSize[] = ['sm', 'md', 'lg'];
+  readonly SIZES: ChipSize[] = ['sm', 'md', 'lg', 'xl', '2xl'];
   readonly COLORS: ChipColor[] = [
     'primary',
     'primary-darker',

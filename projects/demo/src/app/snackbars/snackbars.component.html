@@ -80,4 +80,20 @@
   >
     Open error snackbar
   </button>
+
+  <button
+    class="p-1 border rounded border-blue-500"
+    (click)="
+      openSnackbar('An unexpected error occured', {
+        dismissible: false,
+        mode: 'success',
+        action: {
+          text: 'Undo',
+          action: logUndo
+        }
+      })
+    "
+  >
+    Open snackbar with undo action
+  </button>
 </div>

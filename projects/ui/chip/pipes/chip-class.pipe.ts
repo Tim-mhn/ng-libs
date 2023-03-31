@@ -9,9 +9,11 @@ import { TimUIChipProps } from '../models/chip-props';
 export class ChipClassPipe implements PipeTransform {
   transform(timChip: TimUIChipProps): string {
     const SIZE_CLASSES = {
-      sm: 'px-2',
-      md: 'px-2.5',
-      lg: 'px-3',
+      sm: 'px-2 text-xs',
+      md: 'px-2.5 text-md',
+      lg: 'px-3 text-lg',
+      xl: 'px-4 text-xl',
+      '2xl': 'px-5 text-2xl',
     };
 
     const colorClasses = getChipColorClasses(timChip.color);
