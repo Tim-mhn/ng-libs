@@ -41,29 +41,9 @@ export class InputsComponent implements OnInit {
     ],
     password3: { value: '', disabled: true },
     smallInput: '',
-    inputSuggester: '',
-    htmlInput: "<span style='color:blue'>HTML</span> input",
   });
-
-  customNewTagMessageFn: NewTagMessageFn = (newTag: string) =>
-    `Create a tag of your own: "${newTag}"`;
-  onFocus = (e: Event) => {
-    // console.group('onFocus');
-    // console.groupEnd();
-  };
-
-  onBlur = (e: Event) => {};
 
   ngOnInit(): void {
     // this.form.valueChanges.subscribe(console.log);
   }
-
-  onNewTagClicked = console.log;
-
-  // onkeydown = console.log;
-
-  tagTemplate: TagTemplateBuilder = (text: string) =>
-    `<span contentEditable="false" class="text-gray-800 border border-gray-200 rounded-md shadow-lg bg-gray-100">${text}</span> `;
-
-  autocompleteSuggestions = ['hello', 'world', 'tim', 'tom'];
 }

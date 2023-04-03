@@ -21,19 +21,24 @@ import {
   StateManageable,
   stateManageableProvider,
   StateManager,
+  TextInput,
 } from '@tim-mhn/ng-forms/core';
 import { Observable, Subject } from 'rxjs';
 import { Key } from '@tim-mhn/common/keyboard';
 import { moveCursorToEnd } from '@tim-mhn/common/dom-utils';
+import { textInputProvider } from '../../../core/providers/text-input.provider';
 
 @Component({
   selector: 'tim-html-input',
   templateUrl: './html-input.component.html',
-  providers: [stateManageableProvider(TimHtmlInput)],
+  providers: [
+    stateManageableProvider(TimHtmlInput),
+    textInputProvider(TimHtmlInput),
+  ],
 })
 export class TimHtmlInput
   extends BaseControlValueAccessor<string>
-  implements OnInit, StateManageable
+  implements OnInit, StateManageable, TextInput
 {
   constructor(
     @Inject(DOCUMENT) private _doc: Document,

@@ -4,11 +4,7 @@
       <div class="flex flex-col gap-8">
         <div>
           <p class="mb-4">Simple input</p>
-          <tim-input
-            formControlName="name"
-            (focus)="onFocus($event)"
-            (blur)="onBlur($event)"
-          ></tim-input>
+          <tim-input formControlName="name"></tim-input>
         </div>
         <div>
           <p class="mb-4">Input Field with validation</p>
@@ -147,35 +143,6 @@
           <p class="mb-4">Small input</p>
 
           <tim-input size="sm" formControlName="smallInput"></tim-input>
-        </div>
-
-        <div>
-          <p>Input with suggestions</p>
-
-          <tim-html-input
-            formControlName="inputSuggester"
-            [noLineBreak]="true"
-            placeholder="This is a placeholder ..."
-            [timHashtagAutocomplete]="suggester"
-            (blur)="onBlur($event)"
-            (focus)="onFocus($event)"
-          >
-          </tim-html-input>
-
-          <tim-hashtag-autocomplete
-            #suggester
-            [tagTemplate]="tagTemplate"
-            [newTagMessage]="customNewTagMessageFn"
-            (newTag)="onNewTagClicked($event)"
-          >
-            <tim-hashtag-option
-              *ngFor="let suggestion of autocompleteSuggestions"
-              [value]="suggestion"
-              >{{ suggestion }}</tim-hashtag-option
-            >
-          </tim-hashtag-autocomplete>
-
-          <tim-html-input formControlName="htmlInput"></tim-html-input>
         </div>
       </div>
     </div>

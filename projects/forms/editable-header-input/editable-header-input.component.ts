@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Inject,
   Input,
   OnInit,
   Optional,
@@ -19,16 +20,21 @@ import {
   ErrorStateMatcher,
   StateManageable,
   StateManager,
+  TextInput,
 } from '@tim-mhn/ng-forms/core';
 import { EditableHeaderInputMode } from './editable-header-input-mode';
+import { textInputProvider } from '../core/providers/text-input.provider';
+import { moveCursorToEnd } from '@tim-mhn/common/dom-utils';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'tim-editable-header-input',
   templateUrl: './editable-header-input.component.html',
+  providers: [textInputProvider(EditableHeaderInputComponent)],
 })
 export class EditableHeaderInputComponent
   extends BaseControlValueAccessor<string>
-  implements OnInit, AfterViewInit, StateManageable
+  implements OnInit, AfterViewInit, StateManageable, TextInput
 {
   @Input() placeholder: string = 'Enter a name';
   @Input() mode: EditableHeaderInputMode = 'text';
@@ -45,9 +51,26 @@ export class EditableHeaderInputComponent
   constructor(
     @Optional() public parent: FormGroupDirective,
     @Optional() public override ngControl: NgControl,
+    @Inject(DOCUMENT) private document: Document,
     private errorStateMatcher: ErrorStateMatcher
   ) {
     super(ngControl);
+  }
+  escaped$: Observable<void>;
+
+  private get window() {
+    return this.document.defaultView;
+  }
+
+  updateFormValueAndUI(text: string): void {
+    console.log('updateFormValueAndUI called with ', text);
+    if (this.isDisabled) return;
+    this.writeValue(text);
+    this.setValue(text);
+  }
+  focusInput(): void {
+    this.input.nativeElement.focus();
+    moveCursorToEnd(this.input.nativeElement, this.document, this.window);
   }
 
   @ViewChild('input', { static: true }) input: ElementRef<HTMLElement>;
@@ -131,5 +154,49 @@ export class EditableHeaderInputComponent
       this.setValue(this._tmpValue);
     }
     this.blurTriggeredByEscape = false;
+  }
+
+  private _allowNonEditableChildrenToBeDeleted(event: KeyboardEvent) {
+    if (window.getSelection && event.key === Key.Backspace) {
+      var selection = window.getSelection();
+      if (!selection.isCollapsed || !selection.rangeCount) {
+        return;
+      }
+
+      var curRange = selection.getRangeAt(selection.rangeCount - 1);
+      if (
+        curRange.commonAncestorContainer.nodeType == 3 &&
+        curRange.startOffset > 0
+      ) {
+        // we are in child selection. The characters of the text node is being deleted
+        return;
+      }
+
+      var range = document.createRange();
+      if (selection.anchorNode != this.input.nativeElement) {
+        // selection is in character mode. expand it to the whole editable field
+        range.selectNodeContents(this.input.nativeElement);
+        range.setEndBefore(selection.anchorNode);
+      } else if (selection.anchorOffset > 0) {
+        range.setEnd(this.input.nativeElement, selection.anchorOffset);
+      } else {
+        // reached the beginning of editable field
+        return;
+      }
+      range.setStart(this.input.nativeElement, range.endOffset - 1);
+
+      var previousNode = range.cloneContents().lastChild;
+      if (previousNode && (previousNode as any).contentEditable == 'false') {
+        // this is some rich content, e.g. smile. We should help the user to delete it
+        range.deleteContents();
+        event.preventDefault();
+      }
+    }
+  }
+
+  @HostListener('keydown', ['$event'])
+  emitEscape(e: KeyboardEvent) {
+    // if (e.key == Key.Escape) this._emitEscape();
+    this._allowNonEditableChildrenToBeDeleted(e);
   }
 }

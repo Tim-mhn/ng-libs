@@ -6,6 +6,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  Inject,
   Input,
   OnDestroy,
   OnInit,
@@ -24,8 +25,9 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { TextInput, TEXT_INPUT_TOKEN } from '@tim-mhn/ng-forms/core';
+
 import { TimHashtagAutocompleteComponent } from '../components/hashtag-autocomplete/hashtag-autocomplete.component';
-import { TimHtmlInput } from '../components/html-input/html-input.component';
 import { HASH_TAG } from '../constants/hash-tag.constant';
 import { TimHashtagOption } from '../models/suggestion';
 import { TimHashtagOptionComponent } from '../components/hashtag-option/hashtag-option.component';
@@ -33,13 +35,16 @@ import { buildTextAfterSuggestionInsertion } from '../utils/build-text-after-sug
 import { filterOptionsToShow } from '../utils/filter-options-to-show.util';
 
 @Directive({
-  selector: 'tim-html-input[timHashtagAutocomplete]',
+  selector: '[timHashtagAutocomplete]',
 })
 export class TimHashtagAutoCompleteDirective
   extends CdkOverlayOrigin
   implements OnInit, AfterViewInit, AfterContentInit, OnDestroy
 {
-  constructor(elementRef: ElementRef<HTMLElement>, public input: TimHtmlInput) {
+  constructor(
+    elementRef: ElementRef<HTMLElement>,
+    @Inject(TEXT_INPUT_TOKEN) public input: TextInput
+  ) {
     super(elementRef);
   }
 
@@ -65,7 +70,7 @@ export class TimHashtagAutoCompleteDirective
   subs = new Subscription();
 
   ngAfterViewInit() {
-    this.subs.add(this.input.escaped$.subscribe(() => this._resetTagText()));
+    this.subs.add(this.input.escaped$?.subscribe(() => this._resetTagText()));
   }
 
   show() {

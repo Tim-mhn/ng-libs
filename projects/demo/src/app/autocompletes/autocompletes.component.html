@@ -1,0 +1,47 @@
+<div [formGroup]="form">
+  <p>Input with suggestions</p>
+
+  <div class="flex gap-4">
+    <tim-html-input
+      formControlName="inputSuggester"
+      [noLineBreak]="true"
+      placeholder="Type # to show tags suggestion"
+      [timHashtagAutocomplete]="suggester"
+    >
+    </tim-html-input>
+
+    <tim-hashtag-autocomplete
+      #suggester
+      [tagTemplate]="tagTemplate"
+      [newTagMessage]="customNewTagMessageFn"
+      (newTag)="onNewTagClicked($event)"
+    >
+      <tim-hashtag-option
+        *ngFor="let suggestion of autocompleteSuggestions"
+        [value]="suggestion"
+        >{{ suggestion }}</tim-hashtag-option
+      >
+    </tim-hashtag-autocomplete>
+
+    <tim-html-input formControlName="htmlInput"></tim-html-input>
+
+    <tim-editable-header-input
+      formControlName="editableHeaderInput"
+      mode="html"
+      [timHashtagAutocomplete]="suggester2"
+    ></tim-editable-header-input>
+
+    <tim-hashtag-autocomplete
+      #suggester2
+      [tagTemplate]="tagTemplate"
+      [newTagMessage]="customNewTagMessageFn"
+      (newTag)="onNewTagClicked($event)"
+    >
+      <tim-hashtag-option
+        *ngFor="let suggestion of autocompleteSuggestions"
+        [value]="suggestion"
+        >{{ suggestion }}</tim-hashtag-option
+      >
+    </tim-hashtag-autocomplete>
+  </div>
+</div>

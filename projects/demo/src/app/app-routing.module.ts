@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AutocompletesDemoComponent } from './autocompletes/autocompletes.component';
+import { AutocompletesDemoModule } from './autocompletes/autocompletes.module';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonsModule } from './buttons/buttons.module';
 import { ChipsComponent } from './chips/chips.component';
@@ -22,6 +24,10 @@ import { TooltipsComponent } from './tooltips/tooltips.component';
 import { TooltipsModule } from './tooltips/tooltips.module';
 
 const routes: Routes = [
+  {
+    path: 'autocompletes',
+    component: AutocompletesDemoComponent,
+  },
   {
     path: 'buttons',
     component: ButtonsComponent,
@@ -77,6 +83,7 @@ const routes: Routes = [
     ChipsModule,
     DatePickersModule,
     EditableHeaderInputsDemoModule,
+    AutocompletesDemoModule,
   ],
   exports: [RouterModule],
 })
