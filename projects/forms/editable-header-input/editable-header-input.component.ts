@@ -3,11 +3,13 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   HostListener,
   Inject,
   Input,
   OnInit,
   Optional,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { FormGroupDirective, NgControl } from '@angular/forms';
@@ -39,6 +41,9 @@ export class EditableHeaderInputComponent
   @Input() placeholder: string = 'Enter a name';
   @Input() mode: EditableHeaderInputMode = 'text';
 
+  @Output() focus = new EventEmitter<void>();
+  @Output() blur = new EventEmitter<void>();
+
   readonly errorMessageMap = DEFAULT_VALIDATION_ERROR_TO_MESSAGE;
   // use replay subject to be sure subscriptions made after emission of first value can execute
   private _afterViewInit$ = new ReplaySubject<void>(1);
@@ -63,7 +68,6 @@ export class EditableHeaderInputComponent
   }
 
   updateFormValueAndUI(text: string): void {
-    console.log('updateFormValueAndUI called with ', text);
     if (this.isDisabled) return;
     this.writeValue(text);
     this.setValue(text);
@@ -78,6 +82,10 @@ export class EditableHeaderInputComponent
   ngOnInit() {
     if (this.ngControl) this.setStateManager();
     this.stateManager?.init();
+  }
+
+  emitFocus() {
+    this.focus.next();
   }
 
   ngAfterViewInit() {
@@ -109,7 +117,7 @@ export class EditableHeaderInputComponent
   }
 
   @HostListener('keydown', ['$event'])
-  onClick(event: KeyboardEvent) {
+  onKeydown(event: KeyboardEvent) {
     // eslint-disable-next-line default-case
     switch (event.key) {
       case Key.Enter:
@@ -147,6 +155,7 @@ export class EditableHeaderInputComponent
   }
 
   onBlur() {
+    this.blur.next();
     this.stateManager.focusLost();
     // onBlur may be called by the onEscape function. If it's the case, don't setValue
     // don't emit, if "new" value is the same as before

@@ -14,4 +14,6 @@ export class EditableHeaderInputsDemoComponent implements OnInit {
     one: '',
     two: '<strong class="text-blue-500">hello</strong>',
   });
+
+  log = console.log;
 }

@@ -8,6 +8,7 @@
     [contentEditableMaxLength]="CONTENT_MAX_LENGTH"
     (input)="onInputChange($event)"
     (blur)="onBlur()"
+    (focus)="emitFocus()"
   ></div>
   <div
     [class.invisible]="!(hasError$ | async)"
@@ -15,7 +16,7 @@
   >
     {{
       stateManager?.control?.errors
-        | validationErrorToMessage: 'Name':errorMessageMap
+        | validationErrorToMessage : "Name" : errorMessageMap
     }}
   </div>
 </div>
