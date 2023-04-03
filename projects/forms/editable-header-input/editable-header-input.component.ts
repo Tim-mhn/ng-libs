@@ -20,6 +20,7 @@ import {
   StateManageable,
   StateManager,
 } from '@tim-mhn/ng-forms/core';
+import { EditableHeaderInputMode } from './editable-header-input-mode';
 
 @Component({
   selector: 'tim-editable-header-input',
@@ -30,6 +31,7 @@ export class EditableHeaderInputComponent
   implements OnInit, AfterViewInit, StateManageable
 {
   @Input() placeholder: string = 'Enter a name';
+  @Input() mode: EditableHeaderInputMode = 'text';
 
   readonly errorMessageMap = DEFAULT_VALIDATION_ERROR_TO_MESSAGE;
   // use replay subject to be sure subscriptions made after emission of first value can execute
@@ -71,7 +73,7 @@ export class EditableHeaderInputComponent
 
   private _tmpValue: string;
   onInputChange(e: Event) {
-    const value = (e.target as HTMLElement).textContent;
+    const value = this._getContent(e.target as HTMLElement);
     this._tmpValue = value;
   }
 
@@ -79,7 +81,7 @@ export class EditableHeaderInputComponent
     this.value = v;
     this._tmpValue = v;
     this._afterViewInit$.subscribe(() => {
-      this.input.nativeElement.textContent = v;
+      this._updateContent(v);
     });
   }
 
@@ -105,7 +107,20 @@ export class EditableHeaderInputComponent
   onEscape() {
     this.blurTriggeredByEscape = true;
     this.input.nativeElement.blur();
-    this.input.nativeElement.textContent = this.value;
+    this._updateContent(this.value);
+  }
+
+  private _getContent(el: HTMLElement) {
+    return this.mode === 'html' ? el.innerHTML : el.textContent;
+  }
+
+  private _updateContent(content: string) {
+    if (this.mode === 'html') {
+      this.input.nativeElement.innerHTML = content;
+      return;
+    }
+
+    this.input.nativeElement.textContent = content;
   }
 
   onBlur() {

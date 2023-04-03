@@ -10,6 +10,8 @@ import { DialogsComponent } from './dialogs/dialogs.component';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { EditableChipsComponent } from './editable-chips-demo/editable-chips-demo.component';
 import { EditableChipsModule } from './editable-chips-demo/editable-chips-demo.module';
+import { EditableHeaderInputsDemoComponent } from './editable-header-inputs/editable-header-inputs.component';
+import { EditableHeaderInputsDemoModule } from './editable-header-inputs/editable-header-inputs.module';
 import { InputsComponent } from './inputs/inputs.component';
 import { InputsModule } from './inputs/inputs.module';
 import { SelectsComponent } from './selects/selects.component';
@@ -45,6 +47,10 @@ const routes: Routes = [
     component: EditableChipsComponent,
   },
   {
+    path: 'editable-header-inputs',
+    component: EditableHeaderInputsDemoComponent,
+  },
+  {
     path: 'dialogs',
     component: DialogsComponent,
   },
@@ -70,6 +76,7 @@ const routes: Routes = [
     SelectsModule,
     ChipsModule,
     DatePickersModule,
+    EditableHeaderInputsDemoModule,
   ],
   exports: [RouterModule],
 })
