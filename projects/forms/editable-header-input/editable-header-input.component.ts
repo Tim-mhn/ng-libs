@@ -21,9 +21,9 @@ import {
   StateManageable,
   StateManager,
   TextInput,
+  textInputProvider,
 } from '@tim-mhn/ng-forms/core';
 import { EditableHeaderInputMode } from './editable-header-input-mode';
-import { textInputProvider } from '../core/providers/text-input.provider';
 import { moveCursorToEnd } from '@tim-mhn/common/dom-utils';
 import { DOCUMENT } from '@angular/common';
 
