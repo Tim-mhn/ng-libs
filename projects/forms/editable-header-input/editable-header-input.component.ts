@@ -40,6 +40,11 @@ export class EditableHeaderInputComponent
 {
   @Input() placeholder: string = 'Enter a name';
   @Input() mode: EditableHeaderInputMode = 'text';
+  @Input() set noMaxLength(noMaxLength: boolean) {
+    this.maxLength = noMaxLength ? Number.MAX_VALUE : this.DEFAULT_MAX_LENGTH;
+  }
+
+  maxLength = this.DEFAULT_MAX_LENGTH;
 
   @Output() focus = new EventEmitter<void>();
   @Output() blur = new EventEmitter<void>();
@@ -51,7 +56,7 @@ export class EditableHeaderInputComponent
   stateManager: StateManager;
   public hasError$: Observable<boolean>;
 
-  readonly CONTENT_MAX_LENGTH = 50;
+  readonly DEFAULT_MAX_LENGTH = 50;
 
   constructor(
     @Optional() public parent: FormGroupDirective,
